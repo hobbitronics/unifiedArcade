@@ -24,7 +24,7 @@
 		}
 
 	const removePlayer = () => $players = $players.filter(player => player.name !== name)
-	
+	const byHighScore = (player1, player2) => player2.points - player1.points;
 </script>
 <main>
 	
@@ -75,9 +75,9 @@
 		{#if $players.length === 0}
 			<p>No High Scores</p>
 		{:else if toggle}
-			{#each $players as player (player.id)}
+			{#each [...$players].sort(byHighScore) as player, id (player.id)}
 				<div animate:flip="{{duration: 200}}">
-					<Player name={player.name} points={player.points} id={player.id} bio={player.bio} picture={player.picture}/>
+					{id+1}: <Player name={player.name} points={player.points} bio={player.bio} picture={player.picture}/>
 				</div>
 			{/each}
 		{/if}

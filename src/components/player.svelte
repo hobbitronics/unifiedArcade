@@ -10,7 +10,7 @@
 <main>
 	<div class="player">
 		<h2>
-			{id}: {name}
+			{name}
 		</h2>
 		<img src={picture} alt="bio pic"/>
 		<h3>points: {points}</h3>

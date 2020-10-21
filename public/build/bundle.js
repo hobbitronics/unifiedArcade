@@ -3667,45 +3667,41 @@ var app = (function () {
     	let h2;
     	let t0;
     	let t1;
-    	let t2;
-    	let t3;
     	let img;
     	let img_src_value;
-    	let t4;
+    	let t2;
     	let h3;
+    	let t3;
+    	let t4;
     	let t5;
-    	let t6;
-    	let t7;
     	let h4;
-    	let t8;
+    	let t6;
 
     	const block = {
     		c: function create() {
     			main = element("main");
     			div = element("div");
     			h2 = element("h2");
-    			t0 = text(/*id*/ ctx[3]);
-    			t1 = text(": ");
-    			t2 = text(/*name*/ ctx[0]);
-    			t3 = space();
+    			t0 = text(/*name*/ ctx[0]);
+    			t1 = space();
     			img = element("img");
-    			t4 = space();
+    			t2 = space();
     			h3 = element("h3");
-    			t5 = text("points: ");
-    			t6 = text(/*points*/ ctx[1]);
-    			t7 = space();
+    			t3 = text("points: ");
+    			t4 = text(/*points*/ ctx[1]);
+    			t5 = space();
     			h4 = element("h4");
-    			t8 = text(/*bio*/ ctx[4]);
+    			t6 = text(/*bio*/ ctx[3]);
     			attr_dev(h2, "class", "svelte-1htcwsj");
     			add_location(h2, file$3, 11, 2, 149);
     			if (img.src !== (img_src_value = /*picture*/ ctx[2])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "bio pic");
     			attr_dev(img, "class", "svelte-1htcwsj");
-    			add_location(img, file$3, 14, 2, 180);
+    			add_location(img, file$3, 14, 2, 174);
     			attr_dev(h3, "class", "svelte-1htcwsj");
-    			add_location(h3, file$3, 15, 2, 217);
+    			add_location(h3, file$3, 15, 2, 211);
     			attr_dev(h4, "class", "svelte-1htcwsj");
-    			add_location(h4, file$3, 16, 2, 245);
+    			add_location(h4, file$3, 16, 2, 239);
     			attr_dev(div, "class", "player svelte-1htcwsj");
     			add_location(div, file$3, 10, 1, 126);
     			attr_dev(main, "class", "svelte-1htcwsj");
@@ -3719,28 +3715,25 @@ var app = (function () {
     			append_dev(main, div);
     			append_dev(div, h2);
     			append_dev(h2, t0);
-    			append_dev(h2, t1);
-    			append_dev(h2, t2);
-    			append_dev(div, t3);
+    			append_dev(div, t1);
     			append_dev(div, img);
-    			append_dev(div, t4);
+    			append_dev(div, t2);
     			append_dev(div, h3);
-    			append_dev(h3, t5);
-    			append_dev(h3, t6);
-    			append_dev(div, t7);
+    			append_dev(h3, t3);
+    			append_dev(h3, t4);
+    			append_dev(div, t5);
     			append_dev(div, h4);
-    			append_dev(h4, t8);
+    			append_dev(h4, t6);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*id*/ 8) set_data_dev(t0, /*id*/ ctx[3]);
-    			if (dirty & /*name*/ 1) set_data_dev(t2, /*name*/ ctx[0]);
+    			if (dirty & /*name*/ 1) set_data_dev(t0, /*name*/ ctx[0]);
 
     			if (dirty & /*picture*/ 4 && img.src !== (img_src_value = /*picture*/ ctx[2])) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*points*/ 2) set_data_dev(t6, /*points*/ ctx[1]);
-    			if (dirty & /*bio*/ 16) set_data_dev(t8, /*bio*/ ctx[4]);
+    			if (dirty & /*points*/ 2) set_data_dev(t4, /*points*/ ctx[1]);
+    			if (dirty & /*bio*/ 8) set_data_dev(t6, /*bio*/ ctx[3]);
     		},
     		i: noop,
     		o: noop,
@@ -3778,8 +3771,8 @@ var app = (function () {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("points" in $$props) $$invalidate(1, points = $$props.points);
     		if ("picture" in $$props) $$invalidate(2, picture = $$props.picture);
-    		if ("id" in $$props) $$invalidate(3, id = $$props.id);
-    		if ("bio" in $$props) $$invalidate(4, bio = $$props.bio);
+    		if ("id" in $$props) $$invalidate(4, id = $$props.id);
+    		if ("bio" in $$props) $$invalidate(3, bio = $$props.bio);
     	};
 
     	$$self.$capture_state = () => ({ name, points, picture, id, bio });
@@ -3788,15 +3781,15 @@ var app = (function () {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("points" in $$props) $$invalidate(1, points = $$props.points);
     		if ("picture" in $$props) $$invalidate(2, picture = $$props.picture);
-    		if ("id" in $$props) $$invalidate(3, id = $$props.id);
-    		if ("bio" in $$props) $$invalidate(4, bio = $$props.bio);
+    		if ("id" in $$props) $$invalidate(4, id = $$props.id);
+    		if ("bio" in $$props) $$invalidate(3, bio = $$props.bio);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, points, picture, id, bio];
+    	return [name, points, picture, bio, id];
     }
 
     class Player extends SvelteComponentDev {
@@ -3807,8 +3800,8 @@ var app = (function () {
     			name: 0,
     			points: 1,
     			picture: 2,
-    			id: 3,
-    			bio: 4
+    			id: 4,
+    			bio: 3
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -3829,11 +3822,11 @@ var app = (function () {
     			console.warn("<Player> was created without expected prop 'picture'");
     		}
 
-    		if (/*id*/ ctx[3] === undefined && !("id" in props)) {
+    		if (/*id*/ ctx[4] === undefined && !("id" in props)) {
     			console.warn("<Player> was created without expected prop 'id'");
     		}
 
-    		if (/*bio*/ ctx[4] === undefined && !("bio" in props)) {
+    		if (/*bio*/ ctx[3] === undefined && !("bio" in props)) {
     			console.warn("<Player> was created without expected prop 'bio'");
     		}
     	}
@@ -15817,16 +15810,16 @@ var app = (function () {
     			button.textContent = "reset score";
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Your name");
-    			add_location(input0, file$n, 36, 4, 776);
+    			add_location(input0, file$n, 42, 4, 975);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Save";
     			attr_dev(input1, "class", "btn");
-    			add_location(input1, file$n, 37, 4, 842);
+    			add_location(input1, file$n, 43, 4, 1041);
     			attr_dev(form, "class", "controls svelte-7st4z6");
-    			add_location(form, file$n, 35, 0, 712);
-    			add_location(button, file$n, 39, 22, 921);
+    			add_location(form, file$n, 41, 0, 911);
+    			add_location(button, file$n, 45, 22, 1120);
     			attr_dev(div, "class", "controls svelte-7st4z6");
-    			add_location(div, file$n, 39, 0, 899);
+    			add_location(div, file$n, 45, 0, 1098);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -15879,23 +15872,44 @@ var app = (function () {
     }
 
     function instance$r($$self, $$props, $$invalidate) {
-    	let $count;
     	let $players;
+    	let $count;
+    	validate_store(players, "players");
+    	component_subscribe($$self, players, $$value => $$invalidate(7, $players = $$value));
     	validate_store(count, "count");
     	component_subscribe($$self, count, $$value => $$invalidate(1, $count = $$value));
-    	validate_store(players, "players");
-    	component_subscribe($$self, players, $$value => $$invalidate(9, $players = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("AddPlayer", slots, []);
     	let name;
-    	let pid = 2;
     	let bio;
     	let picture;
 
+    	// $: player = {
+    	//     id: pid,
+    	//     name : name,
+    	//     picture: picture,
+    	//     points : $count,
+    	//     bio: bio
+    	// };
     	const onSubmit = async () => {
-    		$$invalidate(5, pid++, pid);
+    		let lastPlayer = $players[$players.length - 1];
+    		console.log();
     		await gitGet(name);
-    		set_store_value(players, $players = [...$players, player], $players);
+
+    		set_store_value(
+    			players,
+    			$players = [
+    				...$players,
+    				{
+    					id: lastPlayer.id + 1,
+    					name,
+    					picture,
+    					points: $count,
+    					bio
+    				}
+    			],
+    			$players
+    		);
     	};
 
     	async function gitGet(input) {
@@ -15904,8 +15918,8 @@ var app = (function () {
     		try {
     			const response = await fetch(url);
     			const data = await response.json();
-    			$$invalidate(6, bio = `bio: ${data.bio}`);
-    			$$invalidate(7, picture = data.avatar_url);
+    			bio = `bio: ${data.bio}`;
+    			picture = data.avatar_url;
     			console.log(data);
     		} catch(error) {
     			console.error(error);
@@ -15929,41 +15943,23 @@ var app = (function () {
     		count,
     		players,
     		name,
-    		pid,
     		bio,
     		picture,
     		onSubmit,
     		gitGet,
-    		player,
-    		$count,
-    		$players
+    		$players,
+    		$count
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
-    		if ("pid" in $$props) $$invalidate(5, pid = $$props.pid);
-    		if ("bio" in $$props) $$invalidate(6, bio = $$props.bio);
-    		if ("picture" in $$props) $$invalidate(7, picture = $$props.picture);
-    		if ("player" in $$props) player = $$props.player;
+    		if ("bio" in $$props) bio = $$props.bio;
+    		if ("picture" in $$props) picture = $$props.picture;
     	};
-
-    	let player;
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
-
-    	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*pid, name, picture, $count, bio*/ 227) {
-    			 player = {
-    				id: pid,
-    				name,
-    				picture,
-    				points: $count,
-    				bio
-    			};
-    		}
-    	};
 
     	return [name, $count, onSubmit, input0_input_handler, click_handler];
     }
@@ -15987,7 +15983,8 @@ var app = (function () {
 
     function get_each_context$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[18] = list[i];
+    	child_ctx[19] = list[i];
+    	child_ctx[21] = i;
     	return child_ctx;
     }
 
@@ -16014,12 +16011,12 @@ var app = (function () {
     			input1 = element("input");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Player to remove");
-    			add_location(input0, file$o, 34, 3, 948);
+    			add_location(input0, file$o, 34, 3, 1022);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Remove Player";
     			attr_dev(input1, "class", "button svelte-1vb7ovi");
-    			add_location(input1, file$o, 35, 3, 1020);
-    			add_location(form, file$o, 33, 2, 899);
+    			add_location(input1, file$o, 35, 3, 1094);
+    			add_location(form, file$o, 33, 2, 973);
     		},
     		m: function mount(target, anchor) {
     			mount_component(addplayer, target, anchor);
@@ -16033,7 +16030,7 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[8]),
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[9]),
     					listen_dev(form, "click", prevent_default(/*removePlayer*/ ctx[7]), false, true, false)
     				];
 
@@ -16198,11 +16195,11 @@ var app = (function () {
     			t2 = text("points: ");
     			t3 = text(/*$count*/ ctx[4]);
     			attr_dev(h2, "class", "svelte-1vb7ovi");
-    			add_location(h2, file$o, 43, 3, 1254);
+    			add_location(h2, file$o, 43, 3, 1328);
     			attr_dev(h3, "class", "svelte-1vb7ovi");
-    			add_location(h3, file$o, 44, 3, 1284);
+    			add_location(h3, file$o, 44, 3, 1358);
     			attr_dev(div, "class", "currPlayer svelte-1vb7ovi");
-    			add_location(div, file$o, 42, 2, 1226);
+    			add_location(div, file$o, 42, 2, 1300);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -16242,7 +16239,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Tic Tac Toe";
     			attr_dev(a, "href", "./ttt");
-    			add_location(a, file$o, 54, 4, 1513);
+    			add_location(a, file$o, 54, 4, 1587);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -16272,7 +16269,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Hangman";
     			attr_dev(a, "href", "./hangman");
-    			add_location(a, file$o, 58, 4, 1672);
+    			add_location(a, file$o, 58, 4, 1746);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -16302,7 +16299,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Bash";
     			attr_dev(a, "href", "./terminal");
-    			add_location(a, file$o, 62, 4, 1831);
+    			add_location(a, file$o, 62, 4, 1905);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -16348,8 +16345,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	paper0.$on("mouseover", /*mouseover_handler*/ ctx[10]);
-    	paper0.$on("mouseout", /*mouseout_handler*/ ctx[11]);
+    	paper0.$on("mouseover", /*mouseover_handler*/ ctx[11]);
+    	paper0.$on("mouseout", /*mouseout_handler*/ ctx[12]);
 
     	paper1 = new Paper({
     			props: {
@@ -16360,8 +16357,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	paper1.$on("mouseover", /*mouseover_handler_1*/ ctx[12]);
-    	paper1.$on("mouseout", /*mouseout_handler_1*/ ctx[13]);
+    	paper1.$on("mouseover", /*mouseover_handler_1*/ ctx[13]);
+    	paper1.$on("mouseout", /*mouseout_handler_1*/ ctx[14]);
 
     	paper2 = new Paper({
     			props: {
@@ -16372,8 +16369,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	paper2.$on("mouseover", /*mouseover_handler_2*/ ctx[14]);
-    	paper2.$on("mouseout", /*mouseout_handler_2*/ ctx[15]);
+    	paper2.$on("mouseover", /*mouseover_handler_2*/ ctx[15]);
+    	paper2.$on("mouseout", /*mouseout_handler_2*/ ctx[16]);
 
     	const block = {
     		c: function create() {
@@ -16392,11 +16389,11 @@ var app = (function () {
     			create_component(paper2.$$.fragment);
     			attr_dev(h2, "id", "minibar");
     			attr_dev(h2, "class", "svelte-1vb7ovi");
-    			add_location(h2, file$o, 51, 2, 1354);
-    			add_location(br0, file$o, 56, 3, 1560);
-    			add_location(br1, file$o, 60, 3, 1719);
+    			add_location(h2, file$o, 51, 2, 1428);
+    			add_location(br0, file$o, 56, 3, 1634);
+    			add_location(br1, file$o, 60, 3, 1793);
     			attr_dev(div, "class", "gameList svelte-1vb7ovi");
-    			add_location(div, file$o, 52, 2, 1384);
+    			add_location(div, file$o, 52, 2, 1458);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -16417,7 +16414,7 @@ var app = (function () {
     			const paper0_changes = {};
     			if (dirty & /*height*/ 4) paper0_changes.elevation = /*height*/ ctx[2][0];
 
-    			if (dirty & /*$$scope*/ 2097152) {
+    			if (dirty & /*$$scope*/ 4194304) {
     				paper0_changes.$$scope = { dirty, ctx };
     			}
 
@@ -16425,7 +16422,7 @@ var app = (function () {
     			const paper1_changes = {};
     			if (dirty & /*height*/ 4) paper1_changes.elevation = /*height*/ ctx[2][1];
 
-    			if (dirty & /*$$scope*/ 2097152) {
+    			if (dirty & /*$$scope*/ 4194304) {
     				paper1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -16433,7 +16430,7 @@ var app = (function () {
     			const paper2_changes = {};
     			if (dirty & /*height*/ 4) paper2_changes.elevation = /*height*/ ctx[2][2];
 
-    			if (dirty & /*$$scope*/ 2097152) {
+    			if (dirty & /*$$scope*/ 4194304) {
     				paper2_changes.$$scope = { dirty, ctx };
     			}
 
@@ -16582,9 +16579,9 @@ var app = (function () {
     	let each_1_lookup = new Map();
     	let each_1_anchor;
     	let current;
-    	let each_value = /*$players*/ ctx[3];
+    	let each_value = [.../*$players*/ ctx[3]].sort(/*byHighScore*/ ctx[8]);
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*player*/ ctx[18].id;
+    	const get_key = ctx => /*player*/ ctx[19].id;
     	validate_each_keys(ctx, each_value, get_each_context$3, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -16610,8 +16607,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*$players*/ 8) {
-    				const each_value = /*$players*/ ctx[3];
+    			if (dirty & /*$players, byHighScore*/ 264) {
+    				const each_value = [.../*$players*/ ctx[3]].sort(/*byHighScore*/ ctx[8]);
     				validate_each_argument(each_value);
     				group_outros();
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
@@ -16665,7 +16662,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "No High Scores";
-    			add_location(p, file$o, 75, 3, 2113);
+    			add_location(p, file$o, 75, 3, 2187);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -16689,22 +16686,24 @@ var app = (function () {
     	return block;
     }
 
-    // (78:3) {#each $players as player (player.id)}
+    // (78:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}
     function create_each_block$3(key_1, ctx) {
     	let div;
+    	let t0_value = /*id*/ ctx[21] + 1 + "";
+    	let t0;
+    	let t1;
     	let player;
-    	let t;
+    	let t2;
     	let rect;
     	let stop_animation = noop;
     	let current;
 
     	player = new Player({
     			props: {
-    				name: /*player*/ ctx[18].name,
-    				points: /*player*/ ctx[18].points,
-    				id: /*player*/ ctx[18].id,
-    				bio: /*player*/ ctx[18].bio,
-    				picture: /*player*/ ctx[18].picture
+    				name: /*player*/ ctx[19].name,
+    				points: /*player*/ ctx[19].points,
+    				bio: /*player*/ ctx[19].bio,
+    				picture: /*player*/ ctx[19].picture
     			},
     			$$inline: true
     		});
@@ -16714,24 +16713,28 @@ var app = (function () {
     		first: null,
     		c: function create() {
     			div = element("div");
+    			t0 = text(t0_value);
+    			t1 = text(": ");
     			create_component(player.$$.fragment);
-    			t = space();
-    			add_location(div, file$o, 78, 4, 2201);
+    			t2 = space();
+    			add_location(div, file$o, 78, 4, 2302);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
     			mount_component(player, div, null);
-    			append_dev(div, t);
+    			append_dev(div, t2);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
+    			if ((!current || dirty & /*$players*/ 8) && t0_value !== (t0_value = /*id*/ ctx[21] + 1 + "")) set_data_dev(t0, t0_value);
     			const player_changes = {};
-    			if (dirty & /*$players*/ 8) player_changes.name = /*player*/ ctx[18].name;
-    			if (dirty & /*$players*/ 8) player_changes.points = /*player*/ ctx[18].points;
-    			if (dirty & /*$players*/ 8) player_changes.id = /*player*/ ctx[18].id;
-    			if (dirty & /*$players*/ 8) player_changes.bio = /*player*/ ctx[18].bio;
-    			if (dirty & /*$players*/ 8) player_changes.picture = /*player*/ ctx[18].picture;
+    			if (dirty & /*$players*/ 8) player_changes.name = /*player*/ ctx[19].name;
+    			if (dirty & /*$players*/ 8) player_changes.points = /*player*/ ctx[19].points;
+    			if (dirty & /*$players*/ 8) player_changes.bio = /*player*/ ctx[19].bio;
+    			if (dirty & /*$players*/ 8) player_changes.picture = /*player*/ ctx[19].picture;
     			player.$set(player_changes);
     		},
     		r: function measure() {
@@ -16764,7 +16767,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(78:3) {#each $players as player (player.id)}",
+    		source: "(78:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}",
     		ctx
     	});
 
@@ -16791,7 +16794,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*click_handler_1*/ ctx[16]);
+    	button.$on("click", /*click_handler_1*/ ctx[17]);
     	const if_block_creators = [create_if_block$8, create_if_block_1$3];
     	const if_blocks = [];
 
@@ -16817,9 +16820,9 @@ var app = (function () {
     			if_block_anchor = empty();
     			attr_dev(h2, "id", "minibar");
     			attr_dev(h2, "class", "svelte-1vb7ovi");
-    			add_location(h2, file$o, 70, 2, 1916);
+    			add_location(h2, file$o, 70, 2, 1990);
     			attr_dev(div, "class", "btn-container svelte-1vb7ovi");
-    			add_location(div, file$o, 71, 2, 1952);
+    			add_location(div, file$o, 71, 2, 2026);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -16838,7 +16841,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, toggle*/ 2097184) {
+    			if (dirty & /*$$scope, toggle*/ 4194336) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -16944,7 +16947,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*click_handler*/ ctx[9]);
+    	button.$on("click", /*click_handler*/ ctx[10]);
 
     	paper = new Paper({
     			props: {
@@ -16997,15 +17000,15 @@ var app = (function () {
     			a.textContent = "my Github page";
     			t9 = text(" to see more of my projects.");
     			attr_dev(div, "class", "controls svelte-1vb7ovi");
-    			add_location(div, file$o, 30, 1, 842);
-    			add_location(br0, file$o, 48, 1, 1331);
-    			add_location(br1, file$o, 67, 1, 1893);
+    			add_location(div, file$o, 30, 1, 916);
+    			add_location(br0, file$o, 48, 1, 1405);
+    			add_location(br1, file$o, 67, 1, 1967);
     			attr_dev(a, "href", "https://github.com/hobbitronics");
     			attr_dev(a, "target", "blank");
-    			add_location(a, file$o, 85, 15, 2409);
-    			add_location(footer, file$o, 85, 1, 2395);
+    			add_location(a, file$o, 85, 15, 2503);
+    			add_location(footer, file$o, 85, 1, 2489);
     			attr_dev(main, "class", "svelte-1vb7ovi");
-    			add_location(main, file$o, 28, 0, 832);
+    			add_location(main, file$o, 28, 0, 906);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -17059,28 +17062,28 @@ var app = (function () {
 
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, showCtrl*/ 2097154) {
+    			if (dirty & /*$$scope, showCtrl*/ 4194306) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
     			button.$set(button_changes);
     			const paper_changes = {};
 
-    			if (dirty & /*$$scope, $count, currPlayer*/ 2097232) {
+    			if (dirty & /*$$scope, $count, currPlayer*/ 4194384) {
     				paper_changes.$$scope = { dirty, ctx };
     			}
 
     			paper.$set(paper_changes);
     			const card0_changes = {};
 
-    			if (dirty & /*$$scope, height*/ 2097156) {
+    			if (dirty & /*$$scope, height*/ 4194308) {
     				card0_changes.$$scope = { dirty, ctx };
     			}
 
     			card0.$set(card0_changes);
     			const card1_changes = {};
 
-    			if (dirty & /*$$scope, $players, toggle*/ 2097192) {
+    			if (dirty & /*$$scope, $players, toggle*/ 4194344) {
     				card1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -17139,6 +17142,7 @@ var app = (function () {
     	let showCtrl = true;
     	let height = [1, 1, 1];
     	const removePlayer = () => set_store_value(players, $players = $players.filter(player => player.name !== name), $players);
+    	const byHighScore = (player1, player2) => player2.points - player1.points;
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -17176,6 +17180,7 @@ var app = (function () {
     		showCtrl,
     		height,
     		removePlayer,
+    		byHighScore,
     		$players,
     		$count,
     		toggle,
@@ -17222,6 +17227,7 @@ var app = (function () {
     		toggle,
     		currPlayer,
     		removePlayer,
+    		byHighScore,
     		input0_input_handler,
     		click_handler,
     		mouseover_handler,

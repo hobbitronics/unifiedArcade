@@ -2,21 +2,27 @@
     import { count, players} from './stores.js';
     
     let name;
-    let pid = 2;
     let bio;
     let picture;
 
-    $: player = {
-        id: pid,
-        name : name,
-        picture: picture,
-        points : $count,
-        bio: bio
-    };
+    // $: player = {
+    //     id: pid,
+    //     name : name,
+    //     picture: picture,
+    //     points : $count,
+    //     bio: bio
+    // };
     const onSubmit = async () => {
-        pid++;
+        let lastPlayer = $players[$players.length-1]
+        console.log()
         await gitGet(name)
-        $players = [...$players, player];
+        $players = [...$players, {
+          id: lastPlayer.id + 1,
+          name : name,
+          picture: picture,
+          points : $count,
+          bio: bio
+        }];
     }
 
     async function gitGet (input) {
