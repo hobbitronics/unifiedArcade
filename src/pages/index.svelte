@@ -3,7 +3,7 @@
     import { flip } from 'svelte/animate';
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
-	import { count, players} from '../components/stores.js';
+	import { currentPlayer, players} from '../components/stores.js';
 	import Button from '@smui/button';
 	import Card from '@smui/card'
 	import Paper, {Title, Subtitle, Content} from '@smui/paper';
@@ -14,16 +14,13 @@
 	let name;
 	let showCtrl = true;
 	let height = [1, 1, 1];
-	$: $players[$players.length-1].points = $count
+	$: currPlayer = $players[$currentPlayer];
 	$: toggle = true;
-	$: currPlayer =
-		{
-			id: 0,
-			name: $players[$players.length-1].name,
-			points: $count
-		}
 
-	const removePlayer = () => $players = $players.filter(player => player.name !== name)
+	const removePlayer = () => {
+		if (currPlayer.name === name) $currentPlayer = 0;
+		if ($players.length-1) $players = $players.filter(player => player.name !== name)
+		};
 	const byHighScore = (player1, player2) => player2.points - player1.points;
 </script>
 <main>
@@ -42,7 +39,7 @@
 	<Paper elevation={1} >	
 		<div class="currPlayer">
 			<h2>{currPlayer.name}</h2>
-			<h3>points: {$count}</h3>
+			<h3>points: {currPlayer.points}</h3>
 		</div>
 	</Paper>
 

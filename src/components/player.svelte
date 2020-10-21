@@ -2,7 +2,6 @@
 	export let name = '';
 	export let points;
 	export let picture;
-	export let id;
 	export let bio;
 
 </script>

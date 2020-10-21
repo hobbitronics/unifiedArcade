@@ -1,28 +1,21 @@
 <script>
-    import { count, players} from './stores.js';
+    import { currentPlayer, players } from './stores.js';
     
     let name;
     let bio;
     let picture;
+    $: lastPlayer = $players[$players.length-1];
 
-    // $: player = {
-    //     id: pid,
-    //     name : name,
-    //     picture: picture,
-    //     points : $count,
-    //     bio: bio
-    // };
     const onSubmit = async () => {
-        let lastPlayer = $players[$players.length-1]
-        console.log()
         await gitGet(name)
         $players = [...$players, {
           id: lastPlayer.id + 1,
           name : name,
           picture: picture,
-          points : $count,
+          points : 0,
           bio: bio
         }];
+        $currentPlayer = $players.length-1;  //put this in player service
     }
 
     async function gitGet (input) {
@@ -32,7 +25,6 @@
 			  const data = await response.json()	 
 			  bio = `bio: ${data.bio}`;
 			  picture = data.avatar_url;
-			console.log(data)
 		  } catch (error) {
 			console.error(error)
 		  }
@@ -43,7 +35,7 @@
     <input type="text" placeholder="Your name" bind:value={name}>
     <input type="submit" value="Save" class ="btn"/>
 </form>
-<div class="controls"><button on:click={() => $count = 0}>reset score</button></div>
+<div class="controls"><button on:click={() => lastPlayer.points = 0}>reset score</button></div>
 
 <style>
     .controls {

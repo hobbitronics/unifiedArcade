@@ -2,11 +2,11 @@
 	import { fly, fade, scale } from 'svelte/transition';
 	import { elasticOut } from 'svelte/easing';
 	import { quintOut } from 'svelte/easing';
-	import { count } from '../components/stores.js';
+    import { currentPlayer, players} from '../components/stores.js';
     import Button from '@smui/button';
 	import Paper, {Title, Subtitle, Content} from '@smui/paper';
 
-
+	$: currPlayer = $players[$currentPlayer];
 	let grid = ['','','','','','','','',''];
 	let winner;
 	let turnCount = 0;
@@ -14,8 +14,8 @@
 	$: totalCount = turnCount + pcTurnCount;
 	let success = false;
 	let blocked = false;
-	$: winner === "O" && $count++;
-	$: winner === "X" && $count--;
+	$: winner === "O" && currPlayer.points++;  //move to player service
+	$: winner === "X" && currPlayer.points--;
     
 	
 	const reset = () => {
@@ -59,7 +59,6 @@
         if ( (grid[0] + grid[4] + grid[8]) === (player+player+player) || (grid[2] + grid[4] + grid[6]) === (player+player+player)){  // covers 0,3,6  1,4,7  2,5,8
           winner = player;
 		}
-		console.log($count)
 	}
 	
 	//generates random number for pc player

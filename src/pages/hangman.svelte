@@ -2,9 +2,9 @@
     import { fly, fade, scale } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';
     import APInputs from '../components/APIinputs.svelte'
-    import { count } from '../components/stores.js';
     import Card from '@smui/card'
     import Button from '@smui/button';
+	import { currentPlayer, players} from '../components/stores.js';
 
     let game = [];
     let won;
@@ -16,10 +16,10 @@
     let guesses = [];
     let graphic = ["", "___","|  O","| -|-","|  /|","|___"]
     let hangman = [];
-
+    $: currPlayer = $players[$currentPlayer];
     $: chances = 6 - guesses.length;
-    $: won && $count++;
-    $: !chances && $count--;
+    $: won && currPlayer.points++;
+    $: !chances && currPlayer.points--;
     $: gameOver = `${wordArr.join('')} was the word. Game Over, Click Restart to play again.`
     
     let wordList = [

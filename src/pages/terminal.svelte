@@ -3,7 +3,8 @@
     import Card from '@smui/card'
     import Button from '@smui/button';
     import Paper, {Title, Subtitle, Content} from '@smui/paper';
-    import { count } from '../components/stores.js';
+    import { currentPlayer, players} from '../components/stores.js';
+
 
 
     let prompt = ['~%', '~%', '/Users ~%', '~%', 'stuff ~%', '~%', '~%', '~%', '~%', '~%', '~%'];
@@ -12,6 +13,8 @@
     let answer = ['pwd', 'ls', 'cd ..', 'clear', 'cd guest/stuff', 'touch file.txt', 'mkdir things', 'cat file', 'cp file doc', "rm file"]
     const toggle = []
     const show = [true]
+    $: currPlayer = $players[$currentPlayer];
+
     const questions = [
         {
             msg: 'Print working directory',
@@ -65,12 +68,12 @@
         clear(guess)
         guess === answer[questionNum] ? show[questionNum+1] = true : toggle[questionNum] = true;
         input = '';
-        if (show[questionNum+1]) {counter++; $count++}
+        if (show[questionNum+1]) {counter++; currPlayer.points++}
         console.log(counter)
     }
 
     let clear = guess => guess === 'clear' && show.forEach( (el, index) => show[index] = false);
-    $: if (counter < 8 && toggle[counter]) $count--;
+    $: if (counter < 8 && toggle[counter]) currPlayer.points--;
 
 </script>
 

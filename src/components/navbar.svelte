@@ -1,14 +1,20 @@
 <script>
-    import { players, count } from './stores.js';
+    import { players, currentPlayer } from './stores.js';
     import Player from './player.svelte'
     import Paper from '@smui/paper';
     import { goto } from '@sveltech/routify';
     import Menu from '@smui/menu';
+    import Select, {Option} from '@smui/select';
     import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list';
     
     let menu;
     let options;
-    let playerProfile = false;
+    let showProfile = false;
+    let playerChoice = '';
+    //put this in the player service
+    const selectPlayer = () => $currentPlayer = $players.findIndex( player => player.name === playerChoice);
+      
+    $: playerChoice && selectPlayer();
 </script>
 
 <style>
@@ -49,11 +55,16 @@
         <div class="mdc-top-app-bar__row">
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <button on:click={() => menu.setOpen(true)} class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-            <span class="mdc-top-app-bar__title">Hello {$players[$players.length-1].name}, Welcome to Unified Arcade App</span>
+            <span class="mdc-top-app-bar__title">Hello {$players[$currentPlayer].name}, We come to Unified Arcade App</span>
           </section>
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-            <button on:click={() => playerProfile = !playerProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$players[$players.length-1].picture} alt="portrait"/></button>
-            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+            <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$players[$currentPlayer].picture} alt="portrait"/></button>
+            <Select bind:value={playerChoice} label="select player">
+              <Option value=""></Option>
+              {#each $players as player}
+              <Option value={player.name} selected={playerChoice === player.name}>{player.name}</Option>
+              {/each}
+            </Select>
             <button on:click={() => options.setOpen(true)} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
           </section>
         </div>
@@ -83,10 +94,10 @@
     </Menu>
   </div>
 
-  {#if playerProfile}
+  {#if showProfile}
   <div class="player-profile">
     <Paper elevation={4}>
-      <Player {...$players[$players.length-1]} points={$count}/>
+      <Player {...$players[$currentPlayer]} points={$players[$currentPlayer].points}/>
     </Paper>
   </div>
   {/if}
