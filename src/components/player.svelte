@@ -8,20 +8,20 @@
 </script>
 
 <main>
-
-	<h2>
-		{id}: {name}
-	</h2>
-	<img src={picture} alt="bio pic"/>
-	<h3>points: {points}</h3>
-	<h4>{bio}</h4>
+	<div class="player">
+		<h2>
+			{id}: {name}
+		</h2>
+		<img src={picture} alt="bio pic"/>
+		<h3>points: {points}</h3>
+		<h4>{bio}</h4>
+	</div>
 
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
 	}
@@ -29,8 +29,14 @@
 		color: darkblue;
 	}
 	img {
-		height: 50px;
-		width: 50px;
+		height: 100px;
+		width: 100px;
+	}
+
+	.player {
+		max-width: 240px;
+		overflow-wrap: break-word;
+		overflow: auto;
 	}
 
 </style>

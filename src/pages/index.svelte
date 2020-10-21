@@ -12,6 +12,7 @@
     metatags.description = 'Play all your favourite games in one spot'
 	
 	let name;
+	let showCtrl = true;
 	let height = [1, 1, 1];
 	$: $players[$players.length-1].points = $count
 	$: toggle = true;
@@ -26,13 +27,16 @@
 	
 </script>
 <main>
-
+	
 	<div class="controls">
+		{#if showCtrl}
 		<AddPlayer/>
 		<form on:click|preventDefault={removePlayer}>
 			<input type="text" placeholder="Player to remove" bind:value={name}>
 			<input type="submit" value="Remove Player" class="button"/>
 		</form>
+		{/if}
+		<Button on:click={() => showCtrl = !showCtrl}>{#if showCtrl}Hide{:else}show{/if}</Button>
 	</div>
 
 	<Paper elevation={1} >	
@@ -79,7 +83,7 @@
 		{/if}
 	</Card>
 
-	<p>Visit <a href="https://github.com/hobbitronics" target="blank">my Github page</a> to see more of my projects.</p>
+	<footer>Visit <a href="https://github.com/hobbitronics" target="blank">my Github page</a> to see more of my projects.</footer>
 </main>
 <style>
 	main {
@@ -98,8 +102,6 @@
 		}
 
 	.currPlayer, .gameList {
-		display: flex-box;
-		align-content: space-around;
 		text-align: center;
 		font-family: sans-serif;
 		padding: 5px;
@@ -129,8 +131,10 @@
 
 	.controls {
 		position: fixed;
-		left: 70%;
-		padding: 4px
+		/* left: 60%; */
+		padding: 4px;
+		margin-top: 8px;
+    	margin-left: 8px;
 	}
 
 </style>

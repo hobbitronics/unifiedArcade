@@ -7,12 +7,12 @@ export const players = writable(
         name: 'Pinball Wizard',
         picture: 'https://i.imgur.com/O4QdclB.jpg',
         points: 101,
-        bio: ''
+        bio: 'Bio: The best around'
     },
     {
         id: 2,
         name: 'Current Player',
-        picture: '',
+        picture: 'https://i.imgur.com/kjxayZk.png',
         points: 0,
         bio: ''
     }

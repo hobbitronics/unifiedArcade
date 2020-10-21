@@ -135,7 +135,7 @@
 
         .btn-container {
             max-width: 100px;
-            margin: 0 auto;
+            margin: 10px auto;
         }
     
         h1 {

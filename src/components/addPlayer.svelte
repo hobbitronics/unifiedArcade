@@ -2,7 +2,7 @@
     import { count, players} from './stores.js';
     
     let name;
-    let pid = 3;
+    let pid = 2;
     let bio;
     let picture;
 
@@ -24,7 +24,7 @@
 		  try {
 			  const response = await fetch(url)
 			  const data = await response.json()	 
-			  bio = `bio: ${data.bio}, repos url: ${data.repos_url}`;
+			  bio = `bio: ${data.bio}`;
 			  picture = data.avatar_url;
 			console.log(data)
 		  } catch (error) {
