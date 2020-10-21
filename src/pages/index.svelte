@@ -72,15 +72,17 @@
 		<div class="btn-container">
 			<Button on:click={() => toggle = !toggle}>{#if toggle}minimize{:else}show{/if}</Button>
 		</div>
-		{#if $players.length === 0}
-			<p>No High Scores</p>
-		{:else if toggle}
+		<div>
+			{#if $players.length === 0}
+				<p>No High Scores</p>
+			{:else if toggle}
 			{#each [...$players].sort(byHighScore) as player, id (player.id)}
-				<div animate:flip="{{duration: 200}}">
-					{id+1}: <Player name={player.name} points={player.points} bio={player.bio} picture={player.picture}/>
+				<div class="player-container" animate:flip="{{duration: 200}}">
+					<h4>{id+1}:</h4> <Player name={player.name} points={player.points} bio={player.bio} picture={player.picture}/>
 				</div>
 			{/each}
-		{/if}
+			{/if}
+		</div>
 	</Card>
 
 	<footer>Visit <a href="https://github.com/hobbitronics" target="blank">my Github page</a> to see more of my projects.</footer>
@@ -97,7 +99,7 @@
         margin: 5;
     	} */
 
-	h2, h3 {
+	h2, h3, h4 {
 		color: darkblue;
 		}
 
@@ -117,6 +119,12 @@
 		border-radius: 10px;
 		margin: 4px;
 		text-align: center;
+	}
+
+	.player-container {
+		max-width: 300px;
+		text-align: center;
+		margin: 0 auto;
 	}
 
 	.btn-container {

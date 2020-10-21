@@ -3650,7 +3650,7 @@ var app = (function () {
         },
         {
             id: 2,
-            name: 'Current Player',
+            name: 'Player',
             picture: 'https://i.imgur.com/kjxayZk.png',
             points: 0,
             bio: ''
@@ -16014,7 +16014,7 @@ var app = (function () {
     			add_location(input0, file$o, 34, 3, 1022);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Remove Player";
-    			attr_dev(input1, "class", "button svelte-1vb7ovi");
+    			attr_dev(input1, "class", "button svelte-1m4vbwd");
     			add_location(input1, file$o, 35, 3, 1094);
     			add_location(form, file$o, 33, 2, 973);
     		},
@@ -16194,11 +16194,11 @@ var app = (function () {
     			h3 = element("h3");
     			t2 = text("points: ");
     			t3 = text(/*$count*/ ctx[4]);
-    			attr_dev(h2, "class", "svelte-1vb7ovi");
+    			attr_dev(h2, "class", "svelte-1m4vbwd");
     			add_location(h2, file$o, 43, 3, 1328);
-    			attr_dev(h3, "class", "svelte-1vb7ovi");
+    			attr_dev(h3, "class", "svelte-1m4vbwd");
     			add_location(h3, file$o, 44, 3, 1358);
-    			attr_dev(div, "class", "currPlayer svelte-1vb7ovi");
+    			attr_dev(div, "class", "currPlayer svelte-1m4vbwd");
     			add_location(div, file$o, 42, 2, 1300);
     		},
     		m: function mount(target, anchor) {
@@ -16388,11 +16388,11 @@ var app = (function () {
     			t5 = space();
     			create_component(paper2.$$.fragment);
     			attr_dev(h2, "id", "minibar");
-    			attr_dev(h2, "class", "svelte-1vb7ovi");
+    			attr_dev(h2, "class", "svelte-1m4vbwd");
     			add_location(h2, file$o, 51, 2, 1428);
     			add_location(br0, file$o, 56, 3, 1634);
     			add_location(br1, file$o, 60, 3, 1793);
-    			attr_dev(div, "class", "gameList svelte-1vb7ovi");
+    			attr_dev(div, "class", "gameList svelte-1m4vbwd");
     			add_location(div, file$o, 52, 2, 1458);
     		},
     		m: function mount(target, anchor) {
@@ -16573,7 +16573,7 @@ var app = (function () {
     	return block;
     }
 
-    // (77:19) 
+    // (78:20) 
     function create_if_block_1$3(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
@@ -16647,14 +16647,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(77:19) ",
+    		source: "(78:20) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:2) {#if $players.length === 0}
+    // (76:3) {#if $players.length === 0}
     function create_if_block$8(ctx) {
     	let p;
 
@@ -16662,7 +16662,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "No High Scores";
-    			add_location(p, file$o, 75, 3, 2187);
+    			add_location(p, file$o, 76, 4, 2197);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -16679,21 +16679,23 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(75:2) {#if $players.length === 0}",
+    		source: "(76:3) {#if $players.length === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}
+    // (79:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}
     function create_each_block$3(key_1, ctx) {
     	let div;
+    	let h4;
     	let t0_value = /*id*/ ctx[21] + 1 + "";
     	let t0;
     	let t1;
-    	let player;
     	let t2;
+    	let player;
+    	let t3;
     	let rect;
     	let stop_animation = noop;
     	let current;
@@ -16713,19 +16715,26 @@ var app = (function () {
     		first: null,
     		c: function create() {
     			div = element("div");
+    			h4 = element("h4");
     			t0 = text(t0_value);
-    			t1 = text(": ");
-    			create_component(player.$$.fragment);
+    			t1 = text(":");
     			t2 = space();
-    			add_location(div, file$o, 78, 4, 2302);
+    			create_component(player.$$.fragment);
+    			t3 = space();
+    			attr_dev(h4, "class", "svelte-1m4vbwd");
+    			add_location(h4, file$o, 80, 5, 2382);
+    			attr_dev(div, "class", "player-container svelte-1m4vbwd");
+    			add_location(div, file$o, 79, 4, 2313);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, t0);
-    			append_dev(div, t1);
-    			mount_component(player, div, null);
+    			append_dev(div, h4);
+    			append_dev(h4, t0);
+    			append_dev(h4, t1);
     			append_dev(div, t2);
+    			mount_component(player, div, null);
+    			append_dev(div, t3);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -16767,7 +16776,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(78:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}",
+    		source: "(79:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}",
     		ctx
     	});
 
@@ -16778,12 +16787,12 @@ var app = (function () {
     function create_default_slot$7(ctx) {
     	let h2;
     	let t1;
-    	let div;
+    	let div0;
     	let button;
     	let t2;
+    	let div1;
     	let current_block_type_index;
     	let if_block;
-    	let if_block_anchor;
     	let current;
 
     	button = new Button_1({
@@ -16813,29 +16822,30 @@ var app = (function () {
     			h2 = element("h2");
     			h2.textContent = "High Scores";
     			t1 = space();
-    			div = element("div");
+    			div0 = element("div");
     			create_component(button.$$.fragment);
     			t2 = space();
+    			div1 = element("div");
     			if (if_block) if_block.c();
-    			if_block_anchor = empty();
     			attr_dev(h2, "id", "minibar");
-    			attr_dev(h2, "class", "svelte-1vb7ovi");
+    			attr_dev(h2, "class", "svelte-1m4vbwd");
     			add_location(h2, file$o, 70, 2, 1990);
-    			attr_dev(div, "class", "btn-container svelte-1vb7ovi");
-    			add_location(div, file$o, 71, 2, 2026);
+    			attr_dev(div0, "class", "btn-container svelte-1m4vbwd");
+    			add_location(div0, file$o, 71, 2, 2026);
+    			add_location(div1, file$o, 74, 2, 2156);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, div, anchor);
-    			mount_component(button, div, null);
+    			insert_dev(target, div0, anchor);
+    			mount_component(button, div0, null);
     			insert_dev(target, t2, anchor);
+    			insert_dev(target, div1, anchor);
 
     			if (~current_block_type_index) {
-    				if_blocks[current_block_type_index].m(target, anchor);
+    				if_blocks[current_block_type_index].m(div1, null);
     			}
 
-    			insert_dev(target, if_block_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -16873,7 +16883,7 @@ var app = (function () {
     					}
 
     					transition_in(if_block, 1);
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    					if_block.m(div1, null);
     				} else {
     					if_block = null;
     				}
@@ -16893,15 +16903,14 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h2);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div0);
     			destroy_component(button);
     			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(div1);
 
     			if (~current_block_type_index) {
-    				if_blocks[current_block_type_index].d(detaching);
+    				if_blocks[current_block_type_index].d();
     			}
-
-    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -16999,15 +17008,15 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "my Github page";
     			t9 = text(" to see more of my projects.");
-    			attr_dev(div, "class", "controls svelte-1vb7ovi");
+    			attr_dev(div, "class", "controls svelte-1m4vbwd");
     			add_location(div, file$o, 30, 1, 916);
     			add_location(br0, file$o, 48, 1, 1405);
     			add_location(br1, file$o, 67, 1, 1967);
     			attr_dev(a, "href", "https://github.com/hobbitronics");
     			attr_dev(a, "target", "blank");
-    			add_location(a, file$o, 85, 15, 2503);
-    			add_location(footer, file$o, 85, 1, 2489);
-    			attr_dev(main, "class", "svelte-1vb7ovi");
+    			add_location(a, file$o, 87, 15, 2558);
+    			add_location(footer, file$o, 87, 1, 2544);
+    			attr_dev(main, "class", "svelte-1m4vbwd");
     			add_location(main, file$o, 28, 0, 906);
     		},
     		l: function claim(nodes) {

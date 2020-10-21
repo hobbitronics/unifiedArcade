@@ -11,7 +11,7 @@ export const players = writable(
     },
     {
         id: 2,
-        name: 'Current Player',
+        name: 'Player',
         picture: 'https://i.imgur.com/kjxayZk.png',
         points: 0,
         bio: ''
