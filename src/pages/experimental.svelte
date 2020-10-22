@@ -3,10 +3,7 @@
     import { players, count } from '../components/stores.js';
 </script>
 
-<div>
 
-
-</div>
 
 
 <style>

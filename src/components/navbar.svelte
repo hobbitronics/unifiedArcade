@@ -6,14 +6,17 @@
     import Menu from '@smui/menu';
     import Select, {Option} from '@smui/select';
     import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list';
-    
+    import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar';
+    import IconButton from '@smui/icon-button';
+
+
     let menu;
     let options;
     let showProfile = false;
     let playerChoice = '';
+    $: currPlayer = $players[$currentPlayer]
     //put this in the player service
     const selectPlayer = () => $currentPlayer = $players.findIndex( player => player.name === playerChoice);
-      
     $: playerChoice && selectPlayer();
 </script>
 
@@ -47,10 +50,10 @@
         <div class="mdc-top-app-bar__row">
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <button on:click={() => menu.setOpen(true)} class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-            <span class="mdc-top-app-bar__title">Hello {$players[$currentPlayer].name}, We come to Unified Arcade App</span>
+            <span class="mdc-top-app-bar__title">Hello {currPlayer.name}, We come to Unified Arcade App</span>
           </section>
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-            <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$players[$currentPlayer].picture} alt="portrait"/></button>
+            <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={currPlayer.picture} alt="portrait"/></button>
             <Select bind:value={playerChoice} label="select player">
               <Option value=""></Option>
               {#each $players as player}
@@ -89,7 +92,7 @@
   {#if showProfile}
   <div class="player-profile">
     <Paper elevation={4}>
-      <Player {...$players[$currentPlayer]}/>
+      <Player {...currPlayer}/>
     </Paper>
   </div>
   {/if}
