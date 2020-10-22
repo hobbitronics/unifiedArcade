@@ -24,7 +24,7 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
-	h1, h2, h3, h4, h5 {
+	h2, h3, h4 {
 		color: darkblue;
 	}
 	img {

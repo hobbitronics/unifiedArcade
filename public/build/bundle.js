@@ -3699,19 +3699,19 @@ var app = (function () {
     			t5 = space();
     			h4 = element("h4");
     			t6 = text(/*bio*/ ctx[3]);
-    			attr_dev(h2, "class", "svelte-1htcwsj");
+    			attr_dev(h2, "class", "svelte-1eha8an");
     			add_location(h2, file$3, 10, 2, 133);
     			if (img.src !== (img_src_value = /*picture*/ ctx[2])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "bio pic");
-    			attr_dev(img, "class", "svelte-1htcwsj");
+    			attr_dev(img, "class", "svelte-1eha8an");
     			add_location(img, file$3, 13, 2, 158);
-    			attr_dev(h3, "class", "svelte-1htcwsj");
+    			attr_dev(h3, "class", "svelte-1eha8an");
     			add_location(h3, file$3, 14, 2, 195);
-    			attr_dev(h4, "class", "svelte-1htcwsj");
+    			attr_dev(h4, "class", "svelte-1eha8an");
     			add_location(h4, file$3, 15, 2, 223);
-    			attr_dev(div, "class", "player svelte-1htcwsj");
+    			attr_dev(div, "class", "player svelte-1eha8an");
     			add_location(div, file$3, 9, 1, 110);
-    			attr_dev(main, "class", "svelte-1htcwsj");
+    			attr_dev(main, "class", "svelte-1eha8an");
     			add_location(main, file$3, 8, 0, 102);
     		},
     		l: function claim(nodes) {
@@ -16469,7 +16469,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (65:14) <Option value={player.name} selected={playerChoice === player.name}>
+    // (57:14) <Option value={player.name} selected={playerChoice === player.name}>
     function create_default_slot_22(ctx) {
     	let t_value = /*player*/ ctx[22].name + "";
     	let t;
@@ -16493,14 +16493,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_22.name,
     		type: "slot",
-    		source: "(65:14) <Option value={player.name} selected={playerChoice === player.name}>",
+    		source: "(57:14) <Option value={player.name} selected={playerChoice === player.name}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (64:14) {#each $players as player}
+    // (56:14) {#each $players as player}
     function create_each_block$2(ctx) {
     	let option;
     	let current;
@@ -16552,14 +16552,14 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(64:14) {#each $players as player}",
+    		source: "(56:14) {#each $players as player}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:12) <Select bind:value={playerChoice} label="select player">
+    // (54:12) <Select bind:value={playerChoice} label="select player">
     function create_default_slot_21(ctx) {
     	let option;
     	let t;
@@ -16661,14 +16661,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_21.name,
     		type: "slot",
-    		source: "(62:12) <Select bind:value={playerChoice} label=\\\"select player\\\">",
+    		source: "(54:12) <Select bind:value={playerChoice} label=\\\"select player\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:46) <Text>
+    // (70:46) <Text>
     function create_default_slot_20(ctx) {
     	let t;
 
@@ -16688,14 +16688,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_20.name,
     		type: "slot",
-    		source: "(78:46) <Text>",
+    		source: "(70:46) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:6) <Item on:SMUI:action={() => $goto('/')}>
+    // (70:6) <Item on:SMUI:action={() => $goto('/')}>
     function create_default_slot_19(ctx) {
     	let text_1;
     	let current;
@@ -16743,14 +16743,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_19.name,
     		type: "slot",
-    		source: "(78:6) <Item on:SMUI:action={() => $goto('/')}>",
+    		source: "(70:6) <Item on:SMUI:action={() => $goto('/')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:48) <Text>
+    // (71:48) <Text>
     function create_default_slot_18(ctx) {
     	let t;
 
@@ -16770,14 +16770,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_18.name,
     		type: "slot",
-    		source: "(79:48) <Text>",
+    		source: "(71:48) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:6) <Item on:SMUI:action={() => $goto('ttt')}>
+    // (71:6) <Item on:SMUI:action={() => $goto('ttt')}>
     function create_default_slot_17(ctx) {
     	let text_1;
     	let current;
@@ -16825,14 +16825,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_17.name,
     		type: "slot",
-    		source: "(79:6) <Item on:SMUI:action={() => $goto('ttt')}>",
+    		source: "(71:6) <Item on:SMUI:action={() => $goto('ttt')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (80:52) <Text>
+    // (72:52) <Text>
     function create_default_slot_16(ctx) {
     	let t;
 
@@ -16852,14 +16852,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_16.name,
     		type: "slot",
-    		source: "(80:52) <Text>",
+    		source: "(72:52) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (80:6) <Item on:SMUI:action={() => $goto('hangman')}>
+    // (72:6) <Item on:SMUI:action={() => $goto('hangman')}>
     function create_default_slot_15(ctx) {
     	let text_1;
     	let current;
@@ -16907,14 +16907,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_15.name,
     		type: "slot",
-    		source: "(80:6) <Item on:SMUI:action={() => $goto('hangman')}>",
+    		source: "(72:6) <Item on:SMUI:action={() => $goto('hangman')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:53) <Text>
+    // (73:53) <Text>
     function create_default_slot_14(ctx) {
     	let t;
 
@@ -16934,14 +16934,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_14.name,
     		type: "slot",
-    		source: "(81:53) <Text>",
+    		source: "(73:53) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:6) <Item on:SMUI:action={() => $goto('terminal')}>
+    // (73:6) <Item on:SMUI:action={() => $goto('terminal')}>
     function create_default_slot_13(ctx) {
     	let text_1;
     	let current;
@@ -16989,14 +16989,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_13.name,
     		type: "slot",
-    		source: "(81:6) <Item on:SMUI:action={() => $goto('terminal')}>",
+    		source: "(73:6) <Item on:SMUI:action={() => $goto('terminal')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:4) <List>
+    // (69:4) <List>
     function create_default_slot_12(ctx) {
     	let item0;
     	let t0;
@@ -17127,14 +17127,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_12.name,
     		type: "slot",
-    		source: "(77:4) <List>",
+    		source: "(69:4) <List>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (76:2) <Menu bind:this={menu}>
+    // (68:2) <Menu bind:this={menu}>
     function create_default_slot_11(ctx) {
     	let list;
     	let current;
@@ -17182,14 +17182,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_11.name,
     		type: "slot",
-    		source: "(76:2) <Menu bind:this={menu}>",
+    		source: "(68:2) <Menu bind:this={menu}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (89:65) <Text>
+    // (81:65) <Text>
     function create_default_slot_10(ctx) {
     	let t;
 
@@ -17209,14 +17209,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_10.name,
     		type: "slot",
-    		source: "(89:65) <Text>",
+    		source: "(81:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (89:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (81:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_9(ctx) {
     	let text_1;
     	let current;
@@ -17264,14 +17264,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_9.name,
     		type: "slot",
-    		source: "(89:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(81:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (90:65) <Text>
+    // (82:65) <Text>
     function create_default_slot_8(ctx) {
     	let t;
 
@@ -17291,14 +17291,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_8.name,
     		type: "slot",
-    		source: "(90:65) <Text>",
+    		source: "(82:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (90:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (82:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_7(ctx) {
     	let text_1;
     	let current;
@@ -17346,14 +17346,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_7.name,
     		type: "slot",
-    		source: "(90:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(82:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:65) <Text>
+    // (83:65) <Text>
     function create_default_slot_6(ctx) {
     	let t;
 
@@ -17373,14 +17373,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_6.name,
     		type: "slot",
-    		source: "(91:65) <Text>",
+    		source: "(83:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (83:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_5(ctx) {
     	let text_1;
     	let current;
@@ -17428,14 +17428,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(91:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(83:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:65) <Text>
+    // (84:65) <Text>
     function create_default_slot_4$1(ctx) {
     	let t;
 
@@ -17455,14 +17455,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4$1.name,
     		type: "slot",
-    		source: "(92:65) <Text>",
+    		source: "(84:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (84:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_3$1(ctx) {
     	let text_1;
     	let current;
@@ -17510,14 +17510,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(92:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(84:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:6) <List>
+    // (80:6) <List>
     function create_default_slot_2$1(ctx) {
     	let item0;
     	let t0;
@@ -17648,14 +17648,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(88:6) <List>",
+    		source: "(80:6) <List>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (87:4) <Menu bind:this={options}>
+    // (79:4) <Menu bind:this={options}>
     function create_default_slot_1$1(ctx) {
     	let list;
     	let current;
@@ -17703,14 +17703,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(87:4) <Menu bind:this={options}>",
+    		source: "(79:4) <Menu bind:this={options}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (97:2) {#if showProfile}
+    // (89:2) {#if showProfile}
     function create_if_block$9(ctx) {
     	let div;
     	let paper;
@@ -17729,8 +17729,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(paper.$$.fragment);
-    			attr_dev(div, "class", "player-profile svelte-1op73qo");
-    			add_location(div, file$j, 97, 2, 3491);
+    			attr_dev(div, "class", "player-profile svelte-ke9fdy");
+    			add_location(div, file$j, 89, 2, 3370);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -17765,25 +17765,18 @@ var app = (function () {
     		block,
     		id: create_if_block$9.name,
     		type: "if",
-    		source: "(97:2) {#if showProfile}",
+    		source: "(89:2) {#if showProfile}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:4) <Paper elevation={4}>
+    // (91:4) <Paper elevation={4}>
     function create_default_slot$5(ctx) {
     	let player;
     	let current;
-
-    	const player_spread_levels = [
-    		/*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]],
-    		{
-    			points: /*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]].points
-    		}
-    	];
-
+    	const player_spread_levels = [/*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]]];
     	let player_props = {};
 
     	for (let i = 0; i < player_spread_levels.length; i += 1) {
@@ -17802,12 +17795,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const player_changes = (dirty & /*$players, $currentPlayer*/ 48)
-    			? get_spread_update(player_spread_levels, [
-    					get_spread_object(/*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]]),
-    					{
-    						points: /*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]].points
-    					}
-    				])
+    			? get_spread_update(player_spread_levels, [get_spread_object(/*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]])])
     			: {};
 
     			player.$set(player_changes);
@@ -17830,7 +17818,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$5.name,
     		type: "slot",
-    		source: "(99:4) <Paper elevation={4}>",
+    		source: "(91:4) <Paper elevation={4}>",
     		ctx
     	});
 
@@ -17938,36 +17926,35 @@ var app = (function () {
     			if_block_anchor = empty();
     			attr_dev(button0, "class", "material-icons mdc-top-app-bar__navigation-icon mdc-icon-button");
     			attr_dev(button0, "aria-label", "Open navigation menu");
-    			add_location(button0, file$j, 56, 12, 1358);
+    			add_location(button0, file$j, 48, 12, 1237);
     			attr_dev(span, "class", "mdc-top-app-bar__title");
-    			add_location(span, file$j, 57, 12, 1534);
+    			add_location(span, file$j, 49, 12, 1413);
     			attr_dev(section0, "class", "mdc-top-app-bar__section mdc-top-app-bar__section--align-start");
-    			add_location(section0, file$j, 55, 10, 1265);
+    			add_location(section0, file$j, 47, 10, 1144);
     			if (img.src !== (img_src_value = /*$players*/ ctx[5][/*$currentPlayer*/ ctx[4]].picture)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "portrait");
-    			attr_dev(img, "class", "svelte-1op73qo");
-    			add_location(img, file$j, 60, 154, 1926);
+    			add_location(img, file$j, 52, 154, 1805);
     			attr_dev(button1, "class", "material-icons mdc-top-app-bar__action-item mdc-icon-button");
     			attr_dev(button1, "aria-label", "portrait");
-    			add_location(button1, file$j, 60, 12, 1784);
+    			add_location(button1, file$j, 52, 12, 1663);
     			attr_dev(button2, "class", "material-icons mdc-top-app-bar__action-item mdc-icon-button");
     			attr_dev(button2, "aria-label", "Options");
-    			add_location(button2, file$j, 67, 12, 2308);
+    			add_location(button2, file$j, 59, 12, 2187);
     			attr_dev(section1, "class", "mdc-top-app-bar__section mdc-top-app-bar__section--align-end");
     			attr_dev(section1, "role", "toolbar");
-    			add_location(section1, file$j, 59, 10, 1678);
+    			add_location(section1, file$j, 51, 10, 1557);
     			attr_dev(div0, "class", "mdc-top-app-bar__row");
-    			add_location(div0, file$j, 54, 8, 1220);
+    			add_location(div0, file$j, 46, 8, 1099);
     			attr_dev(header, "class", "mdc-top-app-bar");
-    			add_location(header, file$j, 53, 4, 1179);
+    			add_location(header, file$j, 45, 4, 1058);
     			attr_dev(div1, "class", "appBar");
-    			add_location(div1, file$j, 52, 0, 1154);
-    			attr_dev(div2, "class", "navMenu svelte-1op73qo");
+    			add_location(div1, file$j, 44, 0, 1033);
+    			attr_dev(div2, "class", "navMenu svelte-ke9fdy");
     			set_style(div2, "min-width", "100px");
-    			add_location(div2, file$j, 74, 0, 2524);
-    			attr_dev(div3, "class", "optionMenu svelte-1op73qo");
+    			add_location(div2, file$j, 66, 0, 2403);
+    			attr_dev(div3, "class", "optionMenu svelte-ke9fdy");
     			set_style(div3, "min-width", "50px");
-    			add_location(div3, file$j, 85, 0, 2967);
+    			add_location(div3, file$j, 77, 0, 2846);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

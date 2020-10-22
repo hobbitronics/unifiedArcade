@@ -18,15 +18,7 @@
 </script>
 
 <style>
-    a {
-        color: darkblue;
-    }
 
-    img {
-		  /* height: 50px;
-		  width: 50px;
-      margin-right: 20px; */
-	  }
     .navMenu {
         position: fixed;
         top: 72px;
@@ -97,7 +89,7 @@
   {#if showProfile}
   <div class="player-profile">
     <Paper elevation={4}>
-      <Player {...$players[$currentPlayer]} points={$players[$currentPlayer].points}/>
+      <Player {...$players[$currentPlayer]}/>
     </Paper>
   </div>
   {/if}
