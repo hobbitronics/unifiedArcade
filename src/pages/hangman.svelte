@@ -4,7 +4,8 @@
     import APInputs from '../components/APIinputs.svelte'
     import Card from '@smui/card'
     import Button from '@smui/button';
-	import { currentPlayer, players} from '../components/stores.js';
+    // import { currentPlayer, players} from '../components/stores.js';
+    import { subscribe_pv, subscribe_pi, addPoint, minusPoint } from "../playerService.js"
 
     let game = [];
     let won;
@@ -16,10 +17,9 @@
     let guesses = [];
     let graphic = ["", "___","|  O","| -|-","|  /|","|___"]
     let hangman = [];
-    $: currPlayer = $players[$currentPlayer];
     $: chances = 6 - guesses.length;
-    $: won && currPlayer.points++;
-    $: !chances && currPlayer.points--;
+    $: won && addPoint();
+    $: !chances && minusPoint();
     $: gameOver = `${wordArr.join('')} was the word. Game Over, Click Restart to play again.`
     
     let wordList = [

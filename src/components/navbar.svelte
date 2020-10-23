@@ -1,5 +1,5 @@
 <script>
-    import { players, currentPlayer } from './stores.js';
+    // import { players, currentPlayer } from './stores.js';
     import Player from './player.svelte'
     import Paper from '@smui/paper';
     import { goto } from '@sveltech/routify';
@@ -8,16 +8,15 @@
     import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list';
     import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
+    import { currPlayer, player_index, players_value, subscribe_pv, subscribe_pi, setCurrentPlayer } from '../playerService.js';
 
 
     let menu;
     let options;
     let showProfile = false;
     let playerChoice = '';
-    $: currPlayer = $players[$currentPlayer]
-    //put this in the player service
-    const selectPlayer = () => $currentPlayer = $players.findIndex( player => player.name === playerChoice);
-    $: playerChoice && selectPlayer();
+    // $: currPlayer = players_value[player_index];
+    $: playerChoice && setCurrentPlayer(playerChoice);
 </script>
 
 <style>
@@ -55,8 +54,8 @@
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
             <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={currPlayer.picture} alt="portrait"/></button>
             <Select bind:value={playerChoice} label="select player">
-              <Option value=""></Option>
-              {#each $players as player}
+              <!-- <Option value="select player"></Option> -->
+              {#each players_value as player}
               <Option value={player.name} selected={playerChoice === player.name}>{player.name}</Option>
               {/each}
             </Select>

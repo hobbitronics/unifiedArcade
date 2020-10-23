@@ -1,5 +1,5 @@
 <script>
-	import { count, players} from '../components/stores.js';
+	import { players} from '../playerService.js';
 	import Button from '@smui/button';
 	let picture;
 	let input;

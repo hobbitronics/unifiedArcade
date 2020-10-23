@@ -2,11 +2,11 @@
 	import { fly, fade, scale } from 'svelte/transition';
 	import { elasticOut } from 'svelte/easing';
 	import { quintOut } from 'svelte/easing';
-    import { currentPlayer, players} from '../components/stores.js';
+    // import { currentPlayer, players} from '../components/stores.js';
     import Button from '@smui/button';
 	import Paper, {Title, Subtitle, Content} from '@smui/paper';
+	import { subscribe_pv, subscribe_pi, addPoint, minusPoint } from "../playerService.js"
 
-	$: currPlayer = $players[$currentPlayer];
 	let grid = ['','','','','','','','',''];
 	let winner;
 	let turnCount = 0;
@@ -14,8 +14,8 @@
 	$: totalCount = turnCount + pcTurnCount;
 	let success = false;
 	let blocked = false;
-	$: winner === "O" && currPlayer.points++;  //move to player service
-	$: winner === "X" && currPlayer.points--;
+	$: winner === "O" && addPoint();  //move to player service
+	$: winner === "X" && minusPoint();
     
 	
 	const reset = () => {
