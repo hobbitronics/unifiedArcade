@@ -1,7 +1,9 @@
 <script>
     import { createEventDispatcher } from 'svelte'
+
     const dispatch = createEventDispatcher();
     let text = '';
+
     async function onSubmit (e) {
         let url = `https://api.datamuse.com/words?ml=${text}&max=10`
           try {
@@ -14,7 +16,7 @@
     }
 </script>
 
-<form on:submit|preventDefault={onSubmit}>
+<form on:submit|preventDefault={text && onSubmit}>
     <input type="text" placeholder="Enter a topic" bind:value={text}>
     <input type="submit" value="Generate wordlist" class ="btn"/>
 </form>

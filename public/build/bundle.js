@@ -21324,7 +21324,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$r = "src/components/APIinputs.svelte";
 
-    // (21:0) {#if text}
+    // (23:0) {#if text}
     function create_if_block$b(ctx) {
     	let h3;
     	let t0;
@@ -21335,7 +21335,7 @@ var app = (function () {
     			h3 = element("h3");
     			t0 = text("Your wordlist will be based on ");
     			t1 = text(/*text*/ ctx[0]);
-    			add_location(h3, file$r, 21, 0, 672);
+    			add_location(h3, file$r, 23, 0, 682);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -21354,7 +21354,7 @@ var app = (function () {
     		block,
     		id: create_if_block$b.name,
     		type: "if",
-    		source: "(21:0) {#if text}",
+    		source: "(23:0) {#if text}",
     		ctx
     	});
 
@@ -21383,12 +21383,12 @@ var app = (function () {
     			if_block_anchor = empty();
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Enter a topic");
-    			add_location(input0, file$r, 17, 4, 521);
+    			add_location(input0, file$r, 19, 4, 531);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Generate wordlist";
     			attr_dev(input1, "class", "btn");
-    			add_location(input1, file$r, 18, 4, 591);
-    			add_location(form, file$r, 16, 0, 474);
+    			add_location(input1, file$r, 20, 4, 601);
+    			add_location(form, file$r, 18, 0, 476);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21406,13 +21406,24 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(input0, "input", /*input0_input_handler*/ ctx[2]),
-    					listen_dev(form, "submit", prevent_default(/*onSubmit*/ ctx[1]), false, true, false)
+    					listen_dev(
+    						form,
+    						"submit",
+    						prevent_default(function () {
+    							if (is_function(/*text*/ ctx[0] && /*onSubmit*/ ctx[1])) (/*text*/ ctx[0] && /*onSubmit*/ ctx[1]).apply(this, arguments);
+    						}),
+    						false,
+    						true,
+    						false
+    					)
     				];
 
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, [dirty]) {
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
+
     			if (dirty & /*text*/ 1 && input0.value !== /*text*/ ctx[0]) {
     				set_input_value(input0, /*text*/ ctx[0]);
     			}
