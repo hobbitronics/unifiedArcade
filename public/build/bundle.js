@@ -21136,14 +21136,14 @@ var app = (function () {
     			t4 = text(/*output*/ ctx[2]);
     			t5 = space();
     			img = element("img");
-    			add_location(p, file$q, 24, 1, 622);
+    			add_location(p, file$q, 24, 1, 625);
     			attr_dev(input_1, "placeholder", "username");
-    			add_location(input_1, file$q, 25, 12, 676);
-    			add_location(div, file$q, 27, 9, 803);
+    			add_location(input_1, file$q, 25, 12, 679);
+    			add_location(div, file$q, 27, 9, 806);
     			if (img.src !== (img_src_value = /*picture*/ ctx[0])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "a bio");
-    			add_location(img, file$q, 28, 1, 824);
-    			add_location(body, file$q, 23, 0, 614);
+    			add_location(img, file$q, 28, 1, 827);
+    			add_location(body, file$q, 23, 0, 617);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21230,7 +21230,8 @@ var app = (function () {
     			const data = await response.json();
     			$$invalidate(2, output = `login: ${data.login}, bio: ${data.bio}, repos url: ${data.repos_url}`);
     			$$invalidate(0, picture = data.avatar_url);
-    			setCurrentPlayer(data.login);
+
+    			//   setCurrentPlayer(data.login)
     			console.log(data);
     		} catch(error) {
     			console.error(error);

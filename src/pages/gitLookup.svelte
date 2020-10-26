@@ -12,7 +12,7 @@
 			  const data = await response.json()	 
 			  output = `login: ${data.login}, bio: ${data.bio}, repos url: ${data.repos_url}`;
 			  picture = data.avatar_url;
-			  setCurrentPlayer(data.login)
+			//   setCurrentPlayer(data.login)
 			console.log(data)
 		  } catch (error) {
 			console.error(error)
