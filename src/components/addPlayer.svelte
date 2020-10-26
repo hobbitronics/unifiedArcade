@@ -1,6 +1,5 @@
 <script>
   import { players, currentPlayer, currPlayer, players_value, player_index, appendPlayers, resetPoints } from '../playerService.js';
-  // import { players_value, player_index } from './stores.js';
   
   let name;
   let bio;

@@ -18289,7 +18289,8 @@ var app = (function () {
     const currentPlayer = writable(1);
 
     const currPlayer = derived( [players, currentPlayer],
-    	([$players, $currentPlayer]) => $players[$currentPlayer]);
+        ([$players, $currentPlayer]) => $players[$currentPlayer]);
+        
     let player_index;
     let players_value;
     let currPlayer_val;
@@ -18344,7 +18345,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (59:14) <Option value={player.name} selected={playerChoice === player.name}>
+    // (57:14) <Option value={player.name} selected={playerChoice === player.name}>
     function create_default_slot_22(ctx) {
     	let t_value = /*player*/ ctx[20].name + "";
     	let t;
@@ -18366,14 +18367,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_22.name,
     		type: "slot",
-    		source: "(59:14) <Option value={player.name} selected={playerChoice === player.name}>",
+    		source: "(57:14) <Option value={player.name} selected={playerChoice === player.name}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (58:14) {#each players_value as player}
+    // (56:14) {#each players_value as player}
     function create_each_block$2(ctx) {
     	let option;
     	let current;
@@ -18424,14 +18425,14 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(58:14) {#each players_value as player}",
+    		source: "(56:14) {#each players_value as player}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:12) <Select bind:value={playerChoice} label="select player">
+    // (54:12) <Select bind:value={playerChoice} label="select player">
     function create_default_slot_21(ctx) {
     	let each_1_anchor;
     	let current;
@@ -18520,14 +18521,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_21.name,
     		type: "slot",
-    		source: "(56:12) <Select bind:value={playerChoice} label=\\\"select player\\\">",
+    		source: "(54:12) <Select bind:value={playerChoice} label=\\\"select player\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:46) <Text>
+    // (70:46) <Text>
     function create_default_slot_20(ctx) {
     	let t;
 
@@ -18547,14 +18548,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_20.name,
     		type: "slot",
-    		source: "(72:46) <Text>",
+    		source: "(70:46) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:6) <Item on:SMUI:action={() => $goto('/')}>
+    // (70:6) <Item on:SMUI:action={() => $goto('/')}>
     function create_default_slot_19(ctx) {
     	let text_1;
     	let current;
@@ -18602,14 +18603,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_19.name,
     		type: "slot",
-    		source: "(72:6) <Item on:SMUI:action={() => $goto('/')}>",
+    		source: "(70:6) <Item on:SMUI:action={() => $goto('/')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:48) <Text>
+    // (71:48) <Text>
     function create_default_slot_18(ctx) {
     	let t;
 
@@ -18629,14 +18630,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_18.name,
     		type: "slot",
-    		source: "(73:48) <Text>",
+    		source: "(71:48) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:6) <Item on:SMUI:action={() => $goto('ttt')}>
+    // (71:6) <Item on:SMUI:action={() => $goto('ttt')}>
     function create_default_slot_17(ctx) {
     	let text_1;
     	let current;
@@ -18684,14 +18685,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_17.name,
     		type: "slot",
-    		source: "(73:6) <Item on:SMUI:action={() => $goto('ttt')}>",
+    		source: "(71:6) <Item on:SMUI:action={() => $goto('ttt')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:52) <Text>
+    // (72:52) <Text>
     function create_default_slot_16(ctx) {
     	let t;
 
@@ -18711,14 +18712,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_16.name,
     		type: "slot",
-    		source: "(74:52) <Text>",
+    		source: "(72:52) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:6) <Item on:SMUI:action={() => $goto('hangman')}>
+    // (72:6) <Item on:SMUI:action={() => $goto('hangman')}>
     function create_default_slot_15(ctx) {
     	let text_1;
     	let current;
@@ -18766,14 +18767,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_15.name,
     		type: "slot",
-    		source: "(74:6) <Item on:SMUI:action={() => $goto('hangman')}>",
+    		source: "(72:6) <Item on:SMUI:action={() => $goto('hangman')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:53) <Text>
+    // (73:53) <Text>
     function create_default_slot_14(ctx) {
     	let t;
 
@@ -18793,14 +18794,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_14.name,
     		type: "slot",
-    		source: "(75:53) <Text>",
+    		source: "(73:53) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:6) <Item on:SMUI:action={() => $goto('terminal')}>
+    // (73:6) <Item on:SMUI:action={() => $goto('terminal')}>
     function create_default_slot_13(ctx) {
     	let text_1;
     	let current;
@@ -18848,14 +18849,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_13.name,
     		type: "slot",
-    		source: "(75:6) <Item on:SMUI:action={() => $goto('terminal')}>",
+    		source: "(73:6) <Item on:SMUI:action={() => $goto('terminal')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (71:4) <List>
+    // (69:4) <List>
     function create_default_slot_12(ctx) {
     	let item0;
     	let t0;
@@ -18986,14 +18987,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_12.name,
     		type: "slot",
-    		source: "(71:4) <List>",
+    		source: "(69:4) <List>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:2) <Menu bind:this={menu}>
+    // (68:2) <Menu bind:this={menu}>
     function create_default_slot_11(ctx) {
     	let list;
     	let current;
@@ -19041,14 +19042,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_11.name,
     		type: "slot",
-    		source: "(70:2) <Menu bind:this={menu}>",
+    		source: "(68:2) <Menu bind:this={menu}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:65) <Text>
+    // (81:65) <Text>
     function create_default_slot_10(ctx) {
     	let t;
 
@@ -19068,14 +19069,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_10.name,
     		type: "slot",
-    		source: "(83:65) <Text>",
+    		source: "(81:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (81:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_9(ctx) {
     	let text_1;
     	let current;
@@ -19123,14 +19124,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_9.name,
     		type: "slot",
-    		source: "(83:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(81:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:65) <Text>
+    // (82:65) <Text>
     function create_default_slot_8(ctx) {
     	let t;
 
@@ -19150,14 +19151,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_8.name,
     		type: "slot",
-    		source: "(84:65) <Text>",
+    		source: "(82:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (82:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_7(ctx) {
     	let text_1;
     	let current;
@@ -19205,14 +19206,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_7.name,
     		type: "slot",
-    		source: "(84:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(82:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (85:65) <Text>
+    // (83:65) <Text>
     function create_default_slot_6(ctx) {
     	let t;
 
@@ -19232,14 +19233,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_6.name,
     		type: "slot",
-    		source: "(85:65) <Text>",
+    		source: "(83:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (85:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (83:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_5(ctx) {
     	let text_1;
     	let current;
@@ -19287,14 +19288,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(85:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(83:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (86:65) <Text>
+    // (84:65) <Text>
     function create_default_slot_4$1(ctx) {
     	let t;
 
@@ -19314,14 +19315,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4$1.name,
     		type: "slot",
-    		source: "(86:65) <Text>",
+    		source: "(84:65) <Text>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (86:8) <Item on:SMUI:action={() => alert('option is selected')}>
+    // (84:8) <Item on:SMUI:action={() => alert('option is selected')}>
     function create_default_slot_3$1(ctx) {
     	let text_1;
     	let current;
@@ -19369,14 +19370,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(86:8) <Item on:SMUI:action={() => alert('option is selected')}>",
+    		source: "(84:8) <Item on:SMUI:action={() => alert('option is selected')}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:6) <List>
+    // (80:6) <List>
     function create_default_slot_2$1(ctx) {
     	let item0;
     	let t0;
@@ -19507,14 +19508,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(82:6) <List>",
+    		source: "(80:6) <List>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:4) <Menu bind:this={options}>
+    // (79:4) <Menu bind:this={options}>
     function create_default_slot_1$1(ctx) {
     	let list;
     	let current;
@@ -19562,14 +19563,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(81:4) <Menu bind:this={options}>",
+    		source: "(79:4) <Menu bind:this={options}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:2) {#if showProfile}
+    // (89:2) {#if showProfile}
     function create_if_block$a(ctx) {
     	let div;
     	let paper;
@@ -19589,7 +19590,7 @@ var app = (function () {
     			div = element("div");
     			create_component(paper.$$.fragment);
     			attr_dev(div, "class", "player-profile svelte-ke9fdy");
-    			add_location(div, file$m, 91, 2, 3533);
+    			add_location(div, file$m, 89, 2, 3420);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -19624,14 +19625,14 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(91:2) {#if showProfile}",
+    		source: "(89:2) {#if showProfile}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:4) <Paper elevation={4}>
+    // (91:4) <Paper elevation={4}>
     function create_default_slot$5(ctx) {
     	let player;
     	let current;
@@ -19677,7 +19678,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$5.name,
     		type: "slot",
-    		source: "(93:4) <Paper elevation={4}>",
+    		source: "(91:4) <Paper elevation={4}>",
     		ctx
     	});
 
@@ -19785,35 +19786,35 @@ var app = (function () {
     			if_block_anchor = empty();
     			attr_dev(button0, "class", "material-icons mdc-top-app-bar__navigation-icon mdc-icon-button");
     			attr_dev(button0, "aria-label", "Open navigation menu");
-    			add_location(button0, file$m, 50, 12, 1399);
+    			add_location(button0, file$m, 48, 12, 1286);
     			attr_dev(span, "class", "mdc-top-app-bar__title");
-    			add_location(span, file$m, 51, 12, 1575);
+    			add_location(span, file$m, 49, 12, 1462);
     			attr_dev(section0, "class", "mdc-top-app-bar__section mdc-top-app-bar__section--align-start");
-    			add_location(section0, file$m, 49, 10, 1306);
+    			add_location(section0, file$m, 47, 10, 1193);
     			if (img.src !== (img_src_value = /*$currPlayer*/ ctx[4].picture)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "portrait");
-    			add_location(img, file$m, 54, 154, 1954);
+    			add_location(img, file$m, 52, 154, 1841);
     			attr_dev(button1, "class", "material-icons mdc-top-app-bar__action-item mdc-icon-button");
     			attr_dev(button1, "aria-label", "portrait");
-    			add_location(button1, file$m, 54, 12, 1812);
+    			add_location(button1, file$m, 52, 12, 1699);
     			attr_dev(button2, "class", "material-icons mdc-top-app-bar__action-item mdc-icon-button");
     			attr_dev(button2, "aria-label", "Options");
-    			add_location(button2, file$m, 61, 12, 2350);
+    			add_location(button2, file$m, 59, 12, 2237);
     			attr_dev(section1, "class", "mdc-top-app-bar__section mdc-top-app-bar__section--align-end");
     			attr_dev(section1, "role", "toolbar");
-    			add_location(section1, file$m, 53, 10, 1706);
+    			add_location(section1, file$m, 51, 10, 1593);
     			attr_dev(div0, "class", "mdc-top-app-bar__row");
-    			add_location(div0, file$m, 48, 8, 1261);
+    			add_location(div0, file$m, 46, 8, 1148);
     			attr_dev(header, "class", "mdc-top-app-bar");
-    			add_location(header, file$m, 47, 4, 1220);
+    			add_location(header, file$m, 45, 4, 1107);
     			attr_dev(div1, "class", "appBar");
-    			add_location(div1, file$m, 46, 0, 1195);
+    			add_location(div1, file$m, 44, 0, 1082);
     			attr_dev(div2, "class", "navMenu svelte-ke9fdy");
     			set_style(div2, "min-width", "100px");
-    			add_location(div2, file$m, 68, 0, 2566);
+    			add_location(div2, file$m, 66, 0, 2453);
     			attr_dev(div3, "class", "optionMenu svelte-ke9fdy");
     			set_style(div3, "min-width", "50px");
-    			add_location(div3, file$m, 79, 0, 3009);
+    			add_location(div3, file$m, 77, 0, 2896);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -20059,7 +20060,6 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*playerChoice*/ 8) {
-    			// $: currPlayer = players_value[player_index];
     			 playerChoice && setCurrentPlayer(playerChoice);
     		}
     	};
@@ -21754,7 +21754,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (75:12) {#if toggle}
+    // (74:12) {#if toggle}
     function create_if_block_6(ctx) {
     	let p;
 
@@ -21763,7 +21763,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "The wordlist is ready.";
     			attr_dev(p, "class", "svelte-epmkex");
-    			add_location(p, file$t, 75, 12, 2715);
+    			add_location(p, file$t, 74, 12, 2643);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -21777,14 +21777,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(75:12) {#if toggle}",
+    		source: "(74:12) {#if toggle}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:39) 
+    // (87:39) 
     function create_if_block_5$1(ctx) {
     	let h2;
     	let t;
@@ -21793,7 +21793,7 @@ var app = (function () {
     		c: function create() {
     			h2 = element("h2");
     			t = text(/*gameOver*/ ctx[8]);
-    			add_location(h2, file$t, 88, 20, 3379);
+    			add_location(h2, file$t, 87, 20, 3307);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -21813,14 +21813,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5$1.name,
     		type: "if",
-    		source: "(88:39) ",
+    		source: "(87:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:20) {#if !won && chances > 0}
+    // (80:20) {#if !won && chances > 0}
     function create_if_block_4$1(ctx) {
     	let h3;
     	let t0;
@@ -21862,13 +21862,13 @@ var app = (function () {
     			t6 = space();
     			div = element("div");
     			create_component(button.$$.fragment);
-    			add_location(h3, file$t, 81, 20, 2918);
+    			add_location(h3, file$t, 80, 20, 2846);
     			attr_dev(span, "class", "svelte-epmkex");
-    			add_location(span, file$t, 82, 20, 2975);
+    			add_location(span, file$t, 81, 20, 2903);
     			attr_dev(input, "class", "svelte-epmkex");
-    			add_location(input, file$t, 83, 20, 3020);
+    			add_location(input, file$t, 82, 20, 2948);
     			attr_dev(div, "class", "btn-container svelte-epmkex");
-    			add_location(div, file$t, 84, 20, 3152);
+    			add_location(div, file$t, 83, 20, 3080);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -21936,14 +21936,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$1.name,
     		type: "if",
-    		source: "(81:20) {#if !won && chances > 0}",
+    		source: "(80:20) {#if !won && chances > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (86:24) <Button variant="raised" on:click={() => checkGuess(text.toLowerCase())}>
+    // (85:24) <Button variant="raised" on:click={() => checkGuess(text.toLowerCase())}>
     function create_default_slot_2$2(ctx) {
     	let t;
 
@@ -21963,14 +21963,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$2.name,
     		type: "slot",
-    		source: "(86:24) <Button variant=\\\"raised\\\" on:click={() => checkGuess(text.toLowerCase())}>",
+    		source: "(85:24) <Button variant=\\\"raised\\\" on:click={() => checkGuess(text.toLowerCase())}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:39) 
+    // (98:39) 
     function create_if_block_3$2(ctx) {
     	let p;
 
@@ -21979,7 +21979,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "'Sorry, you guessed wrong.'";
     			attr_dev(p, "class", "svelte-epmkex");
-    			add_location(p, file$t, 99, 20, 3857);
+    			add_location(p, file$t, 98, 20, 3785);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -21993,14 +21993,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$2.name,
     		type: "if",
-    		source: "(99:39) ",
+    		source: "(98:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (97:38) 
+    // (96:38) 
     function create_if_block_2$2(ctx) {
     	let p;
 
@@ -22009,7 +22009,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "'You got a letter right!'";
     			attr_dev(p, "class", "svelte-epmkex");
-    			add_location(p, file$t, 97, 20, 3764);
+    			add_location(p, file$t, 96, 20, 3692);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22023,14 +22023,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(97:38) ",
+    		source: "(96:38) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:52) 
+    // (94:52) 
     function create_if_block_1$3(ctx) {
     	let p;
 
@@ -22039,7 +22039,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "New Game";
     			attr_dev(p, "class", "svelte-epmkex");
-    			add_location(p, file$t, 95, 20, 3689);
+    			add_location(p, file$t, 94, 20, 3617);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22053,14 +22053,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(95:52) ",
+    		source: "(94:52) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:20) {#if won}
+    // (92:20) {#if won}
     function create_if_block$c(ctx) {
     	let p;
 
@@ -22069,7 +22069,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "'You won! Click reset to play again'";
     			attr_dev(p, "class", "congrats svelte-epmkex");
-    			add_location(p, file$t, 93, 20, 3555);
+    			add_location(p, file$t, 92, 20, 3483);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22083,14 +22083,14 @@ var app = (function () {
     		block,
     		id: create_if_block$c.name,
     		type: "if",
-    		source: "(93:20) {#if won}",
+    		source: "(92:20) {#if won}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (104:24) <Button on:click={() => start()}>
+    // (103:24) <Button on:click={() => start()}>
     function create_default_slot_1$2(ctx) {
     	let t;
 
@@ -22110,14 +22110,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$2.name,
     		type: "slot",
-    		source: "(104:24) <Button on:click={() => start()}>",
+    		source: "(103:24) <Button on:click={() => start()}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:20) {#each hangman as man}
+    // (107:20) {#each hangman as man}
     function create_each_block$3(ctx) {
     	let p;
     	let t_value = /*man*/ ctx[24] + "";
@@ -22128,7 +22128,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "man svelte-epmkex");
-    			add_location(p, file$t, 108, 20, 4250);
+    			add_location(p, file$t, 107, 20, 4178);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22146,14 +22146,14 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(108:20) {#each hangman as man}",
+    		source: "(107:20) {#each hangman as man}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:8) <Card>
+    // (71:8) <Card>
     function create_default_slot$8(ctx) {
     	let h1;
     	let t1;
@@ -22254,20 +22254,20 @@ var app = (function () {
     			}
 
     			attr_dev(h1, "class", "svelte-epmkex");
-    			add_location(h1, file$t, 72, 12, 2605);
+    			add_location(h1, file$t, 71, 12, 2533);
     			attr_dev(span, "class", "svelte-epmkex");
-    			add_location(span, file$t, 91, 20, 3466);
+    			add_location(span, file$t, 90, 20, 3394);
     			attr_dev(div0, "id", "game");
     			attr_dev(div0, "class", "svelte-epmkex");
-    			add_location(div0, file$t, 101, 20, 3938);
+    			add_location(div0, file$t, 100, 20, 3866);
     			attr_dev(div1, "class", "btn-container svelte-epmkex");
-    			add_location(div1, file$t, 102, 20, 3996);
+    			add_location(div1, file$t, 101, 20, 3924);
     			attr_dev(div2, "class", "flex-item1 svelte-epmkex");
-    			add_location(div2, file$t, 79, 16, 2827);
+    			add_location(div2, file$t, 78, 16, 2755);
     			attr_dev(div3, "class", "flex-item2 svelte-epmkex");
-    			add_location(div3, file$t, 106, 16, 4162);
+    			add_location(div3, file$t, 105, 16, 4090);
     			attr_dev(div4, "class", "flex-box svelte-epmkex");
-    			add_location(div4, file$t, 78, 12, 2788);
+    			add_location(div4, file$t, 77, 12, 2716);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -22433,7 +22433,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$8.name,
     		type: "slot",
-    		source: "(72:8) <Card>",
+    		source: "(71:8) <Card>",
     		ctx
     	});
 
@@ -22459,7 +22459,7 @@ var app = (function () {
     			main = element("main");
     			create_component(card.$$.fragment);
     			attr_dev(main, "class", "svelte-epmkex");
-    			add_location(main, file$t, 70, 4, 2479);
+    			add_location(main, file$t, 69, 4, 2407);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -22821,16 +22821,16 @@ var app = (function () {
     			button.textContent = "reset score";
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Your name");
-    			add_location(input0, file$u, 28, 4, 799);
+    			add_location(input0, file$u, 27, 4, 735);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Save";
     			attr_dev(input1, "class", "btn");
-    			add_location(input1, file$u, 29, 4, 865);
+    			add_location(input1, file$u, 28, 4, 801);
     			attr_dev(form, "class", "controls svelte-7st4z6");
-    			add_location(form, file$u, 27, 0, 735);
-    			add_location(button, file$u, 31, 22, 944);
+    			add_location(form, file$u, 26, 0, 671);
+    			add_location(button, file$u, 30, 22, 880);
     			attr_dev(div, "class", "controls svelte-7st4z6");
-    			add_location(div, file$u, 31, 0, 922);
+    			add_location(div, file$u, 30, 0, 858);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28103,7 +28103,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (80:0) <Card padded>
+    // (77:0) <Card padded>
     function create_default_slot_1$5(ctx) {
     	let h1;
     	let t1;
@@ -28219,50 +28219,50 @@ var app = (function () {
     			h4 = element("h4");
     			h4.textContent = "Type in the requested command and hit enter or click the button to play.";
     			attr_dev(h1, "class", "svelte-1xeb54i");
-    			add_location(h1, file$z, 80, 4, 2305);
+    			add_location(h1, file$z, 77, 4, 2231);
     			attr_dev(p0, "class", "svelte-1xeb54i");
-    			add_location(p0, file$z, 81, 4, 2337);
+    			add_location(p0, file$z, 78, 4, 2263);
     			attr_dev(h3, "class", "svelte-1xeb54i");
-    			add_location(h3, file$z, 85, 4, 2602);
+    			add_location(h3, file$z, 82, 4, 2528);
     			attr_dev(p1, "class", "svelte-1xeb54i");
-    			add_location(p1, file$z, 87, 8, 2676);
+    			add_location(p1, file$z, 84, 8, 2602);
     			attr_dev(p2, "class", "svelte-1xeb54i");
-    			add_location(p2, file$z, 92, 8, 2776);
+    			add_location(p2, file$z, 89, 8, 2702);
     			attr_dev(p3, "class", "svelte-1xeb54i");
-    			add_location(p3, file$z, 97, 8, 2892);
+    			add_location(p3, file$z, 94, 8, 2818);
     			attr_dev(p4, "class", "svelte-1xeb54i");
-    			add_location(p4, file$z, 102, 8, 3026);
+    			add_location(p4, file$z, 99, 8, 2952);
     			attr_dev(p5, "class", "svelte-1xeb54i");
-    			add_location(p5, file$z, 107, 8, 3152);
+    			add_location(p5, file$z, 104, 8, 3078);
     			attr_dev(p6, "class", "svelte-1xeb54i");
-    			add_location(p6, file$z, 112, 8, 3260);
+    			add_location(p6, file$z, 109, 8, 3186);
     			attr_dev(p7, "class", "svelte-1xeb54i");
-    			add_location(p7, file$z, 117, 8, 3371);
+    			add_location(p7, file$z, 114, 8, 3297);
     			attr_dev(p8, "class", "svelte-1xeb54i");
-    			add_location(p8, file$z, 122, 8, 3505);
+    			add_location(p8, file$z, 119, 8, 3431);
     			attr_dev(p9, "class", "svelte-1xeb54i");
-    			add_location(p9, file$z, 127, 8, 3629);
+    			add_location(p9, file$z, 124, 8, 3555);
     			attr_dev(p10, "class", "svelte-1xeb54i");
-    			add_location(p10, file$z, 132, 8, 3742);
+    			add_location(p10, file$z, 129, 8, 3668);
     			attr_dev(p11, "class", "svelte-1xeb54i");
-    			add_location(p11, file$z, 137, 8, 3877);
+    			add_location(p11, file$z, 134, 8, 3803);
     			attr_dev(p12, "class", "svelte-1xeb54i");
-    			add_location(p12, file$z, 142, 8, 4010);
+    			add_location(p12, file$z, 139, 8, 3936);
     			attr_dev(p13, "class", "svelte-1xeb54i");
-    			add_location(p13, file$z, 147, 8, 4125);
+    			add_location(p13, file$z, 144, 8, 4051);
     			attr_dev(p14, "class", "svelte-1xeb54i");
-    			add_location(p14, file$z, 152, 8, 4219);
+    			add_location(p14, file$z, 149, 8, 4145);
     			attr_dev(p15, "class", "svelte-1xeb54i");
-    			add_location(p15, file$z, 157, 8, 4323);
+    			add_location(p15, file$z, 154, 8, 4249);
     			attr_dev(p16, "class", "svelte-1xeb54i");
-    			add_location(p16, file$z, 162, 8, 4429);
+    			add_location(p16, file$z, 159, 8, 4355);
     			attr_dev(p17, "class", "svelte-1xeb54i");
-    			add_location(p17, file$z, 167, 8, 4580);
+    			add_location(p17, file$z, 164, 8, 4506);
     			attr_dev(p18, "class", "svelte-1xeb54i");
-    			add_location(p18, file$z, 172, 8, 4694);
-    			add_location(div, file$z, 86, 4, 2662);
+    			add_location(p18, file$z, 169, 8, 4620);
+    			add_location(div, file$z, 83, 4, 2588);
     			attr_dev(h4, "class", "svelte-1xeb54i");
-    			add_location(h4, file$z, 179, 4, 4836);
+    			add_location(h4, file$z, 176, 4, 4762);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -28327,14 +28327,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$5.name,
     		type: "slot",
-    		source: "(80:0) <Card padded>",
+    		source: "(77:0) <Card padded>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (188:42) 
+    // (185:42) 
     function create_if_block_1$6(ctx) {
     	let t;
 
@@ -28355,14 +28355,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$6.name,
     		type: "if",
-    		source: "(188:42) ",
+    		source: "(185:42) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (186:12) {#if show[question.id]}
+    // (183:12) {#if show[question.id]}
     function create_if_block$f(ctx) {
     	let p;
     	let t_value = /*question*/ ctx[12].msg + "";
@@ -28373,7 +28373,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "terminal svelte-1xeb54i");
-    			add_location(p, file$z, 186, 20, 5099);
+    			add_location(p, file$z, 183, 20, 5025);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -28389,14 +28389,14 @@ var app = (function () {
     		block,
     		id: create_if_block$f.name,
     		type: "if",
-    		source: "(186:12) {#if show[question.id]}",
+    		source: "(183:12) {#if show[question.id]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (185:8) {#each questions as question (question.id)}
+    // (182:8) {#each questions as question (question.id)}
     function create_each_block$5(key_1, ctx) {
     	let first;
     	let if_block_anchor;
@@ -28451,14 +28451,14 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(185:8) {#each questions as question (question.id)}",
+    		source: "(182:8) {#each questions as question (question.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (183:0) <Paper elevation={4}>
+    // (180:0) <Paper elevation={4}>
     function create_default_slot$b(ctx) {
     	let div;
     	let each_blocks = [];
@@ -28503,14 +28503,14 @@ var app = (function () {
     			attr_dev(input0, "class", "grn-border svelte-1xeb54i");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Enter commands here");
-    			add_location(input0, file$z, 193, 47, 5381);
+    			add_location(input0, file$z, 190, 47, 5307);
     			attr_dev(input1, "class", "grn-border svelte-1xeb54i");
     			attr_dev(input1, "type", "submit");
     			input1.value = "Enter";
-    			add_location(input1, file$z, 194, 12, 5486);
-    			add_location(form, file$z, 192, 8, 5259);
+    			add_location(input1, file$z, 191, 12, 5412);
+    			add_location(form, file$z, 189, 8, 5185);
     			attr_dev(div, "class", "terminal grn-border svelte-1xeb54i");
-    			add_location(div, file$z, 183, 4, 4957);
+    			add_location(div, file$z, 180, 4, 4883);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -28568,7 +28568,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$b.name,
     		type: "slot",
-    		source: "(183:0) <Paper elevation={4}>",
+    		source: "(180:0) <Paper elevation={4}>",
     		ctx
     	});
 
@@ -28610,9 +28610,9 @@ var app = (function () {
     			br = element("br");
     			t1 = space();
     			create_component(paper.$$.fragment);
-    			add_location(br, file$z, 181, 0, 4926);
+    			add_location(br, file$z, 178, 0, 4852);
     			attr_dev(main, "class", "svelte-1xeb54i");
-    			add_location(main, file$z, 78, 0, 2280);
+    			add_location(main, file$z, 75, 0, 2206);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28851,7 +28851,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (101:27) 
+    // (100:27) 
     function create_if_block_3$5(ctx) {
     	let h3;
     	let h3_transition;
@@ -28861,7 +28861,7 @@ var app = (function () {
     		c: function create() {
     			h3 = element("h3");
     			h3.textContent = "It's a tie!";
-    			add_location(h3, file$A, 101, 2, 3213);
+    			add_location(h3, file$A, 100, 2, 3141);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -28892,14 +28892,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$5.name,
     		type: "if",
-    		source: "(101:27) ",
+    		source: "(100:27) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (98:29) 
+    // (97:29) 
     function create_if_block_2$5(ctx) {
     	let p;
     	let t1;
@@ -28914,8 +28914,8 @@ var app = (function () {
     			t1 = space();
     			h3 = element("h3");
     			h3.textContent = "The computer won.";
-    			add_location(p, file$A, 98, 8, 3082);
-    			add_location(h3, file$A, 99, 2, 3109);
+    			add_location(p, file$A, 97, 8, 3010);
+    			add_location(h3, file$A, 98, 2, 3037);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -28950,14 +28950,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$5.name,
     		type: "if",
-    		source: "(98:29) ",
+    		source: "(97:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:4) {#if winner === 'O'}
+    // (94:4) {#if winner === 'O'}
     function create_if_block_1$7(ctx) {
     	let p;
     	let t1;
@@ -28971,8 +28971,8 @@ var app = (function () {
     			t1 = space();
     			h3 = element("h3");
     			h3.textContent = "Congratulations, you won!";
-    			add_location(p, file$A, 95, 8, 2954);
-    			add_location(h3, file$A, 96, 2, 2980);
+    			add_location(p, file$A, 94, 8, 2882);
+    			add_location(h3, file$A, 95, 2, 2908);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -28999,14 +28999,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$7.name,
     		type: "if",
-    		source: "(95:4) {#if winner === 'O'}",
+    		source: "(94:4) {#if winner === 'O'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (107:4) {#if square}
+    // (106:4) {#if square}
     function create_if_block$g(ctx) {
     	let p;
     	let t_value = /*square*/ ctx[20] + "";
@@ -29020,7 +29020,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$A, 107, 4, 3495);
+    			add_location(p, file$A, 106, 4, 3423);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -29066,14 +29066,14 @@ var app = (function () {
     		block,
     		id: create_if_block$g.name,
     		type: "if",
-    		source: "(107:4) {#if square}",
+    		source: "(106:4) {#if square}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:2) {#each grid as square, i (i)}
+    // (104:2) {#each grid as square, i (i)}
     function create_each_block$6(key_1, ctx) {
     	let div;
     	let t;
@@ -29096,7 +29096,7 @@ var app = (function () {
     			t = space();
     			attr_dev(div, "id", div_id_value = /*i*/ ctx[22]);
     			attr_dev(div, "class", "grid-item svelte-1pv83b0");
-    			add_location(div, file$A, 105, 3, 3354);
+    			add_location(div, file$A, 104, 3, 3282);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -29165,14 +29165,14 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(105:2) {#each grid as square, i (i)}",
+    		source: "(104:2) {#each grid as square, i (i)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:1) <Button on:click={() => reset()} variant="raised">
+    // (116:1) <Button on:click={() => reset()} variant="raised">
     function create_default_slot$c(ctx) {
     	let t;
 
@@ -29192,7 +29192,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$c.name,
     		type: "slot",
-    		source: "(117:1) <Button on:click={() => reset()} variant=\\\"raised\\\">",
+    		source: "(116:1) <Button on:click={() => reset()} variant=\\\"raised\\\">",
     		ctx
     	});
 
@@ -29266,11 +29266,11 @@ var app = (function () {
     			t3 = space();
     			create_component(button.$$.fragment);
     			attr_dev(h1, "class", "svelte-1pv83b0");
-    			add_location(h1, file$A, 93, 1, 2888);
+    			add_location(h1, file$A, 92, 1, 2816);
     			attr_dev(div, "class", "grid-container svelte-1pv83b0");
-    			add_location(div, file$A, 103, 1, 3289);
+    			add_location(div, file$A, 102, 1, 3217);
     			attr_dev(main, "class", "svelte-1pv83b0");
-    			add_location(main, file$A, 92, 0, 2788);
+    			add_location(main, file$A, 91, 0, 2716);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

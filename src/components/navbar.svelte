@@ -1,5 +1,4 @@
 <script>
-    // import { players, currentPlayer } from './stores.js';
     import Player from './player.svelte'
     import Paper from '@smui/paper';
     import { goto } from '@sveltech/routify';
@@ -15,7 +14,6 @@
     let options;
     let showProfile = false;
     let playerChoice = '';
-    // $: currPlayer = players_value[player_index];
     $: playerChoice && setCurrentPlayer(playerChoice);
 </script>
 

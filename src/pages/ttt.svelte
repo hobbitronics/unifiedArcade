@@ -2,7 +2,6 @@
 	import { fly, fade, scale } from 'svelte/transition';
 	import { elasticOut } from 'svelte/easing';
 	import { quintOut } from 'svelte/easing';
-    // import { currentPlayer, players} from '../components/stores.js';
     import Button from '@smui/button';
 	import Paper, {Title, Subtitle, Content} from '@smui/paper';
 	import { subscribe_pv, subscribe_pi, addPoint, minusPoint } from "../playerService.js"

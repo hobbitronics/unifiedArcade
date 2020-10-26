@@ -21,7 +21,8 @@ export const players = writable(
 export const currentPlayer = writable(1)
 
 export const currPlayer = derived( [players, currentPlayer],
-	([$players, $currentPlayer]) => $players[$currentPlayer])
+    ([$players, $currentPlayer]) => $players[$currentPlayer])
+    
 let player_index;
 let players_value;
 let currPlayer_val;

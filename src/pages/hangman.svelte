@@ -4,7 +4,6 @@
     import APInputs from '../components/APIinputs.svelte'
     import Card from '@smui/card'
     import Button from '@smui/button';
-    // import { currentPlayer, players} from '../components/stores.js';
     import { subscribe_pv, subscribe_pi, addPoint, minusPoint } from "../playerService.js"
 
     let game = [];
