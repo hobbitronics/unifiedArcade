@@ -1,19 +1,19 @@
 <script>
     import Player from './player.svelte'
-    import Paper from '@smui/paper';
-    import { goto } from '@sveltech/routify';
-    import Menu from '@smui/menu';
-    import Select, {Option} from '@smui/select';
-    import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list';
-    import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar';
-    import IconButton from '@smui/icon-button';
-    import { currPlayer, players, setCurrentPlayer } from '../playerService.js';
+    import Paper from '@smui/paper'
+    import { goto } from '@sveltech/routify'
+    import Menu from '@smui/menu'
+    import Select, {Option} from '@smui/select'
+    import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list'
+    import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar'
+    import IconButton from '@smui/icon-button'
+    import { currPlayer, players, setCurrentPlayer } from '../playerService.js'
 
-    let menu;
-    let options;
-    let showProfile = false;
-    let playerChoice = '';
-    $: playerChoice && setCurrentPlayer(playerChoice);
+    let menu
+    let options
+    let showProfile = false
+    let playerChoice = ''
+    $: playerChoice && setCurrentPlayer(playerChoice)
 </script>
 
 <style>
@@ -51,7 +51,7 @@
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
             <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$currPlayer.picture} alt="portrait"/></button>
             <Select bind:value={playerChoice} label="">
-              <Option value="select player"></Option>
+              <Option value=""></Option>
               {#each $players as player}
               <Option value={player.name} selected={playerChoice === player.name}>{player.name}</Option>
               {/each}

@@ -1,8 +1,8 @@
 <script>
-	export let name = '';
-	export let points;
-	export let picture;
-	export let bio;
+	export let name = ''
+	export let points
+	export let picture
+	export let bio
 
 </script>
 

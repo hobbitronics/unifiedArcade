@@ -1,69 +1,69 @@
 <script>
-    import { scale } from 'svelte/transition';
-    import { quintOut } from 'svelte/easing';
+    import { scale } from 'svelte/transition'
+    import { quintOut } from 'svelte/easing'
     import APInputs from '../components/wordlistAPI.svelte'
     import Card from '@smui/card'
-    import Button from '@smui/button';
+    import Button from '@smui/button'
     import { addPoint, minusPoint } from "../playerService.js"
 
-    let game = [];
-    let won;
-    let word;
-    let wordArr = [];
-    let text;
-    let toggle = false;
-    let correct;
-    let guesses = [];
+    let game = []
+    let won
+    let word
+    let wordArr = []
+    let text
+    let toggle = false
+    let correct
+    let guesses = []
     let graphic = ["", "___","|  O","| -|-","|  /|","|___"]
-    let hangman = [];
-    $: chances = 6 - guesses.length;
-    $: won && addPoint();
-    $: !chances && minusPoint();
+    let hangman = []
+    $: chances = 6 - guesses.length
+    $: won && addPoint()
+    $: !chances && minusPoint()
     $: gameOver = `${wordArr.join('')} was the word. Game Over, Click Restart to play again.`
     
     let wordList = [
         'apple', 'answer', 'anchor', 'bananna', 'berry', 'boat', 'boot', 'cape', 'cap', 'case', 'chip', 'cherry', 'cone', 'dark', 'deep', 'donkey', 'eight', 'ever', 'elephant', 'fire', 'food', 'good', 'great', 'hour', 'ink', 'jar', 'jump', 'juggle', 'kick', 'kangaroo', 'leopard', 'moon', 'night', 'opera', 'people', 'quiet', 'right', 'scissor', 'temple', 'unicorn', 'victorious', 'wink', 'xylophone', 'yelp', 'zebra'  //list game chooses from
-    ];
+    ]
     
     const getList = (e) => {
-    wordList = [];
-    wordList = e.detail.map(el => el.word);
+    wordList = []
+    wordList = e.detail.map(el => el.word)
     console.log(wordList)
-    start();
-    wordList ? toggle = true : toggle = false;
+    start()
+    wordList ? toggle = true : toggle = false
     }
     
-    const randWord = () => wordList[Math.floor(Math.random()*wordList.length)];
+    const randWord = () => wordList[Math.floor(Math.random()*wordList.length)]
     
     const start = () => {
-        won = false;
-        toggle = false;
-        word = randWord();
-        hangman = [];
-        guesses = [];
-        correct = undefined;
-        text = '';
-        wordArr = word.split('');   //turns the string into an array
+        won = false
+        toggle = false
+        word = randWord()
+        hangman = []
+        guesses = []
+        correct = undefined
+        text = ''
+        wordArr = word.split('')   //turns the string into an array
         game = wordArr.map(e => e = '_')
         }
     
-    const checkGuess = letter => wordArr.includes(letter) ? play(letter) : wrong(letter);
+    const checkGuess = letter => wordArr.includes(letter) ? play(letter) : wrong(letter)
     
     const wrong = letter => {
         hangman = [...hangman, graphic[guesses.length]]
-        guesses = [...guesses, letter];
-        correct = false;
+        guesses = [...guesses, letter]
+        correct = false
     }
     
     const play = letter => {
         wordArr.forEach((el, index) => el === letter ? game[index] = letter : null)
         compareArrays()
-        correct = true;
+        correct = true
     }
     
-    const compareArrays = () => JSON.stringify(game) === JSON.stringify(wordArr) ? won = true : won =false;
+    const compareArrays = () => JSON.stringify(game) === JSON.stringify(wordArr) ? won = true : won =false
     
-    start();
+    start()
     
     </script>
     

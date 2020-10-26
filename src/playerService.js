@@ -1,4 +1,4 @@
-import { writable, derived } from 'svelte/store';
+import { writable, derived } from 'svelte/store'
 export const players = writable(
     [
         {
@@ -15,27 +15,27 @@ export const players = writable(
             points: 0,
             bio: ''
         }
-    ]);
+    ])
 
 export const currentPlayerId = writable(2)
 
 export const currPlayer = derived( [players, currentPlayerId],
     ([$players, $currentPlayerId]) => $players.find( player => player.id === $currentPlayerId ) )
 
-let player_id;
-let players_value;
-let currPlayer_val;
+let player_id
+let players_value
+let currPlayer_val
 
-const subscribe_pv = players.subscribe( value => players_value = value );
+const subscribe_pv = players.subscribe( value => players_value = value )
 
-const subscribe_pi = currentPlayerId.subscribe( value => player_id = value );
+const subscribe_pi = currentPlayerId.subscribe( value => player_id = value )
 
-const subscribe_po = currPlayer.subscribe( value => currPlayer_val = value );
+const subscribe_po = currPlayer.subscribe( value => currPlayer_val = value )
 
-const findIndexById = id => players_value.findIndex(player => player.id === id);
+const findIndexById = id => players_value.findIndex(player => player.id === id)
     
 const setCurrentPlayer = aName => {
-    currentPlayerId.set( players_value.find( player => player.name === aName).id );
+    currentPlayerId.set( players_value.find( player => player.name === aName).id )
     console.log('current Player:', currPlayer_val.name)
 }
 
@@ -54,12 +54,12 @@ const appendPlayers = (name, picture, bio) => {
 }
 
 const removePlayer = name => {
-    if (currPlayer_val.name === name) return;
-    if (players_value.length-1) players.update ( n => n.filter(player => player.name !== name) );
-};
+    if (currPlayer_val.name === name) return
+    if (players_value.length-1) players.update ( n => n.filter(player => player.name !== name) )
+}
 
 const addPoint = () => players.update( n => { n[findIndexById(player_id)].points += 1; return n} );
 const minusPoint = () => players.update( n => {n[findIndexById(player_id)].points -= 1; return n});
 const resetPoints = () => players.update( n => {n[findIndexById(player_id)].points = 0; return n});
 
-export {player_id, players_value, currPlayer_val,  subscribe_pv, subscribe_pi, subscribe_po, setCurrentPlayer, removePlayer, appendPlayers, addPoint, minusPoint, resetPoints};
+export { setCurrentPlayer, removePlayer, appendPlayers, addPoint, minusPoint, resetPoints}

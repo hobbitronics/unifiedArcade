@@ -1,22 +1,22 @@
 <script>
     import { metatags } from '@sveltech/routify'
-    import { flip } from 'svelte/animate';
+    import { flip } from 'svelte/animate'
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
-	import Button from '@smui/button';
+	import Button from '@smui/button'
 	import Card from '@smui/card'
-	import Paper, {Title, Subtitle, Content} from '@smui/paper';
+	import Paper, {Title, Subtitle, Content} from '@smui/paper'
 	import { currPlayer, players, removePlayer } from "../playerService.js"
 
     metatags.title = 'Arcade with routify'
     metatags.description = 'Play all your favourite games in one spot'
 	
-	let name = '';
-	let showCtrl = true;
-	let height = [1, 1, 1];
-	$: toggle = true;
+	let name = ''
+	let showCtrl = true
+	let height = [1, 1, 1]
+	$: toggle = true
 
-	const byHighScore = (player1, player2) => player2.points - player1.points;
+	const byHighScore = (player1, player2) => player2.points - player1.points
 </script>
 <main>
 	
