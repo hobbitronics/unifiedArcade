@@ -12,7 +12,7 @@
 			  const data = await response.json()	 
 			  output = `login: ${data.login}, bio: ${data.bio}, repos url: ${data.repos_url}`;
 			  picture = data.avatar_url;
-			  $players[players.length].name = input;
+			//   $players[players.length].name = input;
 			console.log(data)
 		  } catch (error) {
 			console.error(error)

@@ -19,11 +19,12 @@ export const players = writable(
     ]);
 
 export const currentPlayer = writable(1)
-// export const currPlayer = derived( [players, currentPlayer], ([$players, $currentPlayer]) => $players[$currentPlayer] )
 
+export const currPlayer = derived( [players, currentPlayer],
+	([$players, $currentPlayer]) => $players[$currentPlayer])
 let player_index;
 let players_value;
-let currPlayer;
+let currPlayer_val;
 
 const subscribe_pv = players.subscribe(value => {
     players_value = value;
@@ -33,10 +34,9 @@ const subscribe_pi = currentPlayer.subscribe(value => {
     player_index = value;
 });
 
-const subscribe_po = players.subscribe(value => {
-    currPlayer = value[player_index];
+const subscribe_po = currPlayer.subscribe(value => {
+    currPlayer_val = value;
 });
-// export const currPlayer = readable( [players_value, player_index], ([players_value, player_index]) => players[currentPlayer] )
     
 const setCurrentPlayer = aName => {
     currentPlayer.set( players_value.findIndex( player => player.name === aName));
@@ -57,14 +57,13 @@ const appendPlayers = (name, picture, bio) => {
     currentPlayer.set( players_value.length-1 )
 }
 
-const removePlayer = input => {
-    if (currPlayer.name === input) currentPlayer.set(0);
-    if (players_value.length-1) players.update( n => n.filter(player => player.name !== input));
-    console.log('current Player:', players_value[player_index].name)    
+const removePlayer = name => {
+    if (currPlayer_val.name === name) currentPlayer.set(0);
+    if (players_value.length-1) players.update( n => n.filter(player => player.name !== name));
 };
 
 const addPoint = () => players.update( n => { n[player_index].points += 1; return n} );
 const minusPoint = () => players.update( n => {n[player_index].points -= 1; return n});
 const resetPoints = () => players.update( n => {n[player_index].points = 0; return n});
 
-export {player_index, players_value, subscribe_pv, subscribe_pi, subscribe_po, currPlayer, setCurrentPlayer, removePlayer, appendPlayers, addPoint, minusPoint, resetPoints};
+export {player_index, players_value, currPlayer_val,  subscribe_pv, subscribe_pi, subscribe_po, setCurrentPlayer, removePlayer, appendPlayers, addPoint, minusPoint, resetPoints};

@@ -97,10 +97,6 @@ var app = (function () {
                 result[k] = props[k];
         return result;
     }
-    function set_store_value(store, ret, value = ret) {
-        store.set(value);
-        return ret;
-    }
     function action_destroyer(action_result) {
         return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
     }
@@ -18291,11 +18287,12 @@ var app = (function () {
         ]);
 
     const currentPlayer = writable(1);
-    // export const currPlayer = derived( [players, currentPlayer], ([$players, $currentPlayer]) => $players[$currentPlayer] )
 
+    const currPlayer = derived( [players, currentPlayer],
+    	([$players, $currentPlayer]) => $players[$currentPlayer]);
     let player_index;
     let players_value;
-    let currPlayer;
+    let currPlayer_val;
 
     const subscribe_pv = players.subscribe(value => {
         players_value = value;
@@ -18305,10 +18302,9 @@ var app = (function () {
         player_index = value;
     });
 
-    const subscribe_po = players.subscribe(value => {
-        currPlayer = value[player_index];
+    const subscribe_po = currPlayer.subscribe(value => {
+        currPlayer_val = value;
     });
-    // export const currPlayer = readable( [players_value, player_index], ([players_value, player_index]) => players[currentPlayer] )
         
     const setCurrentPlayer = aName => {
         currentPlayer.set( players_value.findIndex( player => player.name === aName));
@@ -18329,10 +18325,9 @@ var app = (function () {
         currentPlayer.set( players_value.length-1 );
     };
 
-    const removePlayer = input => {
-        if (currPlayer.name === input) currentPlayer.set(0);
-        if (players_value.length-1) players.update( n => n.filter(player => player.name !== input));
-        console.log('current Player:', players_value[player_index].name);    
+    const removePlayer = name => {
+        if (currPlayer_val.name === name) currentPlayer.set(0);
+        if (players_value.length-1) players.update( n => n.filter(player => player.name !== name));
     };
 
     const addPoint = () => players.update( n => { n[player_index].points += 1; return n} );
@@ -18345,13 +18340,13 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
+    	child_ctx[20] = list[i];
     	return child_ctx;
     }
 
     // (59:14) <Option value={player.name} selected={playerChoice === player.name}>
     function create_default_slot_22(ctx) {
-    	let t_value = /*player*/ ctx[19].name + "";
+    	let t_value = /*player*/ ctx[20].name + "";
     	let t;
 
     	const block = {
@@ -18385,8 +18380,8 @@ var app = (function () {
 
     	option = new Option({
     			props: {
-    				value: /*player*/ ctx[19].name,
-    				selected: /*playerChoice*/ ctx[3] === /*player*/ ctx[19].name,
+    				value: /*player*/ ctx[20].name,
+    				selected: /*playerChoice*/ ctx[3] === /*player*/ ctx[20].name,
     				$$slots: { default: [create_default_slot_22] },
     				$$scope: { ctx }
     			},
@@ -18403,9 +18398,9 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const option_changes = {};
-    			if (dirty & /*playerChoice*/ 8) option_changes.selected = /*playerChoice*/ ctx[3] === /*player*/ ctx[19].name;
+    			if (dirty & /*playerChoice*/ 8) option_changes.selected = /*playerChoice*/ ctx[3] === /*player*/ ctx[20].name;
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				option_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18583,7 +18578,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18665,7 +18660,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18747,7 +18742,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18829,7 +18824,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18879,7 +18874,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item0.$on("SMUI:action", /*SMUI_action_handler*/ ctx[9]);
+    	item0.$on("SMUI:action", /*SMUI_action_handler*/ ctx[10]);
 
     	item1 = new Item({
     			props: {
@@ -18889,7 +18884,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item1.$on("SMUI:action", /*SMUI_action_handler_1*/ ctx[10]);
+    	item1.$on("SMUI:action", /*SMUI_action_handler_1*/ ctx[11]);
 
     	item2 = new Item({
     			props: {
@@ -18899,7 +18894,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item2.$on("SMUI:action", /*SMUI_action_handler_2*/ ctx[11]);
+    	item2.$on("SMUI:action", /*SMUI_action_handler_2*/ ctx[12]);
 
     	item3 = new Item({
     			props: {
@@ -18909,7 +18904,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item3.$on("SMUI:action", /*SMUI_action_handler_3*/ ctx[12]);
+    	item3.$on("SMUI:action", /*SMUI_action_handler_3*/ ctx[13]);
 
     	const block = {
     		c: function create() {
@@ -18934,28 +18929,28 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const item0_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item0_changes.$$scope = { dirty, ctx };
     			}
 
     			item0.$set(item0_changes);
     			const item1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item1_changes.$$scope = { dirty, ctx };
     			}
 
     			item1.$set(item1_changes);
     			const item2_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item2_changes.$$scope = { dirty, ctx };
     			}
 
     			item2.$set(item2_changes);
     			const item3_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item3_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19022,7 +19017,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const list_changes = {};
 
-    			if (dirty & /*$$scope, $goto*/ 4194320) {
+    			if (dirty & /*$$scope, $goto*/ 8388640) {
     				list_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19104,7 +19099,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19186,7 +19181,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19268,7 +19263,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19350,7 +19345,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const text_1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				text_1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19400,7 +19395,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item0.$on("SMUI:action", /*SMUI_action_handler_4*/ ctx[14]);
+    	item0.$on("SMUI:action", /*SMUI_action_handler_4*/ ctx[15]);
 
     	item1 = new Item({
     			props: {
@@ -19410,7 +19405,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item1.$on("SMUI:action", /*SMUI_action_handler_5*/ ctx[15]);
+    	item1.$on("SMUI:action", /*SMUI_action_handler_5*/ ctx[16]);
 
     	item2 = new Item({
     			props: {
@@ -19420,7 +19415,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item2.$on("SMUI:action", /*SMUI_action_handler_6*/ ctx[16]);
+    	item2.$on("SMUI:action", /*SMUI_action_handler_6*/ ctx[17]);
 
     	item3 = new Item({
     			props: {
@@ -19430,7 +19425,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	item3.$on("SMUI:action", /*SMUI_action_handler_7*/ ctx[17]);
+    	item3.$on("SMUI:action", /*SMUI_action_handler_7*/ ctx[18]);
 
     	const block = {
     		c: function create() {
@@ -19455,28 +19450,28 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const item0_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item0_changes.$$scope = { dirty, ctx };
     			}
 
     			item0.$set(item0_changes);
     			const item1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item1_changes.$$scope = { dirty, ctx };
     			}
 
     			item1.$set(item1_changes);
     			const item2_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item2_changes.$$scope = { dirty, ctx };
     			}
 
     			item2.$set(item2_changes);
     			const item3_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				item3_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19543,7 +19538,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const list_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				list_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19594,7 +19589,7 @@ var app = (function () {
     			div = element("div");
     			create_component(paper.$$.fragment);
     			attr_dev(div, "class", "player-profile svelte-ke9fdy");
-    			add_location(div, file$m, 91, 2, 3531);
+    			add_location(div, file$m, 91, 2, 3533);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -19604,7 +19599,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const paper_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope, $currPlayer*/ 8388624) {
     				paper_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19640,7 +19635,7 @@ var app = (function () {
     function create_default_slot$5(ctx) {
     	let player;
     	let current;
-    	const player_spread_levels = [currPlayer];
+    	const player_spread_levels = [/*$currPlayer*/ ctx[4]];
     	let player_props = {};
 
     	for (let i = 0; i < player_spread_levels.length; i += 1) {
@@ -19658,8 +19653,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			const player_changes = (dirty & /*currPlayer*/ 0)
-    			? get_spread_update(player_spread_levels, [get_spread_object(currPlayer)])
+    			const player_changes = (dirty & /*$currPlayer*/ 16)
+    			? get_spread_update(player_spread_levels, [get_spread_object(/*$currPlayer*/ ctx[4])])
     			: {};
 
     			player.$set(player_changes);
@@ -19697,6 +19692,10 @@ var app = (function () {
     	let button0;
     	let t1;
     	let span;
+    	let t2;
+    	let t3_value = /*$currPlayer*/ ctx[4].name + "";
+    	let t3;
+    	let t4;
     	let t5;
     	let section1;
     	let button1;
@@ -19720,7 +19719,7 @@ var app = (function () {
     	let dispose;
 
     	function select_value_binding(value) {
-    		/*select_value_binding*/ ctx[7].call(null, value);
+    		/*select_value_binding*/ ctx[8].call(null, value);
     	}
 
     	let select_props = {
@@ -19742,7 +19741,7 @@ var app = (function () {
     	};
 
     	menu0 = new Menu({ props: menu0_props, $$inline: true });
-    	/*menu0_binding*/ ctx[13](menu0);
+    	/*menu0_binding*/ ctx[14](menu0);
 
     	let menu1_props = {
     		$$slots: { default: [create_default_slot_1$1] },
@@ -19750,7 +19749,7 @@ var app = (function () {
     	};
 
     	menu1 = new Menu({ props: menu1_props, $$inline: true });
-    	/*menu1_binding*/ ctx[18](menu1);
+    	/*menu1_binding*/ ctx[19](menu1);
     	let if_block = /*showProfile*/ ctx[2] && create_if_block$a(ctx);
 
     	const block = {
@@ -19763,7 +19762,9 @@ var app = (function () {
     			button0.textContent = "menu";
     			t1 = space();
     			span = element("span");
-    			span.textContent = `Hello ${currPlayer.name}, We come to Unified Arcade App`;
+    			t2 = text("Hello ");
+    			t3 = text(t3_value);
+    			t4 = text(", We come to Unified Arcade App");
     			t5 = space();
     			section1 = element("section");
     			button1 = element("button");
@@ -19789,18 +19790,18 @@ var app = (function () {
     			add_location(span, file$m, 51, 12, 1575);
     			attr_dev(section0, "class", "mdc-top-app-bar__section mdc-top-app-bar__section--align-start");
     			add_location(section0, file$m, 49, 10, 1306);
-    			if (img.src !== (img_src_value = currPlayer.picture)) attr_dev(img, "src", img_src_value);
+    			if (img.src !== (img_src_value = /*$currPlayer*/ ctx[4].picture)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "portrait");
-    			add_location(img, file$m, 54, 154, 1953);
+    			add_location(img, file$m, 54, 154, 1954);
     			attr_dev(button1, "class", "material-icons mdc-top-app-bar__action-item mdc-icon-button");
     			attr_dev(button1, "aria-label", "portrait");
-    			add_location(button1, file$m, 54, 12, 1811);
+    			add_location(button1, file$m, 54, 12, 1812);
     			attr_dev(button2, "class", "material-icons mdc-top-app-bar__action-item mdc-icon-button");
     			attr_dev(button2, "aria-label", "Options");
-    			add_location(button2, file$m, 61, 12, 2348);
+    			add_location(button2, file$m, 61, 12, 2350);
     			attr_dev(section1, "class", "mdc-top-app-bar__section mdc-top-app-bar__section--align-end");
     			attr_dev(section1, "role", "toolbar");
-    			add_location(section1, file$m, 53, 10, 1705);
+    			add_location(section1, file$m, 53, 10, 1706);
     			attr_dev(div0, "class", "mdc-top-app-bar__row");
     			add_location(div0, file$m, 48, 8, 1261);
     			attr_dev(header, "class", "mdc-top-app-bar");
@@ -19809,10 +19810,10 @@ var app = (function () {
     			add_location(div1, file$m, 46, 0, 1195);
     			attr_dev(div2, "class", "navMenu svelte-ke9fdy");
     			set_style(div2, "min-width", "100px");
-    			add_location(div2, file$m, 68, 0, 2564);
+    			add_location(div2, file$m, 68, 0, 2566);
     			attr_dev(div3, "class", "optionMenu svelte-ke9fdy");
     			set_style(div3, "min-width", "50px");
-    			add_location(div3, file$m, 79, 0, 3007);
+    			add_location(div3, file$m, 79, 0, 3009);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -19825,6 +19826,9 @@ var app = (function () {
     			append_dev(section0, button0);
     			append_dev(section0, t1);
     			append_dev(section0, span);
+    			append_dev(span, t2);
+    			append_dev(span, t3);
+    			append_dev(span, t4);
     			append_dev(div0, t5);
     			append_dev(div0, section1);
     			append_dev(section1, button1);
@@ -19846,18 +19850,24 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*click_handler*/ ctx[5], false, false, false),
-    					listen_dev(button1, "click", /*click_handler_1*/ ctx[6], false, false, false),
-    					listen_dev(button2, "click", /*click_handler_2*/ ctx[8], false, false, false)
+    					listen_dev(button0, "click", /*click_handler*/ ctx[6], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[7], false, false, false),
+    					listen_dev(button2, "click", /*click_handler_2*/ ctx[9], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			if ((!current || dirty & /*$currPlayer*/ 16) && t3_value !== (t3_value = /*$currPlayer*/ ctx[4].name + "")) set_data_dev(t3, t3_value);
+
+    			if (!current || dirty & /*$currPlayer*/ 16 && img.src !== (img_src_value = /*$currPlayer*/ ctx[4].picture)) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
     			const select_changes = {};
 
-    			if (dirty & /*$$scope, playerChoice*/ 4194312) {
+    			if (dirty & /*$$scope, playerChoice*/ 8388616) {
     				select_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19870,14 +19880,14 @@ var app = (function () {
     			select.$set(select_changes);
     			const menu0_changes = {};
 
-    			if (dirty & /*$$scope, $goto*/ 4194320) {
+    			if (dirty & /*$$scope, $goto*/ 8388640) {
     				menu0_changes.$$scope = { dirty, ctx };
     			}
 
     			menu0.$set(menu0_changes);
     			const menu1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4194304) {
+    			if (dirty & /*$$scope*/ 8388608) {
     				menu1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -19926,11 +19936,11 @@ var app = (function () {
     			destroy_component(select);
     			if (detaching) detach_dev(t9);
     			if (detaching) detach_dev(div2);
-    			/*menu0_binding*/ ctx[13](null);
+    			/*menu0_binding*/ ctx[14](null);
     			destroy_component(menu0);
     			if (detaching) detach_dev(t10);
     			if (detaching) detach_dev(div3);
-    			/*menu1_binding*/ ctx[18](null);
+    			/*menu1_binding*/ ctx[19](null);
     			destroy_component(menu1);
     			if (detaching) detach_dev(t11);
     			if (if_block) if_block.d(detaching);
@@ -19952,9 +19962,12 @@ var app = (function () {
     }
 
     function instance$p($$self, $$props, $$invalidate) {
+    	let $currPlayer;
     	let $goto;
+    	validate_store(currPlayer, "currPlayer");
+    	component_subscribe($$self, currPlayer, $$value => $$invalidate(4, $currPlayer = $$value));
     	validate_store(goto, "goto");
-    	component_subscribe($$self, goto, $$value => $$invalidate(4, $goto = $$value));
+    	component_subscribe($$self, goto, $$value => $$invalidate(5, $goto = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Navbar", slots, []);
     	let menu;
@@ -20029,6 +20042,7 @@ var app = (function () {
     		options,
     		showProfile,
     		playerChoice,
+    		$currPlayer,
     		$goto
     	});
 
@@ -20055,6 +20069,7 @@ var app = (function () {
     		options,
     		showProfile,
     		playerChoice,
+    		$currPlayer,
     		$goto,
     		click_handler,
     		click_handler_1,
@@ -21104,14 +21119,14 @@ var app = (function () {
     			t4 = text(/*output*/ ctx[2]);
     			t5 = space();
     			img = element("img");
-    			add_location(p, file$q, 24, 1, 622);
+    			add_location(p, file$q, 24, 1, 625);
     			attr_dev(input_1, "placeholder", "username");
-    			add_location(input_1, file$q, 25, 12, 676);
-    			add_location(div, file$q, 27, 9, 803);
+    			add_location(input_1, file$q, 25, 12, 679);
+    			add_location(div, file$q, 27, 9, 806);
     			if (img.src !== (img_src_value = /*picture*/ ctx[0])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "a bio");
-    			add_location(img, file$q, 28, 1, 824);
-    			add_location(body, file$q, 23, 0, 614);
+    			add_location(img, file$q, 28, 1, 827);
+    			add_location(body, file$q, 23, 0, 617);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21143,7 +21158,7 @@ var app = (function () {
 
     			const button_changes = {};
 
-    			if (dirty & /*$$scope*/ 64) {
+    			if (dirty & /*$$scope*/ 32) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -21183,9 +21198,6 @@ var app = (function () {
     }
 
     function instance$v($$self, $$props, $$invalidate) {
-    	let $players;
-    	validate_store(players, "players");
-    	component_subscribe($$self, players, $$value => $$invalidate(5, $players = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("GitLookup", slots, []);
     	let picture;
@@ -21201,7 +21213,8 @@ var app = (function () {
     			const data = await response.json();
     			$$invalidate(2, output = `login: ${data.login}, bio: ${data.bio}, repos url: ${data.repos_url}`);
     			$$invalidate(0, picture = data.avatar_url);
-    			set_store_value(players, $players[players.length].name = input, $players);
+
+    			//   $players[players.length].name = input;
     			console.log(data);
     		} catch(error) {
     			console.error(error);
@@ -21225,8 +21238,7 @@ var app = (function () {
     		picture,
     		input,
     		output,
-    		myFunction,
-    		$players
+    		myFunction
     	});
 
     	$$self.$inject_state = $$props => {
@@ -22798,16 +22810,16 @@ var app = (function () {
     			button.textContent = "reset score";
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Your name");
-    			add_location(input0, file$u, 28, 4, 803);
+    			add_location(input0, file$u, 28, 4, 799);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Save";
     			attr_dev(input1, "class", "btn");
-    			add_location(input1, file$u, 29, 4, 869);
+    			add_location(input1, file$u, 29, 4, 865);
     			attr_dev(form, "class", "controls svelte-7st4z6");
-    			add_location(form, file$u, 27, 0, 739);
-    			add_location(button, file$u, 31, 22, 948);
+    			add_location(form, file$u, 27, 0, 735);
+    			add_location(button, file$u, 31, 22, 944);
     			attr_dev(div, "class", "controls svelte-7st4z6");
-    			add_location(div, file$u, 31, 0, 926);
+    			add_location(div, file$u, 31, 0, 922);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -22860,6 +22872,9 @@ var app = (function () {
     }
 
     function instance$z($$self, $$props, $$invalidate) {
+    	let $currPlayer;
+    	validate_store(currPlayer, "currPlayer");
+    	component_subscribe($$self, currPlayer, $$value => $$invalidate(6, $currPlayer = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("AddPlayer", slots, []);
     	let name;
@@ -22869,7 +22884,7 @@ var app = (function () {
     	const onSubmit = async () => {
     		await getGitProfile(name);
     		appendPlayers(name, picture, bio);
-    		console.log("current Player:", players_value[player_index].name);
+    		console.log("current Player:", $currPlayer.name);
     	};
 
     	async function getGitProfile(input) {
@@ -22901,6 +22916,7 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		players,
     		currentPlayer,
+    		currPlayer,
     		players_value,
     		player_index,
     		appendPlayers,
@@ -22909,7 +22925,8 @@ var app = (function () {
     		bio,
     		picture,
     		onSubmit,
-    		getGitProfile
+    		getGitProfile,
+    		$currPlayer
     	});
 
     	$$self.$inject_state = $$props => {
@@ -22945,12 +22962,12 @@ var app = (function () {
 
     function get_each_context$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[17] = list[i];
-    	child_ctx[19] = i;
+    	child_ctx[18] = list[i];
+    	child_ctx[20] = i;
     	return child_ctx;
     }
 
-    // (29:2) {#if showCtrl}
+    // (27:2) {#if showCtrl}
     function create_if_block_4$2(ctx) {
     	let addplayer;
     	let t0;
@@ -22973,12 +22990,12 @@ var app = (function () {
     			input1 = element("input");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Player to remove");
-    			add_location(input0, file$v, 31, 3, 1195);
+    			add_location(input0, file$v, 29, 3, 1107);
     			attr_dev(input1, "type", "submit");
     			input1.value = "Remove Player";
     			attr_dev(input1, "class", "button svelte-1a3xdtp");
-    			add_location(input1, file$v, 32, 3, 1267);
-    			add_location(form, file$v, 30, 2, 1134);
+    			add_location(input1, file$v, 30, 3, 1179);
+    			add_location(form, file$v, 28, 2, 1046);
     		},
     		m: function mount(target, anchor) {
     			mount_component(addplayer, target, anchor);
@@ -22992,8 +23009,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[6]),
-    					listen_dev(form, "click", prevent_default(/*click_handler*/ ctx[7]), false, true, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
+    					listen_dev(form, "click", prevent_default(/*click_handler*/ ctx[8]), false, true, false)
     				];
 
     				mounted = true;
@@ -23026,14 +23043,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$2.name,
     		type: "if",
-    		source: "(29:2) {#if showCtrl}",
+    		source: "(27:2) {#if showCtrl}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:66) {:else}
+    // (34:66) {:else}
     function create_else_block_1(ctx) {
     	let t;
 
@@ -23053,14 +23070,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(36:66) {:else}",
+    		source: "(34:66) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:48) {#if showCtrl}
+    // (34:48) {#if showCtrl}
     function create_if_block_3$3(ctx) {
     	let t;
 
@@ -23080,14 +23097,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$3.name,
     		type: "if",
-    		source: "(36:48) {#if showCtrl}",
+    		source: "(34:48) {#if showCtrl}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:2) <Button on:click={() => showCtrl = !showCtrl}>
+    // (34:2) <Button on:click={() => showCtrl = !showCtrl}>
     function create_default_slot_7$1(ctx) {
     	let if_block_anchor;
 
@@ -23129,42 +23146,54 @@ var app = (function () {
     		block,
     		id: create_default_slot_7$1.name,
     		type: "slot",
-    		source: "(36:2) <Button on:click={() => showCtrl = !showCtrl}>",
+    		source: "(34:2) <Button on:click={() => showCtrl = !showCtrl}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (39:1) <Paper elevation={1} >
+    // (37:1) <Paper elevation={1} >
     function create_default_slot_6$1(ctx) {
     	let div;
     	let h2;
+    	let t0_value = /*$currPlayer*/ ctx[4].name + "";
+    	let t0;
     	let t1;
     	let h3;
+    	let t2;
+    	let t3_value = /*$currPlayer*/ ctx[4].points + "";
+    	let t3;
 
     	const block = {
     		c: function create() {
     			div = element("div");
     			h2 = element("h2");
-    			h2.textContent = `${currPlayer.name}`;
+    			t0 = text(t0_value);
     			t1 = space();
     			h3 = element("h3");
-    			h3.textContent = `points: ${currPlayer.points}`;
+    			t2 = text("points: ");
+    			t3 = text(t3_value);
     			attr_dev(h2, "class", "svelte-1a3xdtp");
-    			add_location(h2, file$v, 40, 3, 1501);
+    			add_location(h2, file$v, 38, 3, 1413);
     			attr_dev(h3, "class", "svelte-1a3xdtp");
-    			add_location(h3, file$v, 41, 3, 1531);
+    			add_location(h3, file$v, 39, 3, 1444);
     			attr_dev(div, "class", "currPlayer svelte-1a3xdtp");
-    			add_location(div, file$v, 39, 2, 1473);
+    			add_location(div, file$v, 37, 2, 1385);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, h2);
+    			append_dev(h2, t0);
     			append_dev(div, t1);
     			append_dev(div, h3);
+    			append_dev(h3, t2);
+    			append_dev(h3, t3);
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*$currPlayer*/ 16 && t0_value !== (t0_value = /*$currPlayer*/ ctx[4].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*$currPlayer*/ 16 && t3_value !== (t3_value = /*$currPlayer*/ ctx[4].points + "")) set_data_dev(t3, t3_value);
+    		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
     		}
@@ -23174,14 +23203,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_6$1.name,
     		type: "slot",
-    		source: "(39:1) <Paper elevation={1} >",
+    		source: "(37:1) <Paper elevation={1} >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:3) <Paper on:mouseover={() => height[0] = 4} elevation={height[0]} on:mouseout={() => height[0] = 1}>
+    // (49:3) <Paper on:mouseover={() => height[0] = 4} elevation={height[0]} on:mouseout={() => height[0] = 1}>
     function create_default_slot_5$1(ctx) {
     	let a;
 
@@ -23190,7 +23219,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Tic Tac Toe";
     			attr_dev(a, "href", "./ttt");
-    			add_location(a, file$v, 51, 4, 1771);
+    			add_location(a, file$v, 49, 4, 1685);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -23204,14 +23233,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5$1.name,
     		type: "slot",
-    		source: "(51:3) <Paper on:mouseover={() => height[0] = 4} elevation={height[0]} on:mouseout={() => height[0] = 1}>",
+    		source: "(49:3) <Paper on:mouseover={() => height[0] = 4} elevation={height[0]} on:mouseout={() => height[0] = 1}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:3) <Paper on:mouseover={() => height[1] = 4} elevation={height[1]} on:mouseout={() => height[1] = 1}>
+    // (53:3) <Paper on:mouseover={() => height[1] = 4} elevation={height[1]} on:mouseout={() => height[1] = 1}>
     function create_default_slot_4$2(ctx) {
     	let a;
 
@@ -23220,7 +23249,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Hangman";
     			attr_dev(a, "href", "./hangman");
-    			add_location(a, file$v, 55, 4, 1930);
+    			add_location(a, file$v, 53, 4, 1844);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -23234,14 +23263,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4$2.name,
     		type: "slot",
-    		source: "(55:3) <Paper on:mouseover={() => height[1] = 4} elevation={height[1]} on:mouseout={() => height[1] = 1}>",
+    		source: "(53:3) <Paper on:mouseover={() => height[1] = 4} elevation={height[1]} on:mouseout={() => height[1] = 1}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:3) <Paper on:mouseover={() => height[2] = 4} elevation={height[2]} on:mouseout={() => height[2] = 1}>
+    // (57:3) <Paper on:mouseover={() => height[2] = 4} elevation={height[2]} on:mouseout={() => height[2] = 1}>
     function create_default_slot_3$2(ctx) {
     	let a;
 
@@ -23250,7 +23279,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Bash";
     			attr_dev(a, "href", "./terminal");
-    			add_location(a, file$v, 59, 4, 2089);
+    			add_location(a, file$v, 57, 4, 2003);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -23264,14 +23293,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$2.name,
     		type: "slot",
-    		source: "(59:3) <Paper on:mouseover={() => height[2] = 4} elevation={height[2]} on:mouseout={() => height[2] = 1}>",
+    		source: "(57:3) <Paper on:mouseover={() => height[2] = 4} elevation={height[2]} on:mouseout={() => height[2] = 1}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:1) <Card padded>
+    // (46:1) <Card padded>
     function create_default_slot_2$3(ctx) {
     	let h2;
     	let t1;
@@ -23296,8 +23325,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	paper0.$on("mouseover", /*mouseover_handler*/ ctx[9]);
-    	paper0.$on("mouseout", /*mouseout_handler*/ ctx[10]);
+    	paper0.$on("mouseover", /*mouseover_handler*/ ctx[10]);
+    	paper0.$on("mouseout", /*mouseout_handler*/ ctx[11]);
 
     	paper1 = new Paper({
     			props: {
@@ -23308,8 +23337,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	paper1.$on("mouseover", /*mouseover_handler_1*/ ctx[11]);
-    	paper1.$on("mouseout", /*mouseout_handler_1*/ ctx[12]);
+    	paper1.$on("mouseover", /*mouseover_handler_1*/ ctx[12]);
+    	paper1.$on("mouseout", /*mouseout_handler_1*/ ctx[13]);
 
     	paper2 = new Paper({
     			props: {
@@ -23320,8 +23349,8 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	paper2.$on("mouseover", /*mouseover_handler_2*/ ctx[13]);
-    	paper2.$on("mouseout", /*mouseout_handler_2*/ ctx[14]);
+    	paper2.$on("mouseover", /*mouseover_handler_2*/ ctx[14]);
+    	paper2.$on("mouseout", /*mouseout_handler_2*/ ctx[15]);
 
     	const block = {
     		c: function create() {
@@ -23340,11 +23369,11 @@ var app = (function () {
     			create_component(paper2.$$.fragment);
     			attr_dev(h2, "id", "minibar");
     			attr_dev(h2, "class", "svelte-1a3xdtp");
-    			add_location(h2, file$v, 48, 2, 1612);
-    			add_location(br0, file$v, 53, 3, 1818);
-    			add_location(br1, file$v, 57, 3, 1977);
+    			add_location(h2, file$v, 46, 2, 1526);
+    			add_location(br0, file$v, 51, 3, 1732);
+    			add_location(br1, file$v, 55, 3, 1891);
     			attr_dev(div, "class", "gameList svelte-1a3xdtp");
-    			add_location(div, file$v, 49, 2, 1642);
+    			add_location(div, file$v, 47, 2, 1556);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -23365,7 +23394,7 @@ var app = (function () {
     			const paper0_changes = {};
     			if (dirty & /*height*/ 4) paper0_changes.elevation = /*height*/ ctx[2][0];
 
-    			if (dirty & /*$$scope*/ 1048576) {
+    			if (dirty & /*$$scope*/ 2097152) {
     				paper0_changes.$$scope = { dirty, ctx };
     			}
 
@@ -23373,7 +23402,7 @@ var app = (function () {
     			const paper1_changes = {};
     			if (dirty & /*height*/ 4) paper1_changes.elevation = /*height*/ ctx[2][1];
 
-    			if (dirty & /*$$scope*/ 1048576) {
+    			if (dirty & /*$$scope*/ 2097152) {
     				paper1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -23381,7 +23410,7 @@ var app = (function () {
     			const paper2_changes = {};
     			if (dirty & /*height*/ 4) paper2_changes.elevation = /*height*/ ctx[2][2];
 
-    			if (dirty & /*$$scope*/ 1048576) {
+    			if (dirty & /*$$scope*/ 2097152) {
     				paper2_changes.$$scope = { dirty, ctx };
     			}
 
@@ -23414,14 +23443,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$3.name,
     		type: "slot",
-    		source: "(48:1) <Card padded>",
+    		source: "(46:1) <Card padded>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:65) {:else}
+    // (68:65) {:else}
     function create_else_block$7(ctx) {
     	let t;
 
@@ -23441,14 +23470,14 @@ var app = (function () {
     		block,
     		id: create_else_block$7.name,
     		type: "else",
-    		source: "(70:65) {:else}",
+    		source: "(68:65) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:45) {#if toggle}
+    // (68:45) {#if toggle}
     function create_if_block_2$3(ctx) {
     	let t;
 
@@ -23468,14 +23497,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(70:45) {#if toggle}",
+    		source: "(68:45) {#if toggle}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:3) <Button on:click={() => toggle = !toggle}>
+    // (68:3) <Button on:click={() => toggle = !toggle}>
     function create_default_slot_1$3(ctx) {
     	let if_block_anchor;
 
@@ -23517,22 +23546,22 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$3.name,
     		type: "slot",
-    		source: "(70:3) <Button on:click={() => toggle = !toggle}>",
+    		source: "(68:3) <Button on:click={() => toggle = !toggle}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:20) 
+    // (73:20) 
     function create_if_block_1$4(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
     	let each_1_anchor;
     	let current;
-    	let each_value = [.../*$players*/ ctx[4]].sort(/*byHighScore*/ ctx[5]);
+    	let each_value = [.../*$players*/ ctx[5]].sort(/*byHighScore*/ ctx[6]);
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*player*/ ctx[17].id;
+    	const get_key = ctx => /*player*/ ctx[18].id;
     	validate_each_keys(ctx, each_value, get_each_context$4, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -23558,8 +23587,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*$players, byHighScore*/ 48) {
-    				const each_value = [.../*$players*/ ctx[4]].sort(/*byHighScore*/ ctx[5]);
+    			if (dirty & /*$players, byHighScore*/ 96) {
+    				const each_value = [.../*$players*/ ctx[5]].sort(/*byHighScore*/ ctx[6]);
     				validate_each_argument(each_value);
     				group_outros();
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
@@ -23598,14 +23627,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(75:20) ",
+    		source: "(73:20) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:3) {#if $players.length === 0}
+    // (71:3) {#if $players.length === 0}
     function create_if_block$d(ctx) {
     	let p;
 
@@ -23613,7 +23642,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "No High Scores";
-    			add_location(p, file$v, 73, 4, 2381);
+    			add_location(p, file$v, 71, 4, 2295);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -23630,18 +23659,18 @@ var app = (function () {
     		block,
     		id: create_if_block$d.name,
     		type: "if",
-    		source: "(73:3) {#if $players.length === 0}",
+    		source: "(71:3) {#if $players.length === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (76:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}
+    // (74:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}
     function create_each_block$4(key_1, ctx) {
     	let div;
     	let h4;
-    	let t0_value = /*id*/ ctx[19] + 1 + "";
+    	let t0_value = /*id*/ ctx[20] + 1 + "";
     	let t0;
     	let t1;
     	let t2;
@@ -23653,10 +23682,10 @@ var app = (function () {
 
     	player = new Player({
     			props: {
-    				name: /*player*/ ctx[17].name,
-    				points: /*player*/ ctx[17].points,
-    				bio: /*player*/ ctx[17].bio,
-    				picture: /*player*/ ctx[17].picture
+    				name: /*player*/ ctx[18].name,
+    				points: /*player*/ ctx[18].points,
+    				bio: /*player*/ ctx[18].bio,
+    				picture: /*player*/ ctx[18].picture
     			},
     			$$inline: true
     		});
@@ -23673,9 +23702,9 @@ var app = (function () {
     			create_component(player.$$.fragment);
     			t3 = space();
     			attr_dev(h4, "class", "svelte-1a3xdtp");
-    			add_location(h4, file$v, 77, 5, 2566);
+    			add_location(h4, file$v, 75, 5, 2480);
     			attr_dev(div, "class", "player-container svelte-1a3xdtp");
-    			add_location(div, file$v, 76, 4, 2497);
+    			add_location(div, file$v, 74, 4, 2411);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -23689,12 +23718,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*$players*/ 16) && t0_value !== (t0_value = /*id*/ ctx[19] + 1 + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*$players*/ 32) && t0_value !== (t0_value = /*id*/ ctx[20] + 1 + "")) set_data_dev(t0, t0_value);
     			const player_changes = {};
-    			if (dirty & /*$players*/ 16) player_changes.name = /*player*/ ctx[17].name;
-    			if (dirty & /*$players*/ 16) player_changes.points = /*player*/ ctx[17].points;
-    			if (dirty & /*$players*/ 16) player_changes.bio = /*player*/ ctx[17].bio;
-    			if (dirty & /*$players*/ 16) player_changes.picture = /*player*/ ctx[17].picture;
+    			if (dirty & /*$players*/ 32) player_changes.name = /*player*/ ctx[18].name;
+    			if (dirty & /*$players*/ 32) player_changes.points = /*player*/ ctx[18].points;
+    			if (dirty & /*$players*/ 32) player_changes.bio = /*player*/ ctx[18].bio;
+    			if (dirty & /*$players*/ 32) player_changes.picture = /*player*/ ctx[18].picture;
     			player.$set(player_changes);
     		},
     		r: function measure() {
@@ -23727,14 +23756,14 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(76:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}",
+    		source: "(74:3) {#each [...$players].sort(byHighScore) as player, id (player.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (67:1) <Card padded>
+    // (65:1) <Card padded>
     function create_default_slot$9(ctx) {
     	let h2;
     	let t1;
@@ -23754,12 +23783,12 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*click_handler_2*/ ctx[15]);
+    	button.$on("click", /*click_handler_2*/ ctx[16]);
     	const if_block_creators = [create_if_block$d, create_if_block_1$4];
     	const if_blocks = [];
 
     	function select_block_type_2(ctx, dirty) {
-    		if (/*$players*/ ctx[4].length === 0) return 0;
+    		if (/*$players*/ ctx[5].length === 0) return 0;
     		if (/*toggle*/ ctx[3]) return 1;
     		return -1;
     	}
@@ -23780,10 +23809,10 @@ var app = (function () {
     			if (if_block) if_block.c();
     			attr_dev(h2, "id", "minibar");
     			attr_dev(h2, "class", "svelte-1a3xdtp");
-    			add_location(h2, file$v, 67, 2, 2174);
+    			add_location(h2, file$v, 65, 2, 2088);
     			attr_dev(div0, "class", "btn-container svelte-1a3xdtp");
-    			add_location(div0, file$v, 68, 2, 2210);
-    			add_location(div1, file$v, 71, 2, 2340);
+    			add_location(div0, file$v, 66, 2, 2124);
+    			add_location(div1, file$v, 69, 2, 2254);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -23802,7 +23831,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, toggle*/ 1048584) {
+    			if (dirty & /*$$scope, toggle*/ 2097160) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -23869,7 +23898,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$9.name,
     		type: "slot",
-    		source: "(67:1) <Card padded>",
+    		source: "(65:1) <Card padded>",
     		ctx
     	});
 
@@ -23907,7 +23936,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*click_handler_1*/ ctx[8]);
+    	button.$on("click", /*click_handler_1*/ ctx[9]);
 
     	paper = new Paper({
     			props: {
@@ -23960,15 +23989,15 @@ var app = (function () {
     			a.textContent = "my Github page";
     			t9 = text(" to see more of my projects.");
     			attr_dev(div, "class", "controls svelte-1a3xdtp");
-    			add_location(div, file$v, 27, 1, 1077);
-    			add_location(br0, file$v, 45, 1, 1589);
-    			add_location(br1, file$v, 64, 1, 2151);
+    			add_location(div, file$v, 25, 1, 989);
+    			add_location(br0, file$v, 43, 1, 1503);
+    			add_location(br1, file$v, 62, 1, 2065);
     			attr_dev(a, "href", "https://github.com/hobbitronics");
     			attr_dev(a, "target", "blank");
-    			add_location(a, file$v, 84, 15, 2742);
-    			add_location(footer, file$v, 84, 1, 2728);
+    			add_location(a, file$v, 82, 15, 2656);
+    			add_location(footer, file$v, 82, 1, 2642);
     			attr_dev(main, "class", "svelte-1a3xdtp");
-    			add_location(main, file$v, 25, 0, 1067);
+    			add_location(main, file$v, 23, 0, 979);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -24022,28 +24051,28 @@ var app = (function () {
 
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, showCtrl*/ 1048578) {
+    			if (dirty & /*$$scope, showCtrl*/ 2097154) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
     			button.$set(button_changes);
     			const paper_changes = {};
 
-    			if (dirty & /*$$scope*/ 1048576) {
+    			if (dirty & /*$$scope, $currPlayer*/ 2097168) {
     				paper_changes.$$scope = { dirty, ctx };
     			}
 
     			paper.$set(paper_changes);
     			const card0_changes = {};
 
-    			if (dirty & /*$$scope, height*/ 1048580) {
+    			if (dirty & /*$$scope, height*/ 2097156) {
     				card0_changes.$$scope = { dirty, ctx };
     			}
 
     			card0.$set(card0_changes);
     			const card1_changes = {};
 
-    			if (dirty & /*$$scope, $players, toggle*/ 1048600) {
+    			if (dirty & /*$$scope, $players, toggle*/ 2097192) {
     				card1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -24088,9 +24117,12 @@ var app = (function () {
     }
 
     function instance$A($$self, $$props, $$invalidate) {
+    	let $currPlayer;
     	let $players;
+    	validate_store(currPlayer, "currPlayer");
+    	component_subscribe($$self, currPlayer, $$value => $$invalidate(4, $currPlayer = $$value));
     	validate_store(players, "players");
-    	component_subscribe($$self, players, $$value => $$invalidate(4, $players = $$value));
+    	component_subscribe($$self, players, $$value => $$invalidate(5, $players = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Pages", slots, []);
     	metatags.title = "Arcade with routify";
@@ -24142,14 +24174,17 @@ var app = (function () {
     		currentPlayer,
     		player_index,
     		players_value,
+    		currPlayer_val,
     		subscribe_pv,
     		subscribe_pi,
+    		subscribe_po,
     		removePlayer,
     		name,
     		showCtrl,
     		height,
     		byHighScore,
     		toggle,
+    		$currPlayer,
     		$players
     	});
 
@@ -24173,6 +24208,7 @@ var app = (function () {
     		showCtrl,
     		height,
     		toggle,
+    		$currPlayer,
     		$players,
     		byHighScore,
     		input0_input_handler,
@@ -28056,7 +28092,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (81:0) <Card padded>
+    // (80:0) <Card padded>
     function create_default_slot_1$5(ctx) {
     	let h1;
     	let t1;
@@ -28172,50 +28208,50 @@ var app = (function () {
     			h4 = element("h4");
     			h4.textContent = "Type in the requested command and hit enter or click the button to play.";
     			attr_dev(h1, "class", "svelte-1xeb54i");
-    			add_location(h1, file$z, 81, 4, 2354);
+    			add_location(h1, file$z, 80, 4, 2305);
     			attr_dev(p0, "class", "svelte-1xeb54i");
-    			add_location(p0, file$z, 82, 4, 2386);
+    			add_location(p0, file$z, 81, 4, 2337);
     			attr_dev(h3, "class", "svelte-1xeb54i");
-    			add_location(h3, file$z, 86, 4, 2651);
+    			add_location(h3, file$z, 85, 4, 2602);
     			attr_dev(p1, "class", "svelte-1xeb54i");
-    			add_location(p1, file$z, 88, 8, 2725);
+    			add_location(p1, file$z, 87, 8, 2676);
     			attr_dev(p2, "class", "svelte-1xeb54i");
-    			add_location(p2, file$z, 93, 8, 2825);
+    			add_location(p2, file$z, 92, 8, 2776);
     			attr_dev(p3, "class", "svelte-1xeb54i");
-    			add_location(p3, file$z, 98, 8, 2941);
+    			add_location(p3, file$z, 97, 8, 2892);
     			attr_dev(p4, "class", "svelte-1xeb54i");
-    			add_location(p4, file$z, 103, 8, 3075);
+    			add_location(p4, file$z, 102, 8, 3026);
     			attr_dev(p5, "class", "svelte-1xeb54i");
-    			add_location(p5, file$z, 108, 8, 3201);
+    			add_location(p5, file$z, 107, 8, 3152);
     			attr_dev(p6, "class", "svelte-1xeb54i");
-    			add_location(p6, file$z, 113, 8, 3309);
+    			add_location(p6, file$z, 112, 8, 3260);
     			attr_dev(p7, "class", "svelte-1xeb54i");
-    			add_location(p7, file$z, 118, 8, 3420);
+    			add_location(p7, file$z, 117, 8, 3371);
     			attr_dev(p8, "class", "svelte-1xeb54i");
-    			add_location(p8, file$z, 123, 8, 3554);
+    			add_location(p8, file$z, 122, 8, 3505);
     			attr_dev(p9, "class", "svelte-1xeb54i");
-    			add_location(p9, file$z, 128, 8, 3678);
+    			add_location(p9, file$z, 127, 8, 3629);
     			attr_dev(p10, "class", "svelte-1xeb54i");
-    			add_location(p10, file$z, 133, 8, 3791);
+    			add_location(p10, file$z, 132, 8, 3742);
     			attr_dev(p11, "class", "svelte-1xeb54i");
-    			add_location(p11, file$z, 138, 8, 3926);
+    			add_location(p11, file$z, 137, 8, 3877);
     			attr_dev(p12, "class", "svelte-1xeb54i");
-    			add_location(p12, file$z, 143, 8, 4059);
+    			add_location(p12, file$z, 142, 8, 4010);
     			attr_dev(p13, "class", "svelte-1xeb54i");
-    			add_location(p13, file$z, 148, 8, 4174);
+    			add_location(p13, file$z, 147, 8, 4125);
     			attr_dev(p14, "class", "svelte-1xeb54i");
-    			add_location(p14, file$z, 153, 8, 4268);
+    			add_location(p14, file$z, 152, 8, 4219);
     			attr_dev(p15, "class", "svelte-1xeb54i");
-    			add_location(p15, file$z, 158, 8, 4372);
+    			add_location(p15, file$z, 157, 8, 4323);
     			attr_dev(p16, "class", "svelte-1xeb54i");
-    			add_location(p16, file$z, 163, 8, 4478);
+    			add_location(p16, file$z, 162, 8, 4429);
     			attr_dev(p17, "class", "svelte-1xeb54i");
-    			add_location(p17, file$z, 168, 8, 4629);
+    			add_location(p17, file$z, 167, 8, 4580);
     			attr_dev(p18, "class", "svelte-1xeb54i");
-    			add_location(p18, file$z, 173, 8, 4743);
-    			add_location(div, file$z, 87, 4, 2711);
+    			add_location(p18, file$z, 172, 8, 4694);
+    			add_location(div, file$z, 86, 4, 2662);
     			attr_dev(h4, "class", "svelte-1xeb54i");
-    			add_location(h4, file$z, 180, 4, 4885);
+    			add_location(h4, file$z, 179, 4, 4836);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -28280,14 +28316,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$5.name,
     		type: "slot",
-    		source: "(81:0) <Card padded>",
+    		source: "(80:0) <Card padded>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (189:42) 
+    // (188:42) 
     function create_if_block_1$6(ctx) {
     	let t;
 
@@ -28308,14 +28344,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$6.name,
     		type: "if",
-    		source: "(189:42) ",
+    		source: "(188:42) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (187:12) {#if show[question.id]}
+    // (186:12) {#if show[question.id]}
     function create_if_block$f(ctx) {
     	let p;
     	let t_value = /*question*/ ctx[12].msg + "";
@@ -28326,7 +28362,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "terminal svelte-1xeb54i");
-    			add_location(p, file$z, 187, 20, 5148);
+    			add_location(p, file$z, 186, 20, 5099);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -28342,14 +28378,14 @@ var app = (function () {
     		block,
     		id: create_if_block$f.name,
     		type: "if",
-    		source: "(187:12) {#if show[question.id]}",
+    		source: "(186:12) {#if show[question.id]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (186:8) {#each questions as question (question.id)}
+    // (185:8) {#each questions as question (question.id)}
     function create_each_block$5(key_1, ctx) {
     	let first;
     	let if_block_anchor;
@@ -28404,30 +28440,30 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(186:8) {#each questions as question (question.id)}",
+    		source: "(185:8) {#each questions as question (question.id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (184:0) <Paper elevation={4}>
+    // (183:0) <Paper elevation={4}>
     function create_default_slot$b(ctx) {
     	let div;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
     	let t0;
     	let form;
-    	let t1_value = currPlayer.name + "";
+    	let t1_value = /*$currPlayer*/ ctx[4].name + "";
     	let t1;
-    	let t2_value = /*prompt*/ ctx[4][/*counter*/ ctx[0]] + "";
+    	let t2_value = /*prompt*/ ctx[5][/*counter*/ ctx[0]] + "";
     	let t2;
     	let input0;
     	let t3;
     	let input1;
     	let mounted;
     	let dispose;
-    	let each_value = /*questions*/ ctx[5];
+    	let each_value = /*questions*/ ctx[6];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*question*/ ctx[12].id;
     	validate_each_keys(ctx, each_value, get_each_context$5, get_key);
@@ -28456,14 +28492,14 @@ var app = (function () {
     			attr_dev(input0, "class", "grn-border svelte-1xeb54i");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Enter commands here");
-    			add_location(input0, file$z, 194, 46, 5429);
+    			add_location(input0, file$z, 193, 47, 5381);
     			attr_dev(input1, "class", "grn-border svelte-1xeb54i");
     			attr_dev(input1, "type", "submit");
     			input1.value = "Enter";
-    			add_location(input1, file$z, 195, 12, 5534);
-    			add_location(form, file$z, 193, 8, 5308);
+    			add_location(input1, file$z, 194, 12, 5486);
+    			add_location(form, file$z, 192, 8, 5259);
     			attr_dev(div, "class", "terminal grn-border svelte-1xeb54i");
-    			add_location(div, file$z, 184, 4, 5006);
+    			add_location(div, file$z, 183, 4, 4957);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -28483,22 +28519,23 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
-    					listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[8]), false, true, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[8]),
+    					listen_dev(form, "submit", prevent_default(/*submit_handler*/ ctx[9]), false, true, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*questions, show, toggle*/ 44) {
-    				const each_value = /*questions*/ ctx[5];
+    			if (dirty & /*questions, show, toggle*/ 76) {
+    				const each_value = /*questions*/ ctx[6];
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context$5, get_key);
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, destroy_block, create_each_block$5, t0, get_each_context$5);
     			}
 
-    			if (dirty & /*counter*/ 1 && t2_value !== (t2_value = /*prompt*/ ctx[4][/*counter*/ ctx[0]] + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*$currPlayer*/ 16 && t1_value !== (t1_value = /*$currPlayer*/ ctx[4].name + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*counter*/ 1 && t2_value !== (t2_value = /*prompt*/ ctx[5][/*counter*/ ctx[0]] + "")) set_data_dev(t2, t2_value);
 
     			if (dirty & /*input*/ 2 && input0.value !== /*input*/ ctx[1]) {
     				set_input_value(input0, /*input*/ ctx[1]);
@@ -28520,7 +28557,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$b.name,
     		type: "slot",
-    		source: "(184:0) <Paper elevation={4}>",
+    		source: "(183:0) <Paper elevation={4}>",
     		ctx
     	});
 
@@ -28562,9 +28599,9 @@ var app = (function () {
     			br = element("br");
     			t1 = space();
     			create_component(paper.$$.fragment);
-    			add_location(br, file$z, 182, 0, 4975);
+    			add_location(br, file$z, 181, 0, 4926);
     			attr_dev(main, "class", "svelte-1xeb54i");
-    			add_location(main, file$z, 79, 0, 2329);
+    			add_location(main, file$z, 78, 0, 2280);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28588,7 +28625,7 @@ var app = (function () {
     			card.$set(card_changes);
     			const paper_changes = {};
 
-    			if (dirty & /*$$scope, input, counter, show, toggle*/ 32783) {
+    			if (dirty & /*$$scope, input, counter, $currPlayer, show, toggle*/ 32799) {
     				paper_changes.$$scope = { dirty, ctx };
     			}
 
@@ -28624,6 +28661,9 @@ var app = (function () {
     }
 
     function instance$E($$self, $$props, $$invalidate) {
+    	let $currPlayer;
+    	validate_store(currPlayer, "currPlayer");
+    	component_subscribe($$self, currPlayer, $$value => $$invalidate(4, $currPlayer = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Terminal", slots, []);
     	let prompt = ["~%", "~%", "/Users ~%", "~%", "stuff ~%", "~%", "~%", "~%", "~%", "~%", "~%"];
@@ -28646,7 +28686,6 @@ var app = (function () {
     	const toggle = [];
     	const show = [true];
 
-    	// $: currPlayer = players_value[player_index];
     	const questions = [
     		{ msg: "Print working directory", id: 0 },
     		{
@@ -28688,8 +28727,7 @@ var app = (function () {
     		}
     	];
 
-    	let rand = () => Math.floor(Math.random() * questions.length);
-
+    	// let rand = () => Math.floor(Math.random()*questions.length)
     	let play = (guess, questionNum) => {
     		clear(guess);
 
@@ -28739,18 +28777,17 @@ var app = (function () {
     		toggle,
     		show,
     		questions,
-    		rand,
     		play,
-    		clear
+    		clear,
+    		$currPlayer
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("prompt" in $$props) $$invalidate(4, prompt = $$props.prompt);
+    		if ("prompt" in $$props) $$invalidate(5, prompt = $$props.prompt);
     		if ("counter" in $$props) $$invalidate(0, counter = $$props.counter);
     		if ("input" in $$props) $$invalidate(1, input = $$props.input);
     		if ("answer" in $$props) answer = $$props.answer;
-    		if ("rand" in $$props) rand = $$props.rand;
-    		if ("play" in $$props) $$invalidate(6, play = $$props.play);
+    		if ("play" in $$props) $$invalidate(7, play = $$props.play);
     		if ("clear" in $$props) clear = $$props.clear;
     	};
 
@@ -28769,6 +28806,7 @@ var app = (function () {
     		input,
     		toggle,
     		show,
+    		$currPlayer,
     		prompt,
     		questions,
     		play,

@@ -1,5 +1,5 @@
 <script>
-  import { players, currentPlayer, players_value, player_index, appendPlayers, resetPoints } from '../playerService.js';
+  import { players, currentPlayer, currPlayer, players_value, player_index, appendPlayers, resetPoints } from '../playerService.js';
   // import { players_value, player_index } from './stores.js';
   
   let name;
@@ -9,7 +9,7 @@
   const onSubmit = async () => {
       await getGitProfile(name)
       appendPlayers(name, picture, bio)
-      console.log('current Player:', players_value[player_index].name)
+      console.log('current Player:', $currPlayer.name)
   }
 
   async function getGitProfile (input) {

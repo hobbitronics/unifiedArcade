@@ -3,11 +3,10 @@
     import { flip } from 'svelte/animate';
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
-	// import { currentPlayer, players} from '../components/stores.js';
 	import Button from '@smui/button';
 	import Card from '@smui/card'
 	import Paper, {Title, Subtitle, Content} from '@smui/paper';
-	import { currPlayer, players, currentPlayer, player_index, players_value, subscribe_pv, subscribe_pi, removePlayer } from "../playerService.js"
+	import { currPlayer, players, currentPlayer, player_index, players_value, currPlayer_val, subscribe_pv, subscribe_pi, subscribe_po, removePlayer } from "../playerService.js"
 
     metatags.title = 'Arcade with routify'
     metatags.description = 'Play all your favourite games in one spot'
@@ -15,7 +14,6 @@
 	let name = '';
 	let showCtrl = true;
 	let height = [1, 1, 1];
-	// $: currPlayer = players_value[player_index];
 	$: toggle = true;
 	// const removePlayer = () => {
 	// 	if (currPlayer.name === name) $currentPlayer = 0;
@@ -38,8 +36,8 @@
 
 	<Paper elevation={1} >	
 		<div class="currPlayer">
-			<h2>{currPlayer.name}</h2>
-			<h3>points: {currPlayer.points}</h3>
+			<h2>{$currPlayer.name}</h2>
+			<h3>points: {$currPlayer.points}</h3>
 		</div>
 	</Paper>
 

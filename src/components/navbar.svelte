@@ -49,10 +49,10 @@
         <div class="mdc-top-app-bar__row">
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <button on:click={() => menu.setOpen(true)} class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-            <span class="mdc-top-app-bar__title">Hello {currPlayer.name}, We come to Unified Arcade App</span>
+            <span class="mdc-top-app-bar__title">Hello {$currPlayer.name}, We come to Unified Arcade App</span>
           </section>
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-            <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={currPlayer.picture} alt="portrait"/></button>
+            <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$currPlayer.picture} alt="portrait"/></button>
             <Select bind:value={playerChoice} label="select player">
               <!-- <Option value="select player"></Option> -->
               {#each players_value as player}
@@ -91,7 +91,7 @@
   {#if showProfile}
   <div class="player-profile">
     <Paper elevation={4}>
-      <Player {...currPlayer}/>
+      <Player {...$currPlayer}/>
     </Paper>
   </div>
   {/if}

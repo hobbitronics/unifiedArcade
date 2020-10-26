@@ -14,7 +14,6 @@
     let answer = ['pwd', 'ls', 'cd ..', 'clear', 'cd guest/stuff', 'touch file.txt', 'mkdir things', 'cat file', 'cp file doc', "rm file"]
     const toggle = []
     const show = [true]
-    // $: currPlayer = players_value[player_index];
 
     const questions = [
         {
@@ -63,7 +62,7 @@
         }
     ]
 
-    let rand = () => Math.floor(Math.random()*questions.length)
+    // let rand = () => Math.floor(Math.random()*questions.length)
 
     let play = (guess, questionNum) => {
         clear(guess)
@@ -192,7 +191,7 @@
         {/each}
         
         <form on:submit|preventDefault={() => play(input.toLowerCase(), counter)}>
-            {currPlayer.name}{prompt[counter]}<input class="grn-border"  type="text" placeholder="Enter commands here" bind:value={input}>
+            {$currPlayer.name}{prompt[counter]}<input class="grn-border"  type="text" placeholder="Enter commands here" bind:value={input}>
             <input class="grn-border"  type="submit" value="Enter"/>
         </form>
     </div>
