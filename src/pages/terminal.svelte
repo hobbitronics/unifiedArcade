@@ -1,9 +1,8 @@
 <script>
-    import Textfield from '@smui/textfield'
     import Card from '@smui/card'
     import Button from '@smui/button';
     import Paper, {Title, Subtitle, Content} from '@smui/paper';
-    import { currPlayer, addPoint, minusPoint, players_value, player_index } from '../playerService';
+    import { currPlayer, addPoint, minusPoint } from '../playerService';
 
     let prompt = ['~%', '~%', '/Users ~%', '~%', 'stuff ~%', '~%', '~%', '~%', '~%', '~%', '~%'];
     let counter = 0

@@ -1,5 +1,5 @@
 <script>
-	import { players} from '../playerService.js';
+	import { setCurrentPlayer } from '../playerService.js';
 	import Button from '@smui/button';
 	let picture;
 	let input;
@@ -12,7 +12,7 @@
 			  const data = await response.json()	 
 			  output = `login: ${data.login}, bio: ${data.bio}, repos url: ${data.repos_url}`;
 			  picture = data.avatar_url;
-			//   $players[players.length].name = input;
+			  setCurrentPlayer(data.login)
 			console.log(data)
 		  } catch (error) {
 			console.error(error)
@@ -27,6 +27,5 @@
 	<Button on:click={myFunction} variation="raised">Click me</Button>
 	result: <div>{output}</div>
 	<img src={picture} alt="a bio"/>
-	
 </body>
 

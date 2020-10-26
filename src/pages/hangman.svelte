@@ -1,10 +1,10 @@
 <script>
-    import { fly, fade, scale } from 'svelte/transition';
+    import { scale } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';
-    import APInputs from '../components/APIinputs.svelte'
+    import APInputs from '../components/wordlistAPI.svelte'
     import Card from '@smui/card'
     import Button from '@smui/button';
-    import { subscribe_pv, subscribe_pi, addPoint, minusPoint } from "../playerService.js"
+    import { addPoint, minusPoint } from "../playerService.js"
 
     let game = [];
     let won;

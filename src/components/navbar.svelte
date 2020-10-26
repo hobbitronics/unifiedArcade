@@ -7,8 +7,7 @@
     import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list';
     import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar';
     import IconButton from '@smui/icon-button';
-    import { currPlayer, player_index, players_value, subscribe_pv, subscribe_pi, setCurrentPlayer } from '../playerService.js';
-
+    import { currPlayer, players, setCurrentPlayer } from '../playerService.js';
 
     let menu;
     let options;
@@ -51,9 +50,9 @@
           </section>
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
             <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$currPlayer.picture} alt="portrait"/></button>
-            <Select bind:value={playerChoice} label="select player">
-              <!-- <Option value="select player"></Option> -->
-              {#each players_value as player}
+            <Select bind:value={playerChoice} label="">
+              <Option value="select player"></Option>
+              {#each $players as player}
               <Option value={player.name} selected={playerChoice === player.name}>{player.name}</Option>
               {/each}
             </Select>

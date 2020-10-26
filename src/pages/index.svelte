@@ -6,7 +6,7 @@
 	import Button from '@smui/button';
 	import Card from '@smui/card'
 	import Paper, {Title, Subtitle, Content} from '@smui/paper';
-	import { currPlayer, players, currentPlayer, player_index, players_value, currPlayer_val, subscribe_pv, subscribe_pi, subscribe_po, removePlayer } from "../playerService.js"
+	import { currPlayer, players, removePlayer } from "../playerService.js"
 
     metatags.title = 'Arcade with routify'
     metatags.description = 'Play all your favourite games in one spot'
@@ -15,10 +15,7 @@
 	let showCtrl = true;
 	let height = [1, 1, 1];
 	$: toggle = true;
-	// const removePlayer = () => {
-	// 	if (currPlayer.name === name) $currentPlayer = 0;
-	// 	if ($players.length-1) $players = $players.filter(player => player.name !== name)
-	// 	};
+
 	const byHighScore = (player1, player2) => player2.points - player1.points;
 </script>
 <main>
@@ -26,7 +23,7 @@
 	<div class="controls">
 		{#if showCtrl}
 		<AddPlayer/>
-		<form on:click|preventDefault={() => removePlayer(name)}>
+		<form on:submit|preventDefault={() => removePlayer(name)}>
 			<input type="text" placeholder="Player to remove" bind:value={name}>
 			<input type="submit" value="Remove Player" class="button"/>
 		</form>

@@ -3,8 +3,7 @@
 	import { elasticOut } from 'svelte/easing';
 	import { quintOut } from 'svelte/easing';
     import Button from '@smui/button';
-	import Paper, {Title, Subtitle, Content} from '@smui/paper';
-	import { subscribe_pv, subscribe_pi, addPoint, minusPoint } from "../playerService.js"
+	import { addPoint, minusPoint } from "../playerService.js"
 
 	let grid = ['','','','','','','','',''];
 	let winner;
