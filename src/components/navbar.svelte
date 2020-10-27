@@ -1,47 +1,57 @@
 <script>
-    import Player from './player.svelte'
-    import Paper from '@smui/paper'
-    import { goto } from '@sveltech/routify'
-    import Menu from '@smui/menu'
-    import Select, {Option} from '@smui/select'
-    import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list'
-    import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar'
-    import IconButton from '@smui/icon-button'
-    import { currPlayer, players, setCurrentPlayer } from '../playerService.js'
+  import Player from './player.svelte'
+  import Paper from '@smui/paper'
+  import { goto } from '@sveltech/routify'
+  import Menu from '@smui/menu'
+  import Select, {Option} from '@smui/select'
+  import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list'
+  import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar'
+  import IconButton from '@smui/icon-button'
+  import { currPlayer, players, setCurrentPlayer } from '../playerService.js'
 
-    let menu
-    let options
-    let showProfile = false
-    let playerChoice = ''
-    $: if (playerChoice) {
-      setCurrentPlayer(playerChoice)
-      playerChoice = ''
-    }
+  let menu
+  let options
+  let showProfile = false
+  let playerChoice = ''
+  $: if (playerChoice) {
+    setCurrentPlayer(playerChoice)
+    playerChoice = ''
+  }
 
 </script>
 
 <style>
 
-    .navMenu {
-        position: fixed;
-        top: 72px;
-        left: 1%;
-        z-index: 10;
-    }
-    .optionMenu {
-        position: fixed;
-        top: 72px;
-        left: 95%;
-        z-index: 10;
-    }
+  .navMenu {
+    position: fixed;
+    top: 72px;
+    left: 1%;
+    z-index: 10;
+  }
+  .optionMenu {
+    position: fixed;
+    top: 72px;
+    left: 95%;
+    z-index: 10;
+  }
 
+  .player-profile {
+    position: fixed;
+    top: 72px;
+    left: 74%;
+    z-index: 9;
+    max-width: 240px;
+  }
+
+  @media only screen and (max-width: 720px) {
     .player-profile {
-        position: fixed;
-        top: 72px;
-        left: 74%;
-        z-index: 9;
-        width: 240px;
+      position: fixed;
+      top: 72px;
+      left: 74%;
+      z-index: 9;
+      max-width: 140px;
     }
+  }  
 
 </style>
 
