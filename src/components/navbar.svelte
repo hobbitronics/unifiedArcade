@@ -13,7 +13,11 @@
     let options
     let showProfile = false
     let playerChoice = ''
-    $: playerChoice && setCurrentPlayer(playerChoice)
+    $: if (playerChoice) {
+      setCurrentPlayer(playerChoice)
+      playerChoice = ''
+    }
+
 </script>
 
 <style>
