@@ -58,8 +58,8 @@ const removePlayer = name => {
     if (players_value.length-1) players.update ( n => n.filter(player => player.name !== name) )
 }
 
-const addPoint = () => players.update( n => { n[findIndexById(player_id)].points += 1; return n} );
-const minusPoint = () => players.update( n => {n[findIndexById(player_id)].points -= 1; return n});
-const resetPoints = () => players.update( n => {n[findIndexById(player_id)].points = 0; return n});
+const addPoint = () => players.update( n => {n[findIndexById(player_id)].points += 1; return n})
+const minusPoint = () => players.update( n => {n[findIndexById(player_id)].points -= 1; return n})
+const resetPoints = () => players.update( n => {n[findIndexById(player_id)].points = 0; return n})
 
 export { setCurrentPlayer, removePlayer, appendPlayers, addPoint, minusPoint, resetPoints}
