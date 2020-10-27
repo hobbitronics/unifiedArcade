@@ -1,35 +1,33 @@
 <script>
-	import { fly, fade, scale } from 'svelte/transition';
-	import { elasticOut } from 'svelte/easing';
-	import { quintOut } from 'svelte/easing';
-	import { count } from '../components/stores.js';
-    import Button from '@smui/button';
-	import Paper, {Title, Subtitle, Content} from '@smui/paper';
+	import { fly, fade, scale } from 'svelte/transition'
+	import { elasticOut } from 'svelte/easing'
+	import { quintOut } from 'svelte/easing'
+    import Button from '@smui/button'
+	import { addPoint, minusPoint } from "../playerService.js"
 
-
-	let grid = ['','','','','','','','',''];
-	let winner;
-	let turnCount = 0;
-	let pcTurnCount = 0;
-	$: totalCount = turnCount + pcTurnCount;
-	let success = false;
-	let blocked = false;
-	$: winner === "O" && $count++;
-	$: winner === "X" && $count--;
+	let grid = ['','','','','','','','','']
+	let winner
+	let turnCount = 0
+	let pcTurnCount = 0
+	$: totalCount = turnCount + pcTurnCount
+	let success = false
+	let blocked = false
+	$: winner === "O" && addPoint()
+	$: winner === "X" && minusPoint()
     
 	
 	const reset = () => {
-	  grid = ['','','','','','','','',''];
-	  winner = undefined;
-	  turnCount = 0;
-	  pcTurnCount = 0;
+	  grid = ['','','','','','','','','']
+	  winner = undefined
+	  turnCount = 0
+	  pcTurnCount = 0
 	}
 	
 	function spin(node, { duration }) {
 		return {
 			duration,
 			css: t => {
-				const eased = elasticOut(t);
+				const eased = elasticOut(t)
 
 				return `
 					transform: scale(${eased}) rotate(${eased * 720}deg);
@@ -39,50 +37,49 @@
 						${Math.min(50, 500 - 500 * t)}%
 					);`
 			}
-		};
+		}
 	}
 
 	//winning conditions Across rows	
   function winA (player) {
     for (let i = 0; i < 7 ; i+=3) {  // i is 0 then 3 then 6
       if (grid[i] === player && grid[i+1] === player && grid[i+2] === player){  // covers 0,1,2/ 3,4,5/ 6,7,8
-          winner = player;
+          winner = player
         }
       }
     //winning conditions down colums
     for (let h = 0; h < 3 ; h++) {  // h 0, 1, 2
       if (grid[h] === player && grid[h+3] === player && grid[h+6] === player){  // covers 0,3,6  1,4,7  2,5,8
-        winner = player;
+        winner = player
         }
       }
     //diagonal winning conditions
         if ( (grid[0] + grid[4] + grid[8]) === (player+player+player) || (grid[2] + grid[4] + grid[6]) === (player+player+player)){  // covers 0,3,6  1,4,7  2,5,8
-          winner = player;
+          winner = player
 		}
-		console.log($count)
 	}
 	
 	//generates random number for pc player
 	const rand = () => {
-		const number = Math.floor(Math.random()*9);
+		const number = Math.floor(Math.random()*9)
 		return (!grid[number] ? number : rand())
       }
 
 	//called with mousedown on a box
 	const play = choice => {
-		  turnCount +=1;
-		  grid[choice] = 'O';                            //sets the grid number on the board to 'O'
-		  success = true;
-		  winA('O');   //check for a win
+		  turnCount +=1
+		  grid[choice] = 'O'                            //sets the grid number on the board to 'O'
+		  success = true
+		  winA('O')   //check for a win
 	}
 	//called on mouseup
 	const computer = async () => {
-			pcTurnCount+=1;
-			success = false;
-			const delay = new Promise(resolve => setTimeout(() => resolve('completed'), 500));		
-			await delay//.then((message) => {
-			grid[rand()] = 'X';			//sets X on random board tile
-			winA('X');  //})
+			pcTurnCount+=1
+			success = false
+			const delay = new Promise(resolve => setTimeout(() => resolve('completed'), 500))		
+			await delay
+			grid[rand()] = 'X'			//sets X on random board tile
+			winA('X') 
 	}
 
 	const pcCanPLay = () => turnCount === (1 + pcTurnCount) && totalCount < 9 && !winner && success	
@@ -126,12 +123,6 @@
 		max-width: 80%;
 		margin: 0 auto;
 	}
-
-	/* span {
-            font-size: 1.5em;
-            padding-right: 1px;
-            margin: 0;
-    	 } */
 
 	h1 {
 		color: darkblue;

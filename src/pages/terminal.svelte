@@ -1,17 +1,16 @@
 <script>
-    import Textfield from '@smui/textfield'
     import Card from '@smui/card'
-    import Button from '@smui/button';
-    import Paper, {Title, Subtitle, Content} from '@smui/paper';
-    import { count } from '../components/stores.js';
+    import Button from '@smui/button'
+    import Paper, {Title, Subtitle, Content} from '@smui/paper'
+    import { currPlayer, addPoint, minusPoint } from '../playerService'
 
-
-    let prompt = ['~%', '~%', '/Users ~%', '~%', 'stuff ~%', '~%', '~%', '~%', '~%', '~%', '~%'];
+    let prompt = ['~%', '~%', '/Users ~%', '~%', 'stuff ~%', '~%', '~%', '~%', '~%', '~%', '~%']
     let counter = 0
-    let input;
+    let input
     let answer = ['pwd', 'ls', 'cd ..', 'clear', 'cd guest/stuff', 'touch file.txt', 'mkdir things', 'cat file', 'cp file doc', "rm file"]
     const toggle = []
     const show = [true]
+
     const questions = [
         {
             msg: 'Print working directory',
@@ -59,18 +58,17 @@
         }
     ]
 
-    let rand = () => Math.floor(Math.random()*questions.length)
+    // let rand = () => Math.floor(Math.random()*questions.length)
 
     let play = (guess, questionNum) => {
         clear(guess)
-        guess === answer[questionNum] ? show[questionNum+1] = true : toggle[questionNum] = true;
-        input = '';
-        if (show[questionNum+1]) {counter++; $count++}
-        console.log(counter)
+        guess === answer[questionNum] ? show[questionNum+1] = true : toggle[questionNum] = true
+        input = ''
+        if (show[questionNum+1]) {counter++; addPoint()}
     }
 
-    let clear = guess => guess === 'clear' && show.forEach( (el, index) => show[index] = false);
-    $: if (counter < 8 && toggle[counter]) $count--;
+    let clear = guess => guess === 'clear' && show.forEach( (el, index) => show[index] = false)
+    $: if (counter < 8 && toggle[counter]) minusPoint()
 
 </script>
 
@@ -189,7 +187,7 @@
         {/each}
         
         <form on:submit|preventDefault={() => play(input.toLowerCase(), counter)}>
-            {prompt[counter]}<input class="grn-border"  type="text" placeholder="Enter commands here" bind:value={input}>
+            {$currPlayer.name}{prompt[counter]}<input class="grn-border"  type="text" placeholder="Enter commands here" bind:value={input}>
             <input class="grn-border"  type="submit" value="Enter"/>
         </form>
     </div>

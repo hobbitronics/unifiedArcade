@@ -1,49 +1,35 @@
 <script>
-    import { count, players} from './stores.js';
-    
-    let name;
-    let bio;
-    let picture;
+  import {currPlayer, appendPlayers, resetPoints } from '../playerService.js'
+  
+  let name
+  let bio
+  let picture
 
-    // $: player = {
-    //     id: pid,
-    //     name : name,
-    //     picture: picture,
-    //     points : $count,
-    //     bio: bio
-    // };
-    const onSubmit = async () => {
-        let lastPlayer = $players[$players.length-1]
-        console.log()
-        await gitGet(name)
-        $players = [...$players, {
-          id: lastPlayer.id + 1,
-          name : name,
-          picture: picture,
-          points : $count,
-          bio: bio
-        }];
+  const onSubmit = async () => {
+      await getGitProfile(name)
+      appendPlayers(name, picture, bio)
+      console.log('current Player:', $currPlayer.name)
     }
 
-    async function gitGet (input) {
-		let url = 'https://api.github.com/users/' + input;
-		  try {
-			  const response = await fetch(url)
-			  const data = await response.json()	 
-			  bio = `bio: ${data.bio}`;
-			  picture = data.avatar_url;
-			console.log(data)
-		  } catch (error) {
-			console.error(error)
-		  }
-	}
+  async function getGitProfile (username) {
+        let url = 'https://api.github.com/users/' + username
+        try {
+            const response = await fetch(url)
+            const data = await response.json()	 
+            bio = `bio: ${data.bio}`
+            picture = data.avatar_url
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
 </script>
+
 <form class="controls" on:submit|preventDefault={onSubmit}>
     <input type="text" placeholder="Your name" bind:value={name}>
     <input type="submit" value="Save" class ="btn"/>
 </form>
-<div class="controls"><button on:click={() => $count = 0}>reset score</button></div>
+<div class="controls"><button on:click={resetPoints}>reset score</button></div>
 
 <style>
     .controls {

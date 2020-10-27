@@ -1,37 +1,29 @@
 <script>
     import { metatags } from '@sveltech/routify'
-    import { flip } from 'svelte/animate';
+    import { flip } from 'svelte/animate'
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
-	import { count, players} from '../components/stores.js';
-	import Button from '@smui/button';
+	import Button from '@smui/button'
 	import Card from '@smui/card'
-	import Paper, {Title, Subtitle, Content} from '@smui/paper';
+	import Paper, {Title, Subtitle, Content} from '@smui/paper'
+	import { currPlayer, players, removePlayer } from "../playerService.js"
 
     metatags.title = 'Arcade with routify'
     metatags.description = 'Play all your favourite games in one spot'
 	
-	let name;
-	let showCtrl = true;
-	let height = [1, 1, 1];
-	$: $players[$players.length-1].points = $count
-	$: toggle = true;
-	$: currPlayer =
-		{
-			id: 0,
-			name: $players[$players.length-1].name,
-			points: $count
-		}
+	let name = ''
+	let showCtrl = true
+	let height = [1, 1, 1]
+	$: toggle = true
 
-	const removePlayer = () => $players = $players.filter(player => player.name !== name)
-	const byHighScore = (player1, player2) => player2.points - player1.points;
+	const byHighScore = (player1, player2) => player2.points - player1.points
 </script>
 <main>
 	
 	<div class="controls">
 		{#if showCtrl}
 		<AddPlayer/>
-		<form on:click|preventDefault={removePlayer}>
+		<form on:submit|preventDefault={() => removePlayer(name)}>
 			<input type="text" placeholder="Player to remove" bind:value={name}>
 			<input type="submit" value="Remove Player" class="button"/>
 		</form>
@@ -41,8 +33,8 @@
 
 	<Paper elevation={1} >	
 		<div class="currPlayer">
-			<h2>{currPlayer.name}</h2>
-			<h3>points: {$count}</h3>
+			<h2>{$currPlayer.name}</h2>
+			<h3>points: {$currPlayer.points}</h3>
 		</div>
 	</Paper>
 
@@ -91,13 +83,6 @@
 	main {
 		margin: 4px;
 	}
-	/* span {
-        font-size: 1.2em;
-		font-family: sans-serif;
-		color: darkblue;
-        padding: 5px;
-        margin: 5;
-    	} */
 
 	h2, h3, h4 {
 		color: darkblue;
