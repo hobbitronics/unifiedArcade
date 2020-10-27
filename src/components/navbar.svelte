@@ -64,7 +64,7 @@
           </section>
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
             <button on:click={() => showProfile = !showProfile} class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="portrait"><img src={$currPlayer.picture} alt="portrait"/></button>
-            <Select bind:value={playerChoice} label="">
+            <Select bind:value={playerChoice} label="switch player">
               <Option value=""></Option>
               {#each $players as player}
               <Option value={player.name} selected={playerChoice === player.name}>{player.name}</Option>
