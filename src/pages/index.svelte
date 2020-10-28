@@ -13,6 +13,7 @@
     metatags.description = 'Play all your favourite games in one spot'
 	
 	let dialog
+	let dialogMessage
 	let name = ''
 	let showCtrl = true
 	let height = [1, 1, 1]
@@ -22,8 +23,8 @@
 		try {
 			removePlayer(name)
 		} catch(e) {
+			dialogMessage = e
 			dialog.open()
-			console.log(e)
 		}
 	}
 
@@ -93,9 +94,9 @@
 		bind:this={dialog}
 		aria-labelledby="dialog-title"
 		aria-describedby="dialog-content">
-		<Title id="dialog-title">Warning</Title>
+		<Title id="dialog-title">Message to {$currPlayer.name}</Title>
 		<Content id="dialog-content">
-			"You cannot delete yourself. Please select another player first"
+			{dialogMessage}
 		</Content>
 		<Actions>
 			<Button>

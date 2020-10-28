@@ -54,7 +54,7 @@ const appendPlayers = (name, picture, bio) => {
 }
 
 const removePlayer = name => {
-    if (currPlayer_val.name === name) throw Error('You cannot delete yourself')
+    if (currPlayer_val.name === name) throw Error('You cannot delete yourself. Please select another player first.')
     if (players_value.length-1) players.update ( n => n.filter(player => player.name !== name) )
 }
 
