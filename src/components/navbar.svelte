@@ -7,7 +7,7 @@
   import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list'
   import TopAppBar, {Row, Section, Title} from '@smui/top-app-bar'
   import IconButton from '@smui/icon-button'
-  import Dialog, {Content, Actions} from '@smui/dialog'
+  import Dialog, {Title as DialogTitle, Content, Actions} from '@smui/dialog'
   import Button, {Label} from '@smui/button'
 
   import { currPlayer, players, setCurrentPlayer } from '../playerService.js'
@@ -19,6 +19,7 @@
   let showProfile = false
   let showNoBtn
   let yesLabel
+  let dialogTitle
   let dialogContent
   let yesHandler
   let noHandler
@@ -31,21 +32,22 @@
   const option1 = () => {
     showNoBtn = false
     yesLabel = 'ok'
+    dialogTitle = "About"
     dialogContent='Unified Arcade App Version: Pre-alpha.'
     yesHandler = ''
     dialog.open()
   }
  
-  const option = (content, iconNum) => {
+  const option = (content, iconNum, title) => {
     showNoBtn = true
     yesLabel = 'Yes'
     dialogContent = content
+    dialogTitle = title
     yesHandler = () => showIcon[iconNum] = true
     noHandler = () => showIcon[iconNum] = false
     dialog.open()
   }
 
-  const closeHandler = () => console.log("Thanks for playing.")
 </script>
 
 <style>
@@ -124,9 +126,9 @@
     <Menu bind:this={options}>
       <List>
         <Item on:SMUI:action={option1}><Text>About</Text></Item>
-        <Item on:SMUI:action={() => option('Like Unified Arcade App?', 0)}><Text>Like UAA?</Text></Item>
-        <Item on:SMUI:action={() => option('Would you like to buy the licensed version?', 1)}><Text>Purchase</Text></Item>
-        <Item on:SMUI:action={() => option('Want another icon to show up?', 2)}><Text>another icon?</Text></Item>
+        <Item on:SMUI:action={() => option('Like Unified Arcade App?', 0, 'Like UAA')}><Text>Like UAA?</Text></Item>
+        <Item on:SMUI:action={() => option('Would you like to buy the licensed version?', 1, 'Purchase')}><Text>Purchase</Text></Item>
+        <Item on:SMUI:action={() => option('Want another icon to show up?', 2, 'Icon')}><Text>another icon?</Text></Item>
       </List>
     </Menu>
   </div>
@@ -134,9 +136,8 @@
   <Dialog
   bind:this={dialog}
   aria-labelledby="dialog-title"
-  aria-describedby="dialog-content"
-  on:MDCDialog:closed={closeHandler}>
-  <!-- <Title id="dialog-title">Delete Item</Title> -->
+  aria-describedby="dialog-content">
+  <DialogTitle id="dialog-title">{dialogTitle}</DialogTitle>
   <Content id="dialog-content">
     {dialogContent}
   </Content>
