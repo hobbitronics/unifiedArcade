@@ -16,14 +16,23 @@
 	let height = [1, 1, 1]
 	$: toggle = true
 
+	const remove = name => {
+		try {
+			removePlayer(name)
+		} catch(e) {
+			console.log(e)
+		}
+	}
+
 	const byHighScore = (player1, player2) => player2.points - player1.points
+
 </script>
 <main>
 	
 	<div class="controls">
 		{#if showCtrl}
 		<AddPlayer/>
-		<form on:submit|preventDefault={() => removePlayer(name)}>
+		<form on:submit|preventDefault={() => remove(name)}>
 			<input type="text" placeholder="Player to remove" bind:value={name}>
 			<input type="submit" value="Remove Player" class="button"/>
 		</form>
