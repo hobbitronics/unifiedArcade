@@ -3,27 +3,40 @@
     import { flip } from 'svelte/animate'
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
-	import Button from '@smui/button'
+	import Button , {Label} from '@smui/button'
 	import Card from '@smui/card'
-	import Paper, {Title, Subtitle, Content} from '@smui/paper'
+	import Paper, {Subtitle} from '@smui/paper'
+	import Dialog, {Title, Content, Actions} from '@smui/dialog'
 	import { currPlayer, players, removePlayer } from "../playerService.js"
 
     metatags.title = 'Arcade with routify'
     metatags.description = 'Play all your favourite games in one spot'
 	
+	let dialog
+	let dialogMessage
 	let name = ''
 	let showCtrl = true
 	let height = [1, 1, 1]
 	$: toggle = true
 
+	const remove = name => {
+		try {
+			removePlayer(name)
+		} catch(e) {
+			dialogMessage = e
+			dialog.open()
+		}
+	}
+
 	const byHighScore = (player1, player2) => player2.points - player1.points
+
 </script>
 <main>
 	
 	<div class="controls">
 		{#if showCtrl}
 		<AddPlayer/>
-		<form on:submit|preventDefault={() => removePlayer(name)}>
+		<form on:submit|preventDefault={() => remove(name)}>
 			<input type="text" placeholder="Player to remove" bind:value={name}>
 			<input type="submit" value="Remove Player" class="button"/>
 		</form>
@@ -76,6 +89,21 @@
 			{/if}
 		</div>
 	</Card>
+
+	<Dialog
+		bind:this={dialog}
+		aria-labelledby="dialog-title"
+		aria-describedby="dialog-content">
+		<Title id="dialog-title">Message to {$currPlayer.name}</Title>
+		<Content id="dialog-content">
+			{dialogMessage}
+		</Content>
+		<Actions>
+			<Button>
+			<Label>Ok</Label>
+			</Button>
+		</Actions>
+	</Dialog>
 
 	<footer>Visit <a href="https://github.com/hobbitronics" target="blank">my Github page</a> to see more of my projects.</footer>
 </main>
