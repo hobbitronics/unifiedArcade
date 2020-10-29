@@ -152,7 +152,6 @@
 
 	.controls {
 		position: fixed;
-		/* left: 60%; */
 		padding: 4px;
 		margin-top: 8px;
     	margin-left: 8px;
