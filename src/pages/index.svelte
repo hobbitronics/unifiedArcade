@@ -105,7 +105,7 @@
 		</Actions>
 	</Dialog>
 
-	<footer>Visit <a href="https://github.com/hobbitronics" target="blank">my Github page</a> to see more of my projects.</footer>
+	<footer>Visit <a href="https://hobbitronics.github.io" target="blank">my Github page</a> to see more of my projects.</footer>
 </main>
 <style>
 	main {
