@@ -40,7 +40,7 @@ export default {
 		file: 'public/build/bundle.js',
 	},
 	preserveEntrySignatures: 'strict',
-	inlineDynamicImports: true,
+	//inlineDynamicImports: true,
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
