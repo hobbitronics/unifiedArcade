@@ -1,5 +1,5 @@
 <script>
-    import { metatags } from '@sveltech/routify'
+    import { metatags } from '@roxi/routify'
     import { flip } from 'svelte/animate'
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
