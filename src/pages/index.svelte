@@ -81,7 +81,7 @@
 			{#if $players.length === 0}
 				<p>No High Scores</p>
 			{:else if toggle}
-			{#each [...$players].sort(byHighScore) as player, id (player.id)}
+			{#each $players.sort(byHighScore) as player, id (player.id)}
 				<div class="player-container" animate:flip="{{duration: 200}}">
 					<h4>{id+1}:</h4> <Player name={player.name} points={player.points} bio={player.bio} picture={player.picture}/>
 				</div>
