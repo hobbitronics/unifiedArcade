@@ -1,6 +1,6 @@
 <script>
-    import { metatags } from '@roxi/routify'
-    import { flip } from 'svelte/animate'
+	import { metatags } from '@roxi/routify'
+	import { flip } from 'svelte/animate'
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
 	import Button , {Label} from '@smui/button'
