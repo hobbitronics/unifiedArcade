@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import { routify } from '@sveltech/routify'
+import routify from '@roxi/routify/plugins/rollup'
 import postcss from 'rollup-plugin-postcss';
 
 
@@ -37,8 +37,10 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/build/bundle.js',
 	},
+	preserveEntrySignatures: 'strict',
+	//inlineDynamicImports: true,
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production

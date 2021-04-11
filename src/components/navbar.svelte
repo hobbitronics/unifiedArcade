@@ -1,7 +1,7 @@
 <script>
   import Player from './player.svelte'
   import Paper from '@smui/paper'
-  import { goto } from '@sveltech/routify'
+  import { goto } from '@roxi/routify'
   import Menu from '@smui/menu'
   import Select, {Option} from '@smui/select'
   import List, {Item, Separator, Text, PrimaryText, SecondaryText, Graphic} from '@smui/list'
@@ -115,9 +115,9 @@
   <Menu bind:this={menu}>
     <List>
       <Item on:SMUI:action={() => $goto('/')}><Text>Scoreboard</Text></Item>
-      <Item on:SMUI:action={() => $goto('ttt')}><Text>Tic Tac Toe</Text></Item>
-      <Item on:SMUI:action={() => $goto('hangman')}><Text>Hangman</Text></Item>
-      <Item on:SMUI:action={() => $goto('terminal')}><Text>Terminal Practice</Text></Item>
+      <Item on:SMUI:action={() => $goto('/ttt')}><Text>Tic Tac Toe</Text></Item>
+      <Item on:SMUI:action={() => $goto('/hangman')}><Text>Hangman</Text></Item>
+      <Item on:SMUI:action={() => $goto('/terminal')}><Text>Terminal Practice</Text></Item>
     </List>
   </Menu>
 </div>

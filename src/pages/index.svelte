@@ -1,6 +1,6 @@
 <script>
-    import { metatags } from '@sveltech/routify'
-    import { flip } from 'svelte/animate'
+	import { metatags } from '@roxi/routify'
+	import { flip } from 'svelte/animate'
 	import Player from '../components/player.svelte'
 	import AddPlayer from '../components/addPlayer.svelte'
 	import Button , {Label} from '@smui/button'
@@ -105,7 +105,7 @@
 		</Actions>
 	</Dialog>
 
-	<footer>Visit <a href="https://github.com/hobbitronics" target="blank">my Github page</a> to see more of my projects.</footer>
+	<footer>Visit <a href="https://hobbitronics.github.io" target="blank">my Github page</a> to see more of my projects.</footer>
 </main>
 <style>
 	main {
