@@ -16,6 +16,8 @@
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@roxi/routify": "^2.12.0",
+    "prettier": "^2.3.2",
+    "prettier-plugin-svelte": "^2.4.0",
     "rollup": "^2.36.1",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.0",
