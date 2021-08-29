@@ -3,7 +3,10 @@
   import Paper from '@smui/paper'
   import { currPlayer, addPoint, minusPoint } from '../playerService'
 
-  let prompt = [
+  let counter = 0
+  let input
+
+  const prompt = [
     '~%',
     '~%',
     '/Users ~%',
@@ -16,9 +19,7 @@
     '~%',
     '~%',
   ]
-  let counter = 0
-  let input
-  let answer = [
+  const answer = [
     'pwd',
     'ls',
     'cd ..',
@@ -80,9 +81,9 @@
     },
   ]
 
-  // let rand = () => Math.floor(Math.random()*questions.length)
+  $: if (counter < 8 && toggle[counter]) minusPoint()
 
-  let play = (guess, questionNum) => {
+  const play = (guess, questionNum) => {
     clear(guess)
     guess === answer[questionNum]
       ? (show[questionNum + 1] = true)
@@ -94,9 +95,8 @@
     }
   }
 
-  let clear = (guess) =>
+  const clear = (guess) =>
     guess === 'clear' && show.forEach((el, index) => (show[index] = false))
-  $: if (counter < 8 && toggle[counter]) minusPoint()
 </script>
 
 <main>
