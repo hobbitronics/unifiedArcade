@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --single"
+    "dev": "rollup -c -w  --port 5555",
+    "start": "sirv public --single  --port 5555"
   },
   "prettier": {
     "tabWidth": 2,
